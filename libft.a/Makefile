@@ -1,13 +1,13 @@
-SRCS_FILE = ft_putchar.c ft_putstr.c ft_strcmp.c ft_strlen.c ft_swap.c
+SRCS_FILE = $(wildcard ft_*.c)
 
-SRCS = $(addprefix srcs/,$(SRCS_FILE))
+SRCS = $(addprefix ./,$(SRCS_FILE))
 
 OBJ = $(SRCS:.c=.o)
 
 NAME = libft.a
 
-%.o: %.c includes/ft.h
-		@gcc -c -o $@ $< -I includes -Wall -Wextra -Werror
+%.o: %.c ./libft.h
+		@gcc -c -o $@ $< -Wall -Wextra -Werror
 
 $(NAME): $(OBJ)
 		@ar rc $@ $(OBJ)

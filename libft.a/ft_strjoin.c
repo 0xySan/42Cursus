@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 18:14:40 by oxysan            #+#    #+#             */
-/*   Updated: 2024/09/05 18:53:35 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/05 19:20:50 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,10 @@ char	*ft_strcat(char *dest, char *src)
 	int	start;
 
 	if (!src)
-	{
 		return (dest);
-	}
 	start = 0;
 	while (dest && dest[start])
-	{
 		start++;
-	}
 	ft_strcpy(&dest[start], src);
 	return (dest);
 }

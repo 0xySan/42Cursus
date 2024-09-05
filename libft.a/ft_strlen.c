@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 15:02:02 by etaquet           #+#    #+#             */
-/*   Updated: 2024/08/13 14:13:44 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/05 19:19:57 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int	ft_strlen(char *str)
 
 	val = 0;
 	while (str[val])
-	{
 		val++;
-	}
 	return (val);
 }

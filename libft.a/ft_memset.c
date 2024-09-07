@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 15:02:02 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/07 15:08:03 by etaquet          ###   ########.fr       */
+/*   Created: 2024/09/07 14:57:49 by etaquet           #+#    #+#             */
+/*   Updated: 2024/09/07 15:09:29 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(char *str)
+void    *ft_memset(void *s, int c, size_t n)
 {
-	size_t	val;
-
-	val = 0;
-	while (str[val])
-		val++;
-	return (val);
+    size_t start;
+    
+    start = 0;
+    while(start < n)
+    {
+        //s[start] = (void)c;
+        start++;
+    }
+    return s;
 }

@@ -6,14 +6,13 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 21:33:33 by oxysan            #+#    #+#             */
-/*   Updated: 2024/09/05 17:42:05 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/08 15:49:28 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-int	find_index(char *str, char *to_find)
+int	find_index(const char *str, char to_find)
 {
 	int	len;
 	int	start;
@@ -28,13 +27,13 @@ int	find_index(char *str, char *to_find)
 		return (0);
 	while (str[++start])
 	{
-		if (ft_strchr(str[start], to_find))
+		if (ft_strchr(str+start, to_find))
 			return (start);
 	}
 	return (start);
 }
 
-int	len_seperated(char *str, char *to_find)
+int	len_seperated(const char *str, char to_find)
 {
 	int	len;
 	int	start;
@@ -56,7 +55,7 @@ int	len_seperated(char *str, char *to_find)
 	return (len);
 }
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+char	*ft_strncpy(char *dest, const char *src, unsigned int n)
 {
 	unsigned int	start;
 
@@ -71,10 +70,10 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 		dest[start] = '\0';
 		start++;
 	}
-	return (dest);
+	return ((char*)dest);
 }
 
-char	**ft_split(char *str, char *charset)
+char	**ft_split(char const  *str, char c)
 {
 	char	**r_value;
 	int		len;
@@ -82,13 +81,13 @@ char	**ft_split(char *str, char *charset)
 	int		var;
 
 	start = 0;
-	len = len_seperated(str, charset);
+	len = len_seperated(str, c);
 	r_value = malloc(sizeof(char *) * (len + 1));
 	r_value[len] = 0;
 	len = 0;
 	while (str[start])
 	{
-		var = find_index(str + start, charset);
+		var = find_index(str + start, c);
 		if (var)
 		{
 			r_value[len] = malloc(sizeof(char) * (var + 1));

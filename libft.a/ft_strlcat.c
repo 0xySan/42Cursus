@@ -6,13 +6,13 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 16:43:55 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/05 19:20:20 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/08 13:10:50 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strncpy(char *dest, char *src, unsigned int n)
+void	ft_strncpy(char *dest, const char *src, unsigned int n)
 {
 	unsigned int	v;
 
@@ -27,9 +27,9 @@ void	ft_strncpy(char *dest, char *src, unsigned int n)
 	dest[v] = '\0';
 }
 
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	unsigned int	start;
+	size_t	start;
 
 	start = 0;
 	while (dest && dest[start])

@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 11:54:08 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/08 13:09:39 by etaquet          ###   ########.fr       */
+/*   Created: 2024/09/08 15:42:28 by etaquet           #+#    #+#             */
+/*   Updated: 2024/09/08 15:44:44 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
+	size_t	start;
 
-	i = 0;
-	if (size == 0)
-		return ft_strlen(src);
-	while (src[i] && i < size - 1)
+	if (n <= 0)
+		return (0);
+	if (!s1 || !s2)
+		return (0);
+	start = -1;
+	while (++start < n - 1 && ((char *)s1)[start])
 	{
-		dest[i] = src[i];
-		i++;
+		if (((char *)s1)[start] != ((char *)s2)[start])
+			return (((char *)s1)[start] - ((char *)s2)[start]);
 	}
-	dest[i] = '\0';
-	while (src[i])
-		i++;
-	return (i);
+	return (((char *)s1)[start] - ((char *)s2)[start]);
 }

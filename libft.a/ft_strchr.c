@@ -6,21 +6,23 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 21:33:33 by oxysan            #+#    #+#             */
-/*   Updated: 2024/09/05 17:28:18 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/08 13:20:53 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strchr(char c, char *str)
-{
-	unsigned int	start;
+#include "libft.h"
 
-	if (!str)
+char	*ft_strchr(const char *s, int c)
+{
+	size_t	start;
+
+	if (!s)
 		return (0);
 	start = -1;
-	while (str[++start])
+	while (s[++start])
 	{
-		if (str[start] == c)
-			return (1);
+		if (s[start] == c)
+			return ((char*)&s[start]);
 	}
 	return (0);
 }

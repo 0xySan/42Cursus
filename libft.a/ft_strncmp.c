@@ -6,13 +6,15 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 04:28:20 by oxy               #+#    #+#             */
-/*   Updated: 2024/09/05 19:19:51 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/08 13:08:17 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+#include "libft.h"
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned int	start;
+	size_t	start;
 
 	if (n <= 0)
 		return (0);

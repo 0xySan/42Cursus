@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 14:57:49 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/07 15:09:29 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/08 12:52:48 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,9 @@
 void    *ft_memset(void *s, int c, size_t n)
 {
     size_t start;
-    
+
     start = 0;
     while(start < n)
-    {
-        //s[start] = (void)c;
-        start++;
-    }
+        ((char*) s)[start++] = c;
     return s;
 }

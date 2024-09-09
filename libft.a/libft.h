@@ -6,13 +6,14 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 11:45:26 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/08 16:01:24 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/09 17:53:31 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 #include <stdlib.h>
+#include <unistd.h>
 
 typedef unsigned long size_t;
 int				ft_atoi(const char *nptr);
@@ -23,10 +24,15 @@ int				ft_isalpha(int c);
 int				ft_isascii(int c);
 int				ft_isdigit(int c);
 int				ft_isprint(int c);
+char			*ft_itoa(int n);
 void			*ft_memchr(const void *s, int c, size_t n);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
 void			*ft_memset(void *s, int c, size_t n);
+void			ft_putchar_fd(char c, int fd);
+void 			ft_putendl_fd(char *s, int fd);
+void 			ft_putnbr_fd(int n, int fd);
+void			ft_putstr_fd(char *s, int fd);
 char			**ft_split(char const  *str, char c);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strdup(const char *src);

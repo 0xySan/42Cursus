@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 11:45:26 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/09 17:53:31 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/09 18:09:06 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef unsigned long size_t;
 int				ft_atoi(const char *nptr);
 void    		ft_bzero(void *s, size_t n);
 void			*ft_calloc(size_t nmemb, size_t size);
+int				ft_count_nb(int nb);
 int				ft_isalnum(int c);
 int				ft_isalpha(int c);
 int				ft_isascii(int c);
@@ -34,13 +35,16 @@ void 			ft_putendl_fd(char *s, int fd);
 void 			ft_putnbr_fd(int n, int fd);
 void			ft_putstr_fd(char *s, int fd);
 char			**ft_split(char const  *str, char c);
+char			*ft_strcat(char *s1, const char *s2);
 char			*ft_strchr(const char *s, int c);
+char			*ft_strcpy(char *dest, const char *src);
 char			*ft_strdup(const char *src);
 char			*ft_strjoin(int size, char **strs, char *sep);
 size_t			ft_strlcat(char *dest, const char *src, size_t size);
 size_t			ft_strlcpy(char *dest, const char *src, size_t size);
 size_t			ft_strlen(const char *str);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
+void			ft_strncpy(char *dest, const char *src, unsigned int n);
 char			*ft_strrchr(const char *s, int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);

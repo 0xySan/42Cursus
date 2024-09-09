@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 12:55:58 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/08 16:05:59 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/09 18:02:44 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void *ft_memcpy(void *dest, const void *src, size_t n)
 	if (!dest || !src)
 			return (dest);
 	v = 0;
-	while (((char *)src)[v] && v < n)
+	while (v < n)
 	{
 			((char *)dest)[v] = ((char *)src)[v];
 			v++;

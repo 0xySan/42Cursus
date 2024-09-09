@@ -6,38 +6,12 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 18:14:40 by oxysan            #+#    #+#             */
-/*   Updated: 2024/09/09 17:07:37 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/09 18:06:45 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
-
-void	ft_strcpy(char *dest, char *src)
-{
-	int	v;
-
-	v = 0;
-	while (src[v])
-	{
-		dest[v] = src[v];
-		v++;
-	}
-	dest[v] = '\0';
-}
-
-char	*ft_strcat(char *dest, char *src)
-{
-	int	start;
-
-	if (!src)
-		return (dest);
-	start = 0;
-	while (dest && dest[start])
-		start++;
-	ft_strcpy(&dest[start], src);
-	return (dest);
-}
 
 int calc_len(int size, char **strs, char *sep)
 {

@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 21:33:33 by oxysan            #+#    #+#             */
-/*   Updated: 2024/09/08 15:49:28 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/09 18:08:15 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,6 @@ int	len_seperated(const char *str, char to_find)
 			start++;
 	}
 	return (len);
-}
-
-char	*ft_strncpy(char *dest, const char *src, unsigned int n)
-{
-	unsigned int	start;
-
-	start = 0;
-	while (src && src[start] && start < n)
-	{
-		dest[start] = src[start];
-		++start;
-	}
-	while (start < n)
-	{
-		dest[start] = '\0';
-		start++;
-	}
-	return ((char*)dest);
 }
 
 char	**ft_split(char const  *str, char c)

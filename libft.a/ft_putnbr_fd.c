@@ -6,24 +6,11 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:53:48 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/09 17:56:37 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/09 18:09:28 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	ft_count_nb(int nb)
-{
-	int	value;
-
-	value = 0;
-	while (nb > 9)
-	{
-		nb /= 10;
-		value++;
-	}
-	return (value);
-}
 
 void    ft_putnbr_fd(int n, int fd)
 {

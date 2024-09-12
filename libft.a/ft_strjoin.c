@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 18:14:40 by oxysan            #+#    #+#             */
-/*   Updated: 2024/09/12 18:43:06 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/12 22:07:22 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {
-	char	*result;;
+	char	*result;
 	int		len;
 
 	len = ft_strlen(s1) + ft_strlen(s2);

@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:44:30 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/12 18:48:49 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/12 18:51:17 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 char *ft_strtrim(char const *s1, char const *set)
 {
+    // to continue
     return "yo";
 }

@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_nb.c                                      :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 18:08:56 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/12 18:29:53 by etaquet          ###   ########.fr       */
+/*   Created: 2024/09/12 18:34:46 by etaquet           #+#    #+#             */
+/*   Updated: 2024/09/12 18:38:25 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_count_nb(int nb)
-{
-	int	value;
+#include "libft.h"
 
-	value = 0;
-	while (nb > 9)
-	{
-		nb /= 10;
-		value++;
-	}
-	return (value);
+char *ft_substr(char const *s, unsigned int start, size_t len)
+{
+    char *r_value;
+    r_value = malloc(sizeof(char) * (len + 1));
+    if (r_value == NULL)
+        return (NULL);
+    ft_strncpy(r_value, s+start, len);
+    return r_value;
 }

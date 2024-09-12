@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_nb.c                                      :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 18:08:56 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/12 18:29:53 by etaquet          ###   ########.fr       */
+/*   Created: 2024/09/12 18:44:30 by etaquet           #+#    #+#             */
+/*   Updated: 2024/09/12 18:48:49 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_count_nb(int nb)
-{
-	int	value;
+#include "libft.h"
 
-	value = 0;
-	while (nb > 9)
-	{
-		nb /= 10;
-		value++;
-	}
-	return (value);
+char *ft_strtrim(char const *s1, char const *set)
+{
+    return "yo";
 }

@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:44:30 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/12 22:25:29 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/12 22:25:51 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char *ft_strtrim(char const *s1, char const *set)
     r_value = malloc(sizeof(char) * (trim_len(s1, set) + 1));
     if (r_value == NULL)
         return (NULL);
-    printf("%d", ft_int_strchr(s1, set[0]));µ
+    printf("%d", ft_int_strchr(s1, set[0]));
     return "yolo";
 }
 

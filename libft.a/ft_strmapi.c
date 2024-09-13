@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/12 18:44:30 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/14 00:19:02 by etaquet          ###   ########.fr       */
+/*   Created: 2024/09/14 00:23:55 by etaquet           #+#    #+#             */
+/*   Updated: 2024/09/14 00:26:49 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	i;
-	size_t	len;
+    size_t start;
+    char *r_value;
 
-	if (!s1 || !set)
-		return (NULL);
-	i = 0;
-	while (s1[i] && ft_strchr(set, s1[i]) != NULL)
-		i++;
-	len = ft_strlen(&s1[i]);
-	if (len != 0)
-		while (s1[i + len - 1]
-				&& ft_strchr(set, s1[i + len - 1]) != NULL)
-			len--;
-	return (ft_substr(s1, i, len));
-}
-
-#include <stdio.h>
-
-int main()
-{
-    printf("%s",ft_strtrim("Hello World!", "oelH!"));
+    start = 0;
+    r_value = malloc(sizeof(char) * ft_strlen(s));
+    if (r_value == NULL)
+        return (NULL);
+    while(s[start++])
+        r_value[start] = f(start, s[start]);
+    return r_value;
 }

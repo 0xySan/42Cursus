@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:44:30 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/14 00:19:02 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/14 13:41:44 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,24 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
 	size_t	len;
+	char *r_value;
 
 	if (!s1 || !set)
 		return (NULL);
 	i = 0;
-	while (s1[i] && ft_strchr(set, s1[i]) != NULL)
+	while (s1[i] && ft_strchr(set, s1[i]))
 		i++;
 	len = ft_strlen(&s1[i]);
 	if (len != 0)
-		while (s1[i + len - 1]
-				&& ft_strchr(set, s1[i + len - 1]) != NULL)
+		while (s1[i + len - 1] && ft_strchr(set, s1[i + len - 1]))
 			len--;
-	return (ft_substr(s1, i, len));
+	r_value = ft_substr(s1, i, len);
+	return r_value;
 }
 
 #include <stdio.h>
 
 int main()
 {
-    printf("%s",ft_strtrim("Hello World!", "oelH!"));
+    printf("%s",ft_strtrim("Hello World!", "Helo!"));
 }

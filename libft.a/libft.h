@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 11:45:26 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/12 18:46:10 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/14 13:38:13 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ char			*ft_itoa(int n);
 void			*ft_memchr(const void *s, int c, size_t n);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
+void			*ft_memrcpy(void *dest, const void *src, size_t n);
 void			*ft_memset(void *s, int c, size_t n);
 void			ft_putchar_fd(char c, int fd);
 void 			ft_putendl_fd(char *s, int fd);

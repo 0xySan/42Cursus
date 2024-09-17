@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 21:33:33 by oxysan            #+#    #+#             */
-/*   Updated: 2024/09/17 18:08:36 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/17 20:18:50 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ char *copy_word(char const *str, char c)
 	int i;
 
 	len = 0;
-	while (!is_delimiter(str[len], c))
-		len++;
+	while (!is_delimiter(str[len++], c));
 	char *word = (char *)malloc((len + 1) * sizeof(char));
 	if (!word)
 		return NULL;

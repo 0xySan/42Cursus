@@ -9,7 +9,7 @@
 char *get_next_line(int fd);
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
+# define BUFFER_SIZE 0
 #endif
 
 #endif

@@ -132,57 +132,83 @@ char	*ft_strjoin(const char *s1, const char *s2)
 
 char *get_next_line(int fd)
 {
-	char buff[BUFFER_SIZE + 1];
-	static char *leftover = 0;
-	size_t len;
-	char *temp;
-	char *temp2;
-	int ret;
+    char *buff;
+    static char *leftover = 0;
+    size_t len;
+    char *temp;
+    char *temp2;
+    int ret;
 
-	if(!leftover)
-	{
-		leftover = malloc(1);
-		leftover[0] = 0;
-	}
+    if (!leftover)
+    {
+        leftover = malloc(1);
+        leftover[0] = 0;
+    }
 
-	if ((temp = ft_strchr(leftover, '\n')) != 0)
-	{
-		len = temp - leftover + 1;
-		temp2 = ft_substr(leftover, 0, len);
-		temp = ft_substr(leftover, len, ft_strlen(leftover) - len);
-		free(leftover);
-		leftover = temp;
-		return temp2;
-	}
+    if ((temp = ft_strchr(leftover, '\n')) != 0)
+    {
+        len = temp - leftover + 1;
+        temp2 = ft_substr(leftover, 0, len);
+        temp = ft_substr(leftover, len, ft_strlen(leftover) - len);
+        free(leftover);
+        leftover = temp;
+        return temp2;
+    }
 
-	ret = BUFFER_SIZE;
-	while(ft_strchr(leftover, '\n') == 0 && ret == BUFFER_SIZE)
-	{
-		ft_bzero(buff, BUFFER_SIZE + 1);
-		if((ret = read(fd, buff, BUFFER_SIZE)) <= 0)
-			return (NULL);
-		temp = ft_strjoin(leftover, buff);
-		free(leftover);
-		leftover = temp;
-	}
+    ret = BUFFER_SIZE;
+    buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+    while (ft_strchr(leftover, '\n') == 0 && ret == BUFFER_SIZE)
+    {
+        ft_bzero(buff, BUFFER_SIZE + 1);
+        ret = read(fd, buff, BUFFER_SIZE);
+        if (ret <= 0)
+        {
+            if (ft_strlen(leftover) > 0)
+            {
+                temp2 = ft_strdup(leftover);
+                free(leftover);
+                leftover = NULL;
+                return temp2;
+            }
+            return NULL;
+        }
+        temp = ft_strjoin(leftover, buff);
+        free(leftover);
+        leftover = temp;
+    }
 
-	len = (unsigned long)ft_strchr(leftover, '\n') - (unsigned long)leftover + 1; // géré quand il n'y a pas de \n a la fin du ficher 
-	temp2 = ft_substr(leftover, 0, len);
-	temp = ft_substr(leftover, len, ft_strlen(leftover) - len);
-	free(leftover);
-	leftover = temp;
-	
-	return temp2;
+    free(buff);
+
+    if ((temp = ft_strchr(leftover, '\n')) != 0)
+    {
+        len = temp - leftover + 1;
+        temp2 = ft_substr(leftover, 0, len);
+        temp = ft_substr(leftover, len, ft_strlen(leftover) - len);
+        free(leftover);
+        leftover = temp;
+        return temp2;
+    }
+
+    if (ret == 0 && ft_strlen(leftover) > 0)
+    {
+        temp2 = ft_strdup(leftover);
+        free(leftover);
+        leftover = NULL;
+        return temp2;
+    }
+
+    return NULL;
 }
 
 
 
 int main(int argc, char **argv)
 {
+    (void)argc;
 	int fd = open(argv[1], O_RDONLY);
 	char *temp;
 	while((temp = get_next_line(fd)))
-		printf("%s", temp);
+		dprintf(1, "%s", temp);
 }
 
 

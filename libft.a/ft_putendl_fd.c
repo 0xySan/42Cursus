@@ -6,11 +6,12 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:51:55 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/09 17:52:54 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/17 18:10:45 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 void ft_putendl_fd(char *s, int fd)
 {
     ft_putstr_fd(s, fd);

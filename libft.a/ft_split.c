@@ -6,78 +6,80 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 21:33:33 by oxysan            #+#    #+#             */
-/*   Updated: 2024/09/09 18:08:15 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/17 18:08:36 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-int	find_index(const char *str, char to_find)
+int is_delimiter(char str, char c)
 {
-	int	len;
-	int	start;
+	return (str == c || str == '\0');
+}
 
-	start = -1;
-	if (!str || !to_find)
-		return (0);
+int count_words(char const *str, char c)
+{
+	int count = 0;
+	int in_word = 0;
+
+	while (*str)
+	{
+		if (!is_delimiter(*str, c) && !in_word++)
+			count++;
+		else
+			in_word = 0;
+		str++;
+	}
+	return (count);
+}
+
+char *copy_word(char const *str, char c)
+{
+	int len;
+	int i;
+
 	len = 0;
-	while (str[len])
+	while (!is_delimiter(str[len], c))
 		len++;
-	if (len == 0)
-		return (0);
-	while (str[++start])
-	{
-		if (ft_strchr(str+start, to_find))
-			return (start);
-	}
-	return (start);
+	char *word = (char *)malloc((len + 1) * sizeof(char));
+	if (!word)
+		return NULL;
+	i = -1;
+	while (++i < len)
+		word[i] = str[i];
+	word[len] = '\0';
+	return (word);
 }
 
-int	len_seperated(const char *str, char to_find)
+char **ft_split(char const *str, char c)
 {
-	int	len;
-	int	start;
-	int	var;
+	int word_count;
+	int index;
+	char **result;
 
-	start = 0;
-	len = 0;
-	while (str[start])
+	word_count = count_words(str, c);
+	result = (char **)malloc((word_count + 1) * sizeof(char *));
+	if (!result)
+		return NULL;
+	index = 0;
+	while (*str)
 	{
-		var = find_index(str + start, to_find);
-		if (var)
+		if (!is_delimiter(*str, c))
 		{
-			len++;
-			start += var;
+			result[index++] = copy_word(str, c);
+			while (*str && !is_delimiter(*str, c))
+				str++;
 		}
 		else
-			start++;
+			str++;
 	}
-	return (len);
+	result[index] = NULL;
+	return (result);
 }
 
-char	**ft_split(char const  *str, char c)
-{
-	char	**r_value;
-	int		len;
-	int		start;
-	int		var;
 
-	start = 0;
-	len = len_seperated(str, c);
-	r_value = malloc(sizeof(char *) * (len + 1));
-	r_value[len] = 0;
-	len = 0;
-	while (str[start])
-	{
-		var = find_index(str + start, c);
-		if (var)
-		{
-			r_value[len] = malloc(sizeof(char) * (var + 1));
-			ft_strncpy(r_value[len++], str + start, var);
-			start += var;
-		}
-		else
-			start++;
-	}
-	return (r_value);
+int main()
+{
+	printf("%s", ft_split("Hello World !", ' ')[0]);
 }

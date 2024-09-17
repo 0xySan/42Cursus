@@ -6,9 +6,11 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 22:49:20 by oxy               #+#    #+#             */
-/*   Updated: 2024/09/08 13:27:27 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/17 18:10:01 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_atoi(const char *nptr)
 {

@@ -6,12 +6,11 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 15:45:50 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/08 16:02:59 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/17 18:09:40 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 void *ft_calloc(size_t nmemb, size_t size)
 {

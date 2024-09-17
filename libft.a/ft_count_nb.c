@@ -6,9 +6,11 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:08:56 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/12 18:29:53 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/17 18:10:14 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_count_nb(int nb)
 {

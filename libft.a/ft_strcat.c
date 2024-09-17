@@ -6,9 +6,11 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:04:30 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/09 18:05:26 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/17 18:11:00 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strcat(char *s1, const char *s2)
 {

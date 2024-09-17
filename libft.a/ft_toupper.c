@@ -6,9 +6,11 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 11:44:36 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/05 17:43:28 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/17 18:11:40 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_toupper(int c)
 {

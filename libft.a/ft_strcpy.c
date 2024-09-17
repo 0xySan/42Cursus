@@ -6,9 +6,11 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:06:01 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/09 18:06:02 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/17 18:11:18 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strcpy(char *dest, const char *src)
 {

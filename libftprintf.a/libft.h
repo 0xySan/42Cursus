@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 13:43:02 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/19 14:15:18 by etaquet          ###   ########.fr       */
+/*   Created: 2024/08/21 11:45:26 by etaquet           #+#    #+#             */
+/*   Updated: 2024/09/19 13:23:47 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,20 @@
 # define LIBFT_H
 #include <stdlib.h>
 #include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+#include <stdio.h>
+#include <stdarg.h>
 
-char *get_next_line(int fd);
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
+typedef unsigned long size_t;
+void ft_putstr(char *str);
+void ft_putchar(int c);
+int	ft_count_nb(int nb, int len);
+void	ft_putunsigned(unsigned int nb);
+int	ft_count_unsigned(unsigned int nb);
+void    ft_putul_base(unsigned long nbr, const char *base);
+void    ft_putl_base(long nbr, const char *base);
+void    ft_putpointer(void *ptr);
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 0
-#endif
 
 #endif

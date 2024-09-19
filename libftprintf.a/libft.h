@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 11:45:26 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/19 13:23:47 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/19 23:20:00 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ typedef unsigned long size_t;
 void ft_putstr(char *str);
 void ft_putchar(int c);
 int	ft_count_nb(int nb, int len);
-void	ft_putunsigned(unsigned int nb);
+void	ft_utoa(unsigned int nb);
 int	ft_count_unsigned(unsigned int nb);
-void    ft_putul_base(unsigned long nbr, const char *base);
-void    ft_putl_base(long nbr, const char *base);
-void    ft_putpointer(void *ptr);
+void    ft_ultoa(unsigned long nbr, const char *base);
+void    ft_ltoa(long nbr, const char *base);
+void    ft_ptoa(void *ptr);
 
 
 #endif

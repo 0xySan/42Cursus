@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:08:45 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/19 13:23:59 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/19 23:22:23 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ int ft_printf(const char *str, ...)
 			if(str[start+1] == 'c') ft_putchar(va_arg(args, int));
 			if(str[start+1] == 's') ft_putstr(va_arg(args, char*));
 			if(str[start+1] == 'd' || str[start+1] == 'i') 
-				ft_putl_base(va_arg(args, int), "0123456789");
+				ft_ltoa(va_arg(args, int), "0123456789");
 			if(str[start+1] == 'x') 
-				ft_putl_base(va_arg(args, int), "0123456789abcdef");
+				ft_ltoa(va_arg(args, unsigned int), "0123456789abcdef");
 			if(str[start+1] == 'X')
-				ft_putl_base(va_arg(args, int), "0123456789ABCDEF");
-			if(str[start+1] == 'u') ft_putunsigned(va_arg(args, unsigned int));
-			if(str[start+1] == 'p') ft_putpointer(va_arg(args, void*));
+				ft_ltoa(va_arg(args, unsigned int), "0123456789ABCDEF");
+			if(str[start+1] == 'u') ft_utoa(va_arg(args, unsigned int));
+			if(str[start+1] == 'p') ft_ptoa(va_arg(args, void*));
 			start+=2;
 		}
 		else
@@ -43,7 +43,7 @@ int ft_printf(const char *str, ...)
 
 int main() {
 	char *test;
-	ft_printf("%%\n%c\n%s\n%d\n%i\n%x\n%X\n%u\n%p\n", 'a', "", -214748348, 123, 123, 214748368, -123, test);
-	printf("%%\n%c\n%s\n%d\n%i\n%x\n%X\n%u\n%p\n", 'a', "", -214748368, 123, 123, 214748368, -123, test);
+	ft_printf("%%%%\n%c\n%s\n%d\n%i\n%x\n%X\n%u\n%p\n\n\n", 0, "t", 0, 0, 0, 0, 0, test);
+	printf("%%%%\n%c\n%s\n%d\n%i\n%x\n%X\n%u\n%p\n", 0, "t", 0, 0, 0, 0, 0, test);
 	return 0;
 }

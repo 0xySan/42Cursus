@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putl_base.c                                     :+:      :+:    :+:   */
+/*   ft_putunsigned.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 19:25:36 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/18 19:27:57 by etaquet          ###   ########.fr       */
+/*   Created: 2024/09/18 18:42:29 by etaquet           #+#    #+#             */
+/*   Updated: 2024/09/19 22:57:29 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_putl_base(long nbr, const char *base)
+void	ft_utoa(unsigned int nb)
 {
-    long   base_len;
+	unsigned int	nb_count;
+	unsigned int	n_tempo;
+	unsigned int	nb_tempo;
 
-    if(nbr < 0)
-    {
-        write(1,"-",1);
-        nbr = -nbr;
-    }
-
-    base_len = 0;
-    while (base[base_len])
-        base_len++;
-    if (nbr >= base_len)
-        ft_putul_base(nbr / base_len, base);
-    ft_putchar(base[nbr % base_len]);
+	nb_count = ft_count_unsigned(nb)+1;
+	while (nb_count-- > 0)
+	{
+		n_tempo = nb_count;
+		nb_tempo = nb;
+		while (n_tempo--)
+			nb_tempo /= 10;
+		ft_putchar(nb_tempo % 10 + '0');
+	}
 }

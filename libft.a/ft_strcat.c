@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:04:30 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/17 20:19:52 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/21 02:09:51 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ char	*ft_strcat(char *s1, const char *s2)
 	int i;
 	int j;
 
-	i = 0;
-	while (s1[i++] != '\0');
+	i = -1;
+	while (s1[++i]);
 	j = 0;
-	while (s2[j] != '\0')
+	while (s2[j])
 		s1[i++] = s2[j++];
 	s1[i] = '\0';
 	return (s1);

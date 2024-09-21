@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 19:25:36 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/19 23:19:40 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/21 02:25:54 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void    ft_ltoa(long nbr, const char *base)
         write(1,"-",1);
         nbr = -nbr;
     }
-    //else if(nbr < 0 && hexa == 1)
-    //    nbr = -nbr;
     base_len = 0;
     while (base[base_len])
         base_len++;

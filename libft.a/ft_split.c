@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 21:33:33 by oxysan            #+#    #+#             */
-/*   Updated: 2024/09/17 20:18:50 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/21 02:25:18 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ char *copy_word(char const *str, char c)
 	int len;
 	int i;
 
-	len = 0;
-	while (!is_delimiter(str[len++], c));
+	len = -1;
+	while (!is_delimiter(str[++len], c));
 	char *word = (char *)malloc((len + 1) * sizeof(char));
 	if (!word)
 		return NULL;
 	i = -1;
 	while (++i < len)
 		word[i] = str[i];
-	word[len] = '\0';
+	word[i] = '\0';
 	return (word);
 }
 
@@ -62,7 +62,8 @@ char **ft_split(char const *str, char c)
 	if (!result)
 		return NULL;
 	index = 0;
-	while (*str)
+	str--;
+	while (*++str)
 	{
 		if (!is_delimiter(*str, c))
 		{
@@ -70,15 +71,7 @@ char **ft_split(char const *str, char c)
 			while (*str && !is_delimiter(*str, c))
 				str++;
 		}
-		else
-			str++;
 	}
 	result[index] = NULL;
 	return (result);
-}
-
-
-int main()
-{
-	printf("%s", ft_split("Hello World !", ' ')[0]);
 }

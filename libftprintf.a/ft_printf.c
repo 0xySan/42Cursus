@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:08:45 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/19 23:22:23 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/09/21 02:27:32 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int ft_printf(const char *str, ...)
 
 int main() {
 	char *test;
-	ft_printf("%%%%\n%c\n%s\n%d\n%i\n%x\n%X\n%u\n%p\n\n\n", 0, "t", 0, 0, 0, 0, 0, test);
-	printf("%%%%\n%c\n%s\n%d\n%i\n%x\n%X\n%u\n%p\n", 0, "t", 0, 0, 0, 0, 0, test);
+	ft_printf("%%%%\n%c\n%s\n%d\n%i\n%x\n%X\n%u\n%p\n\n\n", 0, "t", 0, 0, 0, 0, 123, test);
+	printf("%%%%\n%c\n%s\n%d\n%i\n%x\n%X\n%u\n%p\n", 0, "t", 0, 0, 0, 0, 123, test);
 	return 0;
 }

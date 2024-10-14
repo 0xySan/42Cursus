@@ -102,6 +102,5 @@ int main()
         free(result[i]); // Free each word
     }
     free(result); // Free the array
-
     return 0;
 }

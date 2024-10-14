@@ -99,8 +99,8 @@ int main()
     for (int i = 0; result && result[i]; i++) 
     {
         printf("Word %d: %s\n", i + 1, result[i]);
-        free(result[i]); // Free each word
+        free(result[i]);
     }
-    free(result); // Free the array
+    free(result);
     return 0;
 }

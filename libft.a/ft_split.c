@@ -61,6 +61,7 @@ void split_words(char const *s, char c, char **result)
 {
     int index;
 	int word_index;
+	int i;
 
 	index = 0;
 	word_index = 0;
@@ -68,9 +69,10 @@ void split_words(char const *s, char c, char **result)
     {
         if (s[index] != c) 
             result[word_index++] = extract_word(s, &index, c);
-        else 
+        else
             index++;
     }
+	result[word_index] = NULL;
 }
 
 char **ft_split(char const *s, char c) 
@@ -82,6 +84,7 @@ char **ft_split(char const *s, char c)
         return NULL;
 	word_count = count_words(s, c);
 	result = malloc((word_count + 1) * sizeof(char *));
+	//result[word_count + 1] = NULL; // NULL-terminate the array
     if (!result) 
         return NULL;
     split_words(s, c, result);

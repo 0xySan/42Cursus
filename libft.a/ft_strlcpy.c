@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 11:54:08 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/08 13:09:39 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/15 14:50:42 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 
 	i = 0;
 	if (size == 0)
-		return ft_strlen(src);
-	while (src[i] && i < size - 1)
+		return (ft_strlen(src));
+	while (src[i] && i < size)
 	{
 		dest[i] = src[i];
 		i++;

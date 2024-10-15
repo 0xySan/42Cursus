@@ -6,13 +6,13 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:49:51 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/09 17:51:02 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/14 11:14:51 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-    write(fd, s ,ft_strlen(s));
+	write(fd, s, ft_strlen(s));
 }

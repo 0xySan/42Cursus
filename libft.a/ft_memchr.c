@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 15:39:19 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/21 02:24:34 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/14 11:13:06 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	start = -1;
 	while (++start < n)
 		if (((char *)s)[start] == c)
-			return ((void *)&(((char*)s)[start]));
+			return ((void *)&(((char *)s)[start]));
 	return (0);
 }

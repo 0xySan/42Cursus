@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 11:44:36 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/17 18:11:37 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/14 11:21:27 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int	ft_tolower(int c)
 {
 	if ((c >= 'A' && c <= 'Z'))
-		return c + 32;
-	return c;
+		return (c + 32);
+	return (c);
 }

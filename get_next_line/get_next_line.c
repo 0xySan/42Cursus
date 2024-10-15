@@ -13,124 +13,30 @@
 #include "get_next_line.h"
 #include <stdio.h>
 
-void    *ft_memset(void *s, int c, size_t n)
+char *ft_strjoin(const char *s1, const char *s2)
 {
-	size_t start;
-
-	start = 0;
-	while(start < n)
-		((char*) s)[start++] = c;
-	return s;
-}
-
-int	ft_strlen(const char *str)
-{
-	size_t	val;
-
-	val = 0;
-	while (str[val])
-		val++;
-	return (val);
-}
-
-char	*ft_strdup(const char *src)
-{
-	char	*dest;
-	int		len;
-	int		start;
-
-	if (!src)
-		return (0);
-	len = ft_strlen(src);
-	dest = malloc(sizeof(char) * (len + 1));
-	if (!dest)
-		return (0);
-	start = -1;
-	while (src[++start])
-		dest[start] = src[start];
-	dest[start] = '\0';
-	return (dest);
-}
-
-char	*ft_strcpy(char *dest, const char *src)
-{
-	unsigned int i;
-
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = src[i];
-	return (dest);
-}
-
-char	*ft_strcat(char *s1, const char *s2)
-{
+    int len1;
+	int len2;
 	int i;
-	int j;
 
+	len1 = 0;
+	len2 = 0;
 	i = 0;
-	while (s1[i] != '\0')
-		i++;
-	j = 0;
-	while (s2[j] != '\0')
-		s1[i++] = s2[j++];
-	s1[i] = '\0';
-	return (s1);
-}
-
-void	ft_strncpy(char *dest, const char *src, unsigned int n)
-{
-	unsigned int	v;
-
-	if (!src)
-		return ;
-	v = 0;
-	while (v < n && src[v])
-	{
-		dest[v] = src[v];
-		v++;
-	}
-	dest[v] = '\0';
-}
-
-char *ft_substr(char const *s, unsigned int start, long len)
-{
-	char *r_value;
-	r_value = malloc(sizeof(char) * (len + 1));
-	if (r_value == NULL)
-		return (NULL);
-	ft_strncpy(r_value, s+start, len);
-	return r_value;
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	size_t	start;
-
-	if (!s)
-		return (0);
-	start = -1;
-	while (s[++start])
-	{
-		if (s[start] == c)
-			return ((char*)&s[start]);
-	}
-	return (0);
-}
-
-char	*ft_strjoin(const char *s1, const char *s2)
-{
-	char	*result;
-	int		len;
-
-	len = ft_strlen(s1) + ft_strlen(s2);
-	result = malloc(sizeof(char) * (len + 1));
-	ft_strcpy(result, s1);
-	ft_strcat(result, s2);
-	return (result);
+    while (s1[len1] != '\0') 
+		len1++;
+    while (s2[len2] != '\0') 
+		len2++;
+    char *result = malloc(sizeof(char) * (len1 + len2 + 1));
+    if (!result) 
+		return NULL;
+	i--;
+    while (++i < len1)
+        result[i] = s1[i];
+	i--;
+    while (++i < len1 + len2)
+        result[i] = s2[i - len1];
+    result[i] = '\0';
+    return result;
 }
 
 char *get_leftover_if_no_newline(char **leftover)
@@ -211,10 +117,6 @@ char *get_next_line(int fd)
     return get_leftover_if_no_newline(&leftover);
 }
 
-
-
-
-
 int main(int argc, char **argv)
 {
     (void)argc;
@@ -226,10 +128,7 @@ int main(int argc, char **argv)
         dprintf(1, "%s", temp);
         free(temp);
     }
+	free(temp);
     close(fd);
     return 0;
 }
-
-
-
-// test

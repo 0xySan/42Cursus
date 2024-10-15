@@ -1,4 +1,4 @@
-SRCS_FILE = $(wildcard ft_*.c)
+SRCS_FILE = $(wildcard ft_*.c) // to change wildcard
 
 SRCS = $(addprefix ./,$(SRCS_FILE))
 

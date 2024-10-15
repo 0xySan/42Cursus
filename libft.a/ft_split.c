@@ -12,6 +12,21 @@
 
 #include "libft.h"
 
+static char *ft_strncpy(char *dest, const char *src, size_t n)
+{
+    size_t i = 0;
+
+    while (i < n)
+	{
+        if (src[i] != '\0')
+            dest[i] = src[i];
+		else
+            dest[i] = '\0';
+        i++;
+    }
+    return dest;
+}
+
 static int	count_words(const char *s, char c)
 {
 	int	count;
@@ -49,7 +64,7 @@ static char	*extract_word(const char *s, int *index, char c)
 	word = malloc(len + 1);
 	if (word)
 	{
-		ft_strlcpy(word, s + start, len);
+		ft_strncpy(word, s + start, len);
 		word[len] = '\0';
 	}
 	return (word);

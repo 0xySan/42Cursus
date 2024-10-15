@@ -55,7 +55,7 @@
 } */
 
 //// MAIN OF STR(R)CHR + SUBSTR + TRIM
-int main(void)
+/* int main(void)
 {
 	char *value = "bonjour";
 	char *result;
@@ -72,7 +72,7 @@ int main(void)
 	free(result);
 	printf("%d\n", ft_strncmp("test", "test", 6));
 	printf("%d", strncmp("test", "test", 6));
-}
+} */
 
 //// MAIN OF STRNSTR + STRMAPI + STRLEN + STRITERI
 /* char	ft_to_weird_upper(unsigned int blk, char c)
@@ -130,4 +130,76 @@ int main(void)
 	free(a_value);
 	printf("\n%d", ft_atoi("\t\n\r\r\r  -12345"));
 	printf("\n%d", atoi("\t\n\r\r\r  -12345"));
+} */
+
+
+//// ALMOST ALL OF MEM...
+/* int main()
+{
+    const char str[] = "Hello, world!";
+    size_t n = sizeof(str);
+
+	printf("%s\n", ft_memchr(str, 'w', n));
+	printf("%s\n", memchr(str, 'w', n));
+	printf("%p\n", ft_memchr(str, 'x', n));
+	printf("%p\n", memchr(str, 'x', n));
+
+	printf("%d\n", ft_memcmp("Hello World", "Hello World", 11));
+	printf("%d\n", memcmp("Hello World", "Hello World", 11));
+	printf("%d\n", ft_memcmp("Helln", "Hello", 6));
+	printf("%d\n", memcmp("Helln", "Hello", 6));
+
+	char str1[] = "Hello, world!";
+	char str2[] = "Hello, world!";
+    ft_memset(str1, 'A', 5);
+    memset(str2, 'A', 5);
+	printf("%s\n%s\n", str2, str1);
+
+	char str3[20] = "Hello, world!";
+    ft_memmove(str3 + 7, str3, 5);
+    printf("%s\n", str3);
+	strcpy(str3, "Hello, world!");
+	memmove(str3 + 7, str3, 5);
+    printf("%s\n", str3);
+    strcpy(str3, "Hello, world!");
+    ft_memmove(str3 + 5, str3, 7);
+    printf("%s\n", str3);
+	strcpy(str3, "Hello, world!");
+	memmove(str3 + 5, str3, 7);
+    printf("%s\n", str3);
+    return 0;
+} */
+
+//// MEMCPY
+/* int main()
+{
+    char source[] = "Hello, world!";
+    char destination[20];
+	char source2[] = "Hello, world!";
+    char destination2[20];
+
+    ft_memcpy(destination, source, 13);
+    destination[13] = '\0';
+    printf("%s\n", destination);
+    memcpy(destination2, source2, 13);
+    destination2[13] = '\0';
+    printf("%s\n", destination2);
+
+    char smaller_dest[10];
+    ft_memcpy(smaller_dest, source, 5);
+    smaller_dest[5] = '\0';
+    printf("%s\n", smaller_dest);
+	char smaller_dest2[10];
+    memcpy(smaller_dest2, source, 5);
+    smaller_dest2[5] = '\0';
+    printf("%s\n", smaller_dest2);
+
+	char str[20] = "Hello, world!";
+    ft_bzero(str, 6);
+    dprintf(1,"%s\n", str);
+	char str2[20] = "Hello, world!";
+    bzero(str2, 6);
+    dprintf(1,"%s\n", str2);
+
+    return 0;
 } */

@@ -12,13 +12,14 @@
 
 #include "libft.h"
 
-void    ft_ultoa(unsigned long nbr, const char *base)
+void	ft_ultoa(unsigned long nbr, const char *base)
 {
-    unsigned long   base_len;
+	unsigned long	base_len;
 
-    base_len = -1;
-    while (base[++base_len]);
-    if (nbr >= base_len)
-        ft_ultoa(nbr / base_len, base);
-    ft_putchar(base[nbr % base_len]);
+	base_len = -1;
+	while (base[++base_len])
+		;
+	if (nbr >= base_len)
+		ft_ultoa(nbr / base_len, base);
+	ft_putchar(base[nbr % base_len]);
 }

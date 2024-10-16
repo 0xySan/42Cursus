@@ -17,9 +17,9 @@ void	*ft_memset(void *s, int c, size_t n)
 	size_t	start;
 
 	start = 0;
-	while(start < n)
-		((char*) s)[start++] = c;
-	return s;
+	while (start < n)
+		((char *) s)[start++] = c;
+	return (s);
 }
 
 int	ft_strlen(const char *str)
@@ -51,15 +51,14 @@ char	*ft_strdup(const char *src)
 	return (dest);
 }
 
-char *ft_substr(char const *s, unsigned int start, long len)
+char	*ft_substr(char const *s, unsigned int start, long len)
 {
-	char 			*r_value;
+	char			*r_value;
 	unsigned int	v;
 
 	r_value = malloc(sizeof(char) * (len + 1));
 	if (r_value == NULL)
 		return (NULL);
-
 	v = 0;
 	while (v < len && s[v + start])
 	{
@@ -80,7 +79,7 @@ char	*ft_strchr(const char *s, int c)
 	while (s[++start])
 	{
 		if (s[start] == c)
-			return ((char*)&s[start]);
+			return ((char *)&s[start]);
 	}
 	return (0);
 }

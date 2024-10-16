@@ -12,17 +12,16 @@
 
 #include "libft.h"
 
-void ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
-   int start;
+	int	start;
 
-   if(!str)
-   {
-      write(1, "(null)", 6);
-      return ;
-   }
-
-   start = 0;
-   while(str[start])
-      write(1,&str[start++],1);
+	if (!str)
+	{
+		write(1, "(null)", 6);
+		return ;
+	}
+	start = 0;
+	while (str[start])
+		write(1, &str[start++], 1);
 }

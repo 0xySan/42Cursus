@@ -12,19 +12,20 @@
 
 #include "libft.h"
 
-static char *ft_strncpy(char *dest, const char *src, size_t n)
+static char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
-    size_t i = 0;
+	size_t	i;
 
-    while (i < n)
+	i = 0;
+	while (i < n)
 	{
-        if (src[i] != '\0')
-            dest[i] = src[i];
+		if (src[i] != '\0')
+			dest[i] = src[i];
 		else
-            dest[i] = '\0';
-        i++;
-    }
-    return dest;
+			dest[i] = '\0';
+		i++;
+	}
+	return (dest);
 }
 
 static int	count_words(const char *s, char c)

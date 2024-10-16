@@ -12,17 +12,16 @@
 
 #include "libft.h"
 
-void    ft_ptoa(void *ptr)
+void	ft_ptoa(void *ptr)
 {
-    unsigned long addr;
+	unsigned long	addr;
 
-    if(!ptr)
-    {
-        write(1,"(nil)", 5);
-        return ;
-    }
-
-    addr = (unsigned long)ptr;
-    ft_putstr("0x");
-    ft_ultoa(addr, "0123456789abcdef");
+	if (!ptr)
+	{
+		write(1, "(nil)", 5);
+		return ;
+	}
+	addr = (unsigned long)ptr;
+	ft_putstr("0x");
+	ft_ultoa(addr, "0123456789abcdef");
 }

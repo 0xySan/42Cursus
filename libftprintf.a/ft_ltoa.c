@@ -12,19 +12,19 @@
 
 #include "libft.h"
 
-void    ft_ltoa(long nbr, const char *base)
+void	ft_ltoa(long nbr, const char *base)
 {
-    long   base_len;
+	long	base_len;
 
-    if(nbr < 0)
-    {
-        write(1,"-",1);
-        nbr = -nbr;
-    }
-    base_len = 0;
-    while (base[base_len])
-        base_len++;
-    if (nbr >= base_len)
-        ft_ltoa(nbr / base_len, base);
-    ft_putchar(base[nbr % base_len]);
+	if (nbr < 0)
+	{
+		write(1, "-", 1);
+		nbr = -nbr;
+	}
+	base_len = 0;
+	while (base[base_len])
+		base_len++;
+	if (nbr >= base_len)
+		ft_ltoa(nbr / base_len, base);
+	ft_putchar(base[nbr % base_len]);
 }

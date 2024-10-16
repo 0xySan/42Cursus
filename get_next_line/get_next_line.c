@@ -120,7 +120,7 @@ char	*get_next_line(int fd)
 	return (get_leftover_if_no_newline(&leftover));
 }
 
-/* int	main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	(void)argc;
 	int fd = open(argv[1], O_RDONLY);
@@ -135,4 +135,3 @@ char	*get_next_line(int fd)
 	close(fd);
 	return 0;
 }
- */

@@ -55,7 +55,13 @@ char	*ft_substr(char const *s, unsigned int start, long len)
 {
 	char			*r_value;
 	unsigned int	v;
+	size_t			s_len;
 
+	if (!s)
+		return (NULL);
+	s_len = ft_strlen(s);
+	if (len > s_len - start)
+		len = s_len - start;
 	r_value = malloc(sizeof(char) * (len + 1));
 	if (r_value == NULL)
 		return (NULL);

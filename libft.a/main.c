@@ -55,24 +55,24 @@
 } */
 
 //// MAIN OF STR(R)CHR + SUBSTR + TRIM
-/* int main(void)
+int main(void)
 {
-	char *value = "bonjour";
+	char *value = "test";
 	char *result;
 
-	printf("%s\n", ft_strchr(value, 'o'));
-	printf("%s\n", strchr(value, 'o'));
-	printf("%s\n", ft_strrchr(value, 'b'));
-	printf("%s\n", strrchr(value, 'b'));
-	result = ft_substr(value, 1, 3);
-	printf("%s\n", result);
+	printf("%s\n", ft_strchr(value, 't'));
+	printf("%s\n", strchr(value, 't'));
+	printf("%d\n", ft_strrchr(value, 'b'));
+	printf("%d\n", strrchr(value, 'b'));
+	result = ft_substr(value, 10, 1);
+	printf("substr : %s\n", result);
 	free(result);
 	result = ft_strtrim(value, "!Hd");
 	printf("%s\n", result);
 	free(result);
 	printf("%d\n", ft_strncmp("test", "test", 6));
 	printf("%d", strncmp("test", "test", 6));
-} */
+}
 
 //// MAIN OF STRNSTR + STRMAPI + STRLEN + STRITERI
 /* char	ft_to_weird_upper(unsigned int blk, char c)

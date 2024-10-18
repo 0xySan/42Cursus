@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utoa.c                                          :+:      :+:    :+:   */
+/*   ft_count_unsigned.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 18:42:29 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/21 02:28:42 by etaquet          ###   ########.fr       */
+/*   Created: 2024/09/18 18:43:01 by etaquet           #+#    #+#             */
+/*   Updated: 2024/09/18 18:43:09 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libprintf.h"
 
-void	ft_utoa(unsigned int nb)
+int	ft_count_unsigned(unsigned int nb)
 {
-	unsigned int	nb_count;
-	unsigned int	n_tempo;
-	unsigned int	nb_tempo;
+	int	value;
 
-	nb_count = ft_count_unsigned(nb) + 1;
-	while (nb_count-- > 0)
+	value = 0;
+	while (nb > 9)
 	{
-		n_tempo = nb_count;
-		nb_tempo = nb;
-		while (n_tempo--)
-			nb_tempo /= 10;
-		ft_putchar(nb_tempo % 10 + '0');
+		nb /= 10;
+		value++;
 	}
+	return (value);
 }

@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 18:36:30 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/18 18:36:41 by etaquet          ###   ########.fr       */
+/*   Created: 2024/09/18 18:35:05 by etaquet           #+#    #+#             */
+/*   Updated: 2024/09/18 19:32:13 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libprintf.h"
 
-void	ft_putchar(int c)
+void	ft_putstr(char *str)
 {
-	write(1, &c, 1);
+	int	start;
+
+	if (!str)
+	{
+		write(1, "(null)", 6);
+		return ;
+	}
+	start = 0;
+	while (str[start])
+		write(1, &str[start++], 1);
 }

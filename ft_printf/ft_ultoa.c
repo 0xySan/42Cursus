@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_ultoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 18:35:05 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/18 19:32:13 by etaquet          ###   ########.fr       */
+/*   Created: 2024/09/18 19:05:45 by etaquet           #+#    #+#             */
+/*   Updated: 2024/09/21 02:26:55 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libprintf.h"
 
-void	ft_putstr(char *str)
+void	ft_ultoa(unsigned long nbr, const char *base)
 {
-	int	start;
+	unsigned long	base_len;
 
-	if (!str)
-	{
-		write(1, "(null)", 6);
-		return ;
-	}
-	start = 0;
-	while (str[start])
-		write(1, &str[start++], 1);
+	base_len = -1;
+	while (base[++base_len])
+		;
+	if (nbr >= base_len)
+		ft_ultoa(nbr / base_len, base);
+	ft_putchar(base[nbr % base_len]);
 }

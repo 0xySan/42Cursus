@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libprintf.h"
 
 void	ft_ltoa(long nbr, const char *base)
 {

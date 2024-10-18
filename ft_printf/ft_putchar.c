@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_unsigned.c                                :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 18:43:01 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/18 18:43:09 by etaquet          ###   ########.fr       */
+/*   Created: 2024/09/18 18:36:30 by etaquet           #+#    #+#             */
+/*   Updated: 2024/09/18 18:36:41 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libprintf.h"
 
-int	ft_count_unsigned(unsigned int nb)
+void	ft_putchar(int c)
 {
-	int	value;
-
-	value = 0;
-	while (nb > 9)
-	{
-		nb /= 10;
-		value++;
-	}
-	return (value);
+	write(1, &c, 1);
 }

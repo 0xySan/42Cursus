@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ptoa.c                                          :+:      :+:    :+:   */
+/*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 19:14:27 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/19 23:04:11 by etaquet          ###   ########.fr       */
+/*   Created: 2024/09/18 18:42:29 by etaquet           #+#    #+#             */
+/*   Updated: 2024/09/21 02:28:42 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libprintf.h"
 
-void	ft_ptoa(void *ptr)
+void	ft_utoa(unsigned int nb)
 {
-	unsigned long	addr;
+	unsigned int	nb_count;
+	unsigned int	n_tempo;
+	unsigned int	nb_tempo;
 
-	if (!ptr)
+	nb_count = ft_count_unsigned(nb) + 1;
+	while (nb_count-- > 0)
 	{
-		write(1, "(nil)", 5);
-		return ;
+		n_tempo = nb_count;
+		nb_tempo = nb;
+		while (n_tempo--)
+			nb_tempo /= 10;
+		ft_putchar(nb_tempo % 10 + '0');
 	}
-	addr = (unsigned long)ptr;
-	ft_putstr("0x");
-	ft_ultoa(addr, "0123456789abcdef");
 }

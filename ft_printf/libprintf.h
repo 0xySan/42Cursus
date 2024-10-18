@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef LIBPRINTF_H
+# define LIBPRINTF_H
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -28,5 +28,6 @@ int		ft_count_unsigned(unsigned int nb);
 void	ft_ultoa(unsigned long nbr, const char *base);
 void	ft_ltoa(long nbr, const char *base);
 void	ft_ptoa(void *ptr);
+int		ft_printf(const char *str, ...);
 
 #endif

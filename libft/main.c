@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:26:22 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/15 18:07:21 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/18 12:28:24 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@
 } */
 
 //// MAIN OF STR(R)CHR + SUBSTR + TRIM
-int main(void)
+/* int main(void)
 {
 	char *value = "test";
 	char *result;
@@ -72,7 +72,7 @@ int main(void)
 	free(result);
 	printf("%d\n", ft_strncmp("test", "test", 6));
 	printf("%d", strncmp("test", "test", 6));
-}
+} */
 
 //// MAIN OF STRNSTR + STRMAPI + STRLEN + STRITERI
 /* char	ft_to_weird_upper(unsigned int blk, char c)
@@ -131,7 +131,6 @@ int main(void)
 	printf("\n%d", ft_atoi("\t\n\r\r\r  -12345"));
 	printf("\n%d", atoi("\t\n\r\r\r  -12345"));
 } */
-
 
 //// ALMOST ALL OF MEM...
 /* int main()

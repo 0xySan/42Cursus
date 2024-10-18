@@ -33,9 +33,21 @@ SRCS_FILE = ft_atoi.c \
 			ft_tolower.c \
 			ft_toupper.c
 
+BONUS_FILE = 	ft_lstadd_back.c \
+				ft_lstadd_front.c \
+				ft_lstclear.c \
+				ft_lstdelone.c \
+				ft_lstlast.c \
+				ft_lstnew.c \
+				ft_lstsize.c \
+
 SRCS = $(addprefix ./,$(SRCS_FILE))
 
+BONUS = $(addprefix ./,$(BONUS_FILE))
+
 OBJ = $(SRCS:.c=.o)
+
+OBJ_BONUS = $(BONUS:.c=.o)
 
 NAME = libft.a
 
@@ -47,6 +59,7 @@ $(NAME): $(OBJ)
 
 clean:
 		@rm -f $(OBJ)
+		@rm -f $(OBJ_BONUS)
 
 fclean: clean
 		@rm -f $(NAME)
@@ -55,4 +68,8 @@ all: $(NAME)
 
 re: fclean all
 
-.PHONY: all fclean clean re
+bonus:	$(OBJ_BONUS)
+		@ar rc $(NAME) $(OBJ_BONUS)
+		@ranlib $(NAME)
+
+.PHONY: all fclean clean re bonus

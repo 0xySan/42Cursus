@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:26:22 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/18 12:28:24 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/18 13:23:50 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,12 @@
 } */
 
 //// MAIN OF STR(R)CHR + SUBSTR + TRIM
-/* int main(void)
+int main(void)
 {
 	char *value = "test";
 	char *result;
+	char *value2 = "test";
+	char *result2;
 
 	printf("%s\n", ft_strchr(value, 't'));
 	printf("%s\n", strchr(value, 't'));
@@ -67,12 +69,15 @@
 	result = ft_substr(value, 10, 1);
 	printf("substr : %s\n", result);
 	free(result);
+	result2 = ft_substr(value2, 10, 1);
+	printf("substr : %s\n", result2);
+	free(result2);
 	result = ft_strtrim(value, "!Hd");
 	printf("%s\n", result);
 	free(result);
 	printf("%d\n", ft_strncmp("test", "test", 6));
 	printf("%d", strncmp("test", "test", 6));
-} */
+}
 
 //// MAIN OF STRNSTR + STRMAPI + STRLEN + STRITERI
 /* char	ft_to_weird_upper(unsigned int blk, char c)

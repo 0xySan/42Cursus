@@ -71,6 +71,5 @@ re: fclean all
 
 bonus:	$(OBJ_BONUS)
 		@ar rc $(NAME) $(OBJ_BONUS)
-		@ranlib $(NAME)
 
 .PHONY: all fclean clean re bonus

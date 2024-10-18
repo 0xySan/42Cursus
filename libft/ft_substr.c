@@ -15,19 +15,20 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*r_value;
-	size_t	i;
 	size_t	s_len;
 
-	r_value = malloc(len + 1);
-	if (!s || !r_value)
+	if (!s)
 		return (NULL);
-	i = 0;
-	s_len = ft_strlen(s);
-	while ((i + start) < s_len && i < len)
-	{
-		r_value[i] = s[i + start];
-		i++;
-	}
-	r_value[i] = '\0';
+	s_len=ft_strlen(s);
+	if (s_len <= start)
+		return (ft_strdup(""));
+	s_len -= start;
+	if (s_len < len)
+		len = s_len;
+	r_value = malloc(sizeof(char) * (len + 1));
+	if (!r_value)
+		return (NULL);
+	r_value = ft_memcpy(r_value, s + start, len);
+	r_value[len] = '\0';
 	return (r_value);
 }

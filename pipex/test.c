@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 18:56:30 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/20 19:05:15 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/20 21:12:37 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_pipex	pipex;
 
+	pipex.pid2 = 0;
+	pipex.pid1 = 0;
 	if (argc != 5)
 		return (0);
 	pipex.infile = open(argv[1], O_RDONLY);

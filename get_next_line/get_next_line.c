@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:43:11 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/19 14:16:29 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/20 21:25:38 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,13 @@ char	*get_next_line(int fd)
 	temp2 = get_line_from_leftover(&leftover);
 	if (temp2)
 		return (temp2);
-	return (get_leftover_if_no_newline(&leftover));
+	temp2 = get_leftover_if_no_newline(&leftover);
+	if (!ft_strlen(leftover))
+	{
+		free(leftover);
+		leftover = 0;
+	}
+	return (temp2);
 }
 
 int	main(int argc, char **argv)

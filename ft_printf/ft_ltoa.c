@@ -6,11 +6,11 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 19:25:36 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/21 02:25:54 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/21 13:28:47 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libprintf.h"
+#include "ft_printf.h"
 
 void	ft_ltoa(long nbr, const char *base)
 {

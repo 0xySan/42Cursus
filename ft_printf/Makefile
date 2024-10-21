@@ -14,7 +14,7 @@ OBJ = $(SRCS:.c=.o)
 
 NAME = libftprintf.a
 
-%.o: %.c ./libprintf.h
+%.o: %.c ./ft_printf.h
 		@gcc -c -o $@ $< -Wall -Wextra -Werror
 
 $(NAME): $(OBJ)

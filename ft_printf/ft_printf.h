@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 11:45:26 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/19 23:20:00 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/21 13:33:16 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBPRINTF_H
-# define LIBPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -22,7 +23,6 @@
 
 void	ft_putstr(char *str);
 void	ft_putchar(int c);
-int		ft_count_nb(int nb, int len);
 void	ft_utoa(unsigned int nb);
 int		ft_count_unsigned(unsigned int nb);
 void	ft_ultoa(unsigned long nbr, const char *base);

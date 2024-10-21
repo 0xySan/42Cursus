@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 11:45:26 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/21 10:59:30 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/21 13:52:29 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define INT_MAX 2147483647
-# define INT_MIN -2147483648
+# define MY_MAX 2147483647
+# define MY_MIN -2147483648
 
 typedef struct s_list
 {

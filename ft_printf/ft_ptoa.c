@@ -6,11 +6,11 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 19:14:27 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/19 23:04:11 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/21 13:28:49 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libprintf.h"
+#include "ft_printf.h"
 
 void	ft_ptoa(void *ptr)
 {

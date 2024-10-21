@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:26:22 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/18 13:23:50 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/21 04:06:55 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@
 } */
 
 //// MAIN OF STR(R)CHR + SUBSTR + TRIM
-int main(void)
+/* int main(void)
 {
 	char *value = "test";
 	char *result;
@@ -78,7 +78,7 @@ int main(void)
 	printf("%d\n", ft_strncmp("test", "test", 6));
 	printf("%d", strncmp("test", "test", 6));
 }
-
+ */
 //// MAIN OF STRNSTR + STRMAPI + STRLEN + STRITERI
 /* char	ft_to_weird_upper(unsigned int blk, char c)
 {
@@ -204,6 +204,66 @@ int main(void)
 	char str2[20] = "Hello, world!";
     bzero(str2, 6);
     dprintf(1,"%s\n", str2);
+
+    return 0;
+} */
+
+//// MAIN OF LST MAP
+/* void *square(void *content)
+{
+    int *new_value = malloc(sizeof(int));
+    if (!new_value)
+        return NULL;
+    *new_value = (*(int *)content) * (*(int *)content);
+    return new_value;
+}
+
+void delete_content(void *content)
+{
+    free(content);
+}
+
+void print_list(t_list *lst)
+{
+    while (lst)
+    {
+        printf("%d -> ", *(int *)(lst->content));
+        lst = lst->next;
+    }
+    printf("NULL\n");
+}
+
+int main(void)
+{
+    int *val1 = malloc(sizeof(int));
+    int *val2 = malloc(sizeof(int));
+    int *val3 = malloc(sizeof(int));
+    int *val4 = malloc(sizeof(int));
+
+    *val1 = 1;
+    *val2 = 2;
+    *val3 = 3;
+    *val4 = 4;
+
+    t_list *node1 = ft_lstnew(val1);
+    t_list *node2 = ft_lstnew(val2);
+    t_list *node3 = ft_lstnew(val3);
+    t_list *node4 = ft_lstnew(val4);
+
+    node1->next = node2;
+    node2->next = node3;
+    node3->next = node4;
+
+    printf("Original list:\n");
+    print_list(node1);
+
+    t_list *squared_list = ft_lstmap(node1, square, delete_content);
+
+    printf("Squared list:\n");
+    print_list(squared_list);
+
+    ft_lstclear(&node1, delete_content);
+    ft_lstclear(&squared_list, delete_content);
 
     return 0;
 } */

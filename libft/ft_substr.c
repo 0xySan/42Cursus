@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:34:46 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/18 13:30:33 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/21 10:58:10 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	s_len=ft_strlen(s);
+	s_len = ft_strlen(s);
 	if (s_len <= start)
 		return (ft_strdup(""));
 	s_len -= start;

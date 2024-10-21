@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 13:31:52 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/15 14:33:22 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/21 11:03:47 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	*ft_memrcpy(void *dest, const void *src, size_t n)
 {
-	if (!dest || !src)
+	if (!dest && !src)
 		return (dest);
 	while (n--)
 	{

@@ -39,8 +39,9 @@ BONUS_FILE = 	ft_lstadd_back_bonus.c \
 				ft_lstdelone_bonus.c \
 				ft_lstiter_bonus.c \
 				ft_lstlast_bonus.c \
+				ft_lstmap_bonus.c \
 				ft_lstnew_bonus.c \
-				ft_lstsize_bonus.c \
+				ft_lstsize_bonus.c
 
 SRCS = $(addprefix ./,$(SRCS_FILE))
 
@@ -69,7 +70,7 @@ all: $(NAME)
 
 re: fclean all
 
-bonus:	$(OBJ_BONUS)
-		@ar rc $(NAME) $(OBJ_BONUS)
+bonus:	$(OBJ_BONUS) $(OBJ)
+		@ar rc $(NAME) $(OBJ_BONUS) $(OBJ)
 
 .PHONY: all fclean clean re bonus

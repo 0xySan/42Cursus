@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:09:25 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/21 13:52:40 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/21 15:43:20 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,6 @@ char	*ft_itoa(int n)
 	int		start;
 	long	nbr;
 
-	if (n == 0)
-		ft_strdup("0");
-	if (n == MY_MIN)
-		ft_strdup("-2147483648");
 	nbr = n;
 	r_value = malloc(sizeof(char) * (ft_count_nb(nbr) + 1));
 	if (!r_value)

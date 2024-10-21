@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:43:11 by etaquet           #+#    #+#             */
-/*   Updated: 2024/09/19 14:16:29 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/21 18:41:23 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	ft_strlen(const char *str)
 {
 	size_t	val;
 
+	if (!str)
+		return (0);
 	val = 0;
 	while (str[val])
 		val++;

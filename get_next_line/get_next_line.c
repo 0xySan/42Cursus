@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:43:11 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/20 21:25:38 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/21 18:43:25 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ int	main(int argc, char **argv)
 	int fd = open(argv[1], O_RDONLY);
 	char *temp;
 
-	while ((temp = get_next_line(fd)))
+	while ((temp = get_next_line(0)))
 	{
 		dprintf(1, "%s", temp);
 		free(temp);

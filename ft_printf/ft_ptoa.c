@@ -3,25 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ptoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 19:14:27 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/21 13:28:49 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/22 19:41:29 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_ptoa(void *ptr)
+int	ft_ptoa(void *ptr)
 {
 	unsigned long	addr;
+	int	len;
 
 	if (!ptr)
-	{
-		write(1, "(nil)", 5);
-		return ;
-	}
+		return (write(1, "(nil)", 5));
 	addr = (unsigned long)ptr;
-	ft_putstr("0x");
-	ft_ultoa(addr, "0123456789abcdef");
+	len = ft_putstr("0x");
+	ft_ultoa(addr, "0123456789abcdef", &len);
+	return (len);
 }

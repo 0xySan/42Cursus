@@ -1,4 +1,4 @@
-#include "ft_printf.h"
+/* #include "ft_printf.h"
 
 int main()
 {
@@ -7,3 +7,4 @@ int main()
 	printf("%%%%\n%c\n%s\n%d\n%i\n%x\n%X\n%u\n%p\n", 0, "n", 0, 0, 0, 0, 123, test);
 	return 0;
 }
+ */

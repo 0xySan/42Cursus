@@ -6,11 +6,11 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 22:49:20 by oxy               #+#    #+#             */
-/*   Updated: 2024/10/22 20:57:26 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/22 20:50:26 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 int	ft_atoi(const char *nptr)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:43:11 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/21 18:43:25 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/22 14:22:01 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,14 @@ int	read_from_fd(int fd, char **leftover, char *buff)
 {
 	int		ret;
 	char	*temp;
+	size_t	start;
 
 	ret = BUFFER_SIZE;
 	while (ft_strchr(*leftover, '\n') == 0 && ret == BUFFER_SIZE)
 	{
-		ft_memset(buff, 0, BUFFER_SIZE + 1);
+		start = 0;
+		while (start < BUFFER_SIZE + 1)
+			((char *) buff)[start++] = 0;
 		ret = read(fd, buff, BUFFER_SIZE);
 		if (ret <= 0)
 			break ;
@@ -99,13 +102,7 @@ char	*get_next_line(int fd)
 	static char	*leftover = NULL;
 	char		*temp2;
 
-	if (!leftover)
-	{
-		leftover = malloc(1);
-		if (!leftover)
-			return (NULL);
-		leftover[0] = '\0';
-	}
+	leftover = malloc_gnl(leftover);
 	temp2 = get_line_from_leftover(&leftover);
 	if (temp2)
 		return (temp2);
@@ -126,13 +123,13 @@ char	*get_next_line(int fd)
 	return (temp2);
 }
 
-int	main(int argc, char **argv)
+/* int	main(int argc, char **argv)
 {
 	(void)argc;
 	int fd = open(argv[1], O_RDONLY);
 	char *temp;
 
-	while ((temp = get_next_line(0)))
+	while ((temp = get_next_line(fd)))
 	{
 		dprintf(1, "%s", temp);
 		free(temp);
@@ -140,4 +137,4 @@ int	main(int argc, char **argv)
 	free(temp);
 	close(fd);
 	return 0;
-}
+} */

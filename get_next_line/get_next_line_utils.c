@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:43:11 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/21 18:41:23 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/22 14:21:39 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-void	*ft_memset(void *s, int c, size_t n)
-{
-	size_t	start;
-
-	start = 0;
-	while (start < n)
-		((char *) s)[start++] = c;
-	return (s);
-}
 
 int	ft_strlen(const char *str)
 {
@@ -53,7 +43,7 @@ char	*ft_strdup(const char *src)
 	return (dest);
 }
 
-char	*ft_substr(char const *s, unsigned int start, long len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*r_value;
 	unsigned int	v;
@@ -90,4 +80,16 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)&s[start]);
 	}
 	return (0);
+}
+
+char	*malloc_gnl(char *leftover)
+{
+	if (!leftover)
+	{
+		leftover = malloc(1);
+		if (!leftover)
+			return (NULL);
+		leftover[0] = '\0';
+	}
+	return (leftover);
 }

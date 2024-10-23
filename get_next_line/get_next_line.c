@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:43:11 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/22 14:22:01 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/23 14:42:43 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	int		i;
 	char	*result;
 
+	if (!s1 || !s2)
+		return (NULL);
 	len1 = 0;
 	len2 = 0;
 	i = 0;
@@ -61,6 +63,8 @@ int	read_from_fd(int fd, char **leftover, char *buff)
 	size_t	start;
 
 	ret = BUFFER_SIZE;
+	if (!leftover)
+		return (0);
 	while (ft_strchr(*leftover, '\n') == 0 && ret == BUFFER_SIZE)
 	{
 		start = 0;

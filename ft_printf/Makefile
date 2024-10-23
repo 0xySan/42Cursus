@@ -6,7 +6,8 @@ SRCS_FILE = ft_printf.c \
 	    ft_count_unsigned.c \
 	    ft_printf.c \
 	    ft_putchar.c \
-	    ft_ultoa.c
+	    ft_ultoa.c \
+		ft_itoa.c
 
 SRCS = $(addprefix ./,$(SRCS_FILE))
 

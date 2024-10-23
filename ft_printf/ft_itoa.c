@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ptoa.c                                          :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 19:14:27 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/23 14:44:19 by etaquet          ###   ########.fr       */
+/*   Created: 2024/10/23 15:01:30 by etaquet           #+#    #+#             */
+/*   Updated: 2024/10/23 15:11:58 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_ptoa(void *ptr)
+static int	ft_iltoa(long n)
 {
-	unsigned long	addr;
-	int				len;
+	if (n >= 10)
+		return (ft_itoa(n / 10) + ft_itoa(n % 10));
+	return (ft_putchar(n + '0'));
+}
 
-	if (!ptr)
-		return (write(1, "(nil)", 5));
-	addr = (unsigned long)ptr;
-	len = ft_putstr("0x");
-	ft_ultoa(addr, "0123456789abcdef", &len);
-	return (len);
+int	ft_itoa(int n)
+{
+	long	ln;
+
+	ln = n;
+	if (n < 0)
+		return (write(1, "-", 1) + ft_iltoa(-ln));
+	return (ft_iltoa(ln));
 }

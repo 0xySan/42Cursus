@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:36:30 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/22 19:29:41 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/23 14:44:28 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	ft_putchar(int c)
 {
-	return write(1, &c, 1);
+	return (write(1, &c, 1));
 }

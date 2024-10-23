@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:08:45 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/22 19:37:12 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/23 15:05:59 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_handle_format(va_list args, const char *str, int *start, int *len)
 	else if (format == 's')
 		*len += ft_putstr(va_arg(args, char *));
 	else if (format == 'd' || format == 'i')
-		ft_ltoa(va_arg(args, int), "0123456789", len);
+		*len += ft_itoa(va_arg(args, int));
 	else if (format == 'x')
 		ft_ltoa(va_arg(args, unsigned int), "0123456789abcdef", len);
 	else if (format == 'X')

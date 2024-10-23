@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 11:45:26 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/22 19:41:59 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/23 15:04:43 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		ft_utoa(unsigned int nb);
 void	ft_ultoa(unsigned long nbr, const char *base, int *len);
 void	ft_ltoa(long nbr, const char *base, int *len);
 int		ft_ptoa(void *ptr);
+int		ft_itoa(int n);
 int		ft_printf(const char *str, ...);
 
 #endif

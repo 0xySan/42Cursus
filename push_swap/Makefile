@@ -1,6 +1,13 @@
 NAME = push_swap
 
-SRCS = ft_atoi.c input_validation.c push_swap.c push_swap_ops.c sort_small.c sort_stack.c utils.c stack_ops.c
+SRCS = 	ft_atoi.c \
+		input_validation.c \
+		push_swap.c \
+		push_swap_ops.c \
+		sort_small.c \
+		sort_stack.c \
+		utils.c \
+		stack_ops.c
 
 OBJS = $(SRCS:.c=.o)
 

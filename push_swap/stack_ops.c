@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 21:01:10 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/22 21:01:30 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/24 03:40:54 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	reverse_rotate(t_stack *stack)
 
 	if (stack->size < 2)
 		return ;
-	lsat = stack->top;
+	last = stack->top;
 	second_last = NULL;
 	while (last->next)
 	{

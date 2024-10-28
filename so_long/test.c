@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:09:10 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/24 03:34:15 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/25 16:16:40 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // See README in the root project for more information.
 // -----------------------------------------------------------------------------
 
-/* #include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include "MLX42.h"
@@ -52,20 +52,56 @@ void ft_randomize(void* param)
 
 void ft_hook(void* param)
 {
-	mlx_t* mlx = param;
+    mlx_t* mlx = param;
+    static bool key_states[4] = {false, false, false, false};
+    static int total_key_presses = 0;
 
-	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(mlx);
-	if (mlx_is_key_down(mlx, MLX_KEY_UP))
-		image->instances[0].y -= 5;
-	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
-		image->instances[0].y += 5;
-	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-		image->instances[0].x -= 5;
-	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-		image->instances[0].x += 5;
+    if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+        mlx_close_window(mlx);
+    if (mlx_is_key_down(mlx, MLX_KEY_UP) && !key_states[0])
+    {
+        image->instances[0].y -= (HEIGHT/4);
+        key_states[0] = true;
+        printf("Key 'Up' pressed. Total: %d\n", ++total_key_presses);
+    }
+    else if (!mlx_is_key_down(mlx, MLX_KEY_UP))
+    {
+        key_states[0] = false;
+    }
+
+    if (mlx_is_key_down(mlx, MLX_KEY_DOWN) && !key_states[1])
+    {
+        image->instances[0].y += (HEIGHT/4);
+        key_states[1] = true;;
+        printf("Key 'Down' pressed. Total: %d\n", ++total_key_presses);
+    }
+    else if (!mlx_is_key_down(mlx, MLX_KEY_DOWN))
+    {
+        key_states[1] = false;
+    }
+
+    if (mlx_is_key_down(mlx, MLX_KEY_LEFT) && !key_states[2])
+    {
+        image->instances[0].x -= (HEIGHT/4);
+        key_states[2] = true;
+        printf("Key 'Left' pressed. Total: %d\n", ++total_key_presses);
+    }
+    else if (!mlx_is_key_down(mlx, MLX_KEY_LEFT))
+    {
+        key_states[2] = false;
+    }
+
+    if (mlx_is_key_down(mlx, MLX_KEY_RIGHT) && !key_states[3])
+    {
+        image->instances[0].x += (HEIGHT/4);
+        key_states[3] = true;
+        printf("Key 'Right' pressed. Total: %d\n", ++total_key_presses);
+    }
+    else if (!mlx_is_key_down(mlx, MLX_KEY_RIGHT))
+    {
+        key_states[3] = false;
+    }
 }
-
 // -----------------------------------------------------------------------------
 
 int32_t main(void)
@@ -96,11 +132,12 @@ int32_t main(void)
 
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
+	printf("Exiting the game.\n");
 	return (EXIT_SUCCESS);
 }
- */
 
-#include <stdio.h>
+
+/* #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include "MLX42.h"
@@ -141,4 +178,4 @@ int32_t	main(void)
 	mlx_delete_texture(texture);
 	mlx_terminate(mlx);
 	return (EXIT_SUCCESS);
-}
+} */

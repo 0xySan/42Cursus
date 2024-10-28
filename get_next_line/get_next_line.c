@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:43:11 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/23 14:42:43 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/24 11:15:58 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,14 +106,15 @@ char	*get_next_line(int fd)
 	static char	*leftover = NULL;
 	char		*temp2;
 
-	leftover = malloc_gnl(leftover);
+	malloc_gnl(&leftover, &buff, 1);
 	temp2 = get_line_from_leftover(&leftover);
 	if (temp2)
 		return (temp2);
 	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buff)
 		return (NULL);
-	read_from_fd(fd, &leftover, buff);
+	if (read_from_fd(fd, &leftover, buff) < 0)
+		return (malloc_gnl(&leftover, &buff, 2), NULL);
 	free(buff);
 	temp2 = get_line_from_leftover(&leftover);
 	if (temp2)
@@ -130,15 +131,15 @@ char	*get_next_line(int fd)
 /* int	main(int argc, char **argv)
 {
 	(void)argc;
-	int fd = open(argv[1], O_RDONLY);
+	int fd = open("test", O_RDONLY);
 	char *temp;
 
-	while ((temp = get_next_line(fd)))
-	{
-		dprintf(1, "%s", temp);
-		free(temp);
-	}
+	temp = get_next_line(fd);
+	//{
+	dprintf(1, "%s", temp);
 	free(temp);
+	//}
+	//free(temp);
 	close(fd);
 	return 0;
 } */

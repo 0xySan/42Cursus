@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:43:02 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/22 14:21:37 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/24 11:02:42 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strjoin(const char *s1, const char *s2);
 char	*get_leftover_if_no_newline(char **leftover);
 int		read_from_fd(int fd, char **leftover, char *buff);
 char	*get_line_from_leftover(char **leftover);
-char	*malloc_gnl(char *leftover);
+void	malloc_gnl(char **leftover, char **buffer, int i);
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10

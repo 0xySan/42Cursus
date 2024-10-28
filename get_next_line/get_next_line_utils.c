@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:43:11 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/22 14:21:39 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/24 11:04:04 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,23 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-char	*malloc_gnl(char *leftover)
+void	malloc_gnl(char **leftover, char **buffer, int i)
 {
-	if (!leftover)
+	if (i == 1)
 	{
-		leftover = malloc(1);
-		if (!leftover)
-			return (NULL);
-		leftover[0] = '\0';
+		if (!*leftover)
+		{
+			*leftover = malloc(1);
+			if (!*leftover)
+				return ;
+			*leftover[0] = '\0';
+		}
 	}
-	return (leftover);
+	if (i == 2)
+	{
+		free(*leftover);
+		free(*buffer);
+		*leftover = NULL;
+		return ;
+	}
 }

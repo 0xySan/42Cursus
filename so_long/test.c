@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:09:10 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/28 15:43:22 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/29 19:24:09 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "MLX42.h"
+#include "includes/so_long.h"
 
 #define WIDTH 512
 #define HEIGHT 512
@@ -93,6 +93,12 @@ void ft_hook(void* param)
 }
 // -----------------------------------------------------------------------------
 
+static void error(void)
+{
+	puts(mlx_strerror(mlx_errno));
+	exit(EXIT_FAILURE);
+}
+
 int32_t main(void)
 {
 	mlx_t* mlx;
@@ -102,6 +108,14 @@ int32_t main(void)
 		puts(mlx_strerror(mlx_errno));
 		return(EXIT_FAILURE);
 	}
+	xpm_t* xpm = mlx_load_xpm42("./xpm_textures/wall.xpm42");
+	if (!xpm)
+		error();
+	mlx_image_t* img = mlx_texture_to_image(mlx, &xpm->texture);
+	if (!img)
+		error();
+	if (mlx_image_to_window(mlx, img, 0, 0) < 0)
+		error();
 	mlx_set_setting(MLX_STRETCH_IMAGE, false);
 	mlx_set_setting(MLX_MAXIMIZED, false);
 	if (!(image = mlx_new_image(mlx, 128, 128)))

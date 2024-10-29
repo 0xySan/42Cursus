@@ -1,7 +1,6 @@
 NAME 		= so_long
 
 CC 			= cc
-RM			= rm -f
 CLONE 		= git clone --depth=1
 
 CFLAGS 		+= -Wall -Wextra -Werror -O3
@@ -19,6 +18,8 @@ bonus: $(NAME)
 
 $(NAME): $(LIBMLX) $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBMLX) $(CLINKS)
+	mkdir -p obj
+	mv $(OBJ) obj
 
 $(LIBMLX): $(MLX)
 	$(MAKE) -C $(MLX)
@@ -31,15 +32,16 @@ $(MLX):
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJ)
+	rm -f $(OBJ)
 	$(MAKE) clean -C $(MLX)
+	rm -rf obj
 
 fclean: clean
-	$(RM) $(LIBMLX)
-	$(RM) $(NAME)
+	rm -f $(NAME)
+	rm -rf minilibx
 
 clear: fclean
-	$(RM) -r $(MLX) 
+	rm -f -r $(MLX) 
 
 re: fclean all
 

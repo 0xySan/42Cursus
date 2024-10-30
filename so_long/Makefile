@@ -9,7 +9,7 @@ MLX			= minilibx
 LIBMLX 		= $(MLX)/libmlx42.a
 FT_PRINTF	= ft_printf/libftprintf.a
 
-SRC 		= read_map.c map_checker.c
+SRC 		= read_map.c map_checker.c movement.c create_map.c so_long.c so_long_utils.c check_keys.c
 GNL_SRC		= gnl/get_next_line_utils.c gnl/get_next_line.c
 OBJ 		= $(SRC:.c=.o)
 
@@ -32,11 +32,10 @@ $(MLX):
 
 clean:
 	rm -f $(OBJ)
-	$(MAKE) clean -C $(MLX)
+	rm -rf minilibx
 
 fclean: clean
 	rm -f $(NAME)
-	rm -rf minilibx
 
 clear: fclean
 	rm -f -r $(MLX) 

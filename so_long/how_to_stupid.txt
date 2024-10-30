@@ -1,1 +1,0 @@
-cc read_map.c gnl/get_next_line.c gnl/get_next_line_utils.c ft_printf/libftprintf.a minilibx/libmlx42.a -ldl -lglfw -pthread -lm -O3

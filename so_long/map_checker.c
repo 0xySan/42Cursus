@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 13:50:16 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/30 14:25:27 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/30 15:42:39 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	isvalid(int row, int col, t_init_map *data)
 		&& data->map[row][col] != '1' && !data->visited[row][col]);
 }
 
-void	dfs(int row, int col, t_init_map *data)
+void	ft_dfs(int row, int col, t_init_map *data)
 {
 	int	i;
 	int	newrow;
@@ -33,14 +33,13 @@ void	dfs(int row, int col, t_init_map *data)
 	{
 		newrow = row + data->d_row[i];
 		newcol = col + data->d_col[i];
-
 		if (isvalid(newrow, newcol, data))
-			dfs(newrow, newcol, data);
+			ft_dfs(newrow, newcol, data);
 		i++;
 	}
 }
 
-bool	**initialize_visited(t_init_map *data)
+bool	**ft_initialize_visited(t_init_map *data)
 {
 	int	i;
 	int	j;
@@ -63,7 +62,7 @@ bool	**initialize_visited(t_init_map *data)
 	return (data->visited);
 }
 
-void	dfs_checker(t_init_map *data)
+void	ft_dfs_checker(t_init_map *data)
 {
 	int	i;
 	int	j;
@@ -83,8 +82,8 @@ void	dfs_checker(t_init_map *data)
 		}
 		i++;
 	}
-	data->visited = initialize_visited(data);
-	dfs(data->x, data->y, data);
+	data->visited = ft_initialize_visited(data);
+	ft_dfs(data->x, data->y, data);
 }
 
 int	ft_map_checker(t_init_map *data)
@@ -94,7 +93,7 @@ int	ft_map_checker(t_init_map *data)
 	int		i;
 	int		j;
 
-	dfs_checker(data);
+	ft_dfs_checker(data);
 	cancollect = true;
 	canexit = false;
 	i = 0;

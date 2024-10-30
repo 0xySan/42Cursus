@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:34:41 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/30 14:10:09 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/30 15:41:55 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,17 @@ typedef struct s_init_map
 
 }	t_init_map;
 
-int	ft_map_checker(t_init_map *data);
+int		ft_map_checker(t_init_map *data);
+void	ft_replace_old_texture(t_init_map *data, int x, int y);
+void	ft_reload_map(t_init_map *data, int mvmt);
+void	ft_free_some(t_init_map *so_long);
+void	ft_parse_map(t_init_map *so_long);
+void	ft_create_map(t_init_map *data);
+void	ft_create_img(t_init_map *data, int i, int j);
+void	ft_reload_mvmt(void *data);
+void	ft_free_all(t_init_map *so_long);
+void	ft_map_data(t_init_map *so_long, char *name);
+void	ft_read_map(t_init_map *so_long);
+int		ft_move(t_init_map *data);
 
 #endif

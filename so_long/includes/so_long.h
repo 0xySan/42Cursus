@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:34:41 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/30 02:46:43 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/30 14:10:09 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,14 @@ typedef struct s_init_map
 	int		length;
 	int		x;
 	int		y;
+	int		*d_row;
+	int		*d_col;
 	int		player;
 	int		escape;
 	int		collectable;
 	int		step;
 	char	**map;
+	bool	**visited;
 	void	*wall;
 	void	*mlx;
 	void	*win;
@@ -61,5 +64,7 @@ typedef struct s_init_map
 	t_graph	*graph;
 
 }	t_init_map;
+
+int	ft_map_checker(t_init_map *data);
 
 #endif

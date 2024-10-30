@@ -9,7 +9,7 @@ MLX			= minilibx
 LIBMLX 		= $(MLX)/libmlx42.a
 FT_PRINTF	= ft_printf/libftprintf.a
 
-SRC 		= read_map.c
+SRC 		= read_map.c map_checker.c
 GNL_SRC		= gnl/get_next_line_utils.c gnl/get_next_line.c
 OBJ 		= $(SRC:.c=.o)
 

@@ -6,17 +6,17 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:34:41 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/30 15:41:55 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/30 17:02:59 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# define WALL "./xpm_textures/wall.xpm42"
-# define EMPTY "./xpm_textures/empty.xpm42"
-# define PLAYER "./xpm_textures/player.xpm42"
-# define EXIT "./xpm_textures/exit.xpm42"
-# define COLLECT "./xpm_textures/collectible.xpm42"
+# define WALL "./textures/wall.xpm42"
+# define EMPTY "./textures/empty.xpm42"
+# define PLAYER "./textures/player.xpm42"
+# define EXIT "./textures/exit.xpm42"
+# define COLLECT "./textures/collectible.xpm42"
 // # define WIN "./xpm_textures/winner.xpm42"
 # define ESC 53
 # define W 13
@@ -52,16 +52,17 @@ typedef struct s_init_map
 	int		*d_row;
 	int		*d_col;
 	int		player;
-	int		escape;
 	int		collectable;
 	int		step;
+	int		exit;
 	char	**map;
 	bool	**visited;
-	void	*wall;
 	void	*mlx;
-	void	*win;
 	char	*fn;
 	t_graph	*graph;
+	bool	canexit;
+	bool	cancollect;
+	int		error_type;
 
 }	t_init_map;
 
@@ -77,5 +78,7 @@ void	ft_free_all(t_init_map *so_long);
 void	ft_map_data(t_init_map *so_long, char *name);
 void	ft_read_map(t_init_map *so_long);
 int		ft_move(t_init_map *data);
+int		ft_check_count(t_init_map *data);
+void	ft_free_less(t_init_map *so_long);
 
 #endif

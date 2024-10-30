@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:26:19 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/30 15:27:09 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/30 17:02:09 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ void	ft_create_img(t_init_map *data, int i, int j)
 	if (data->map[i][j] == '0')
 		mlx_image_to_window(data->mlx, data->graph->empty, i * 40, j * 40);
 	if (data->map[i][j] == 'C')
-	{
 		mlx_image_to_window(data->mlx, data->graph->collect, i * 40, j * 40);
-		data->collectable++;
-	}
 	if (data->map[i][j] == 'P')
 		mlx_image_to_window(data->mlx, data->graph->player, i * 40, j * 40);
 	if (data->map[i][j] == 'E')

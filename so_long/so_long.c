@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:30:45 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/30 15:41:28 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/30 17:08:27 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,14 @@ int	main(int argc, char **argv)
 	{
 		ft_map_data(&so_long, argv[1]);
 		ft_read_map(&so_long);
-		if (ft_map_checker(&so_long))
-		{
-			ft_free_some(&so_long);
-			return (0);
-		}
+		so_long.error_type = ft_check_count(&so_long);
+		if (so_long.error_type)
+			return (ft_printf("Error.\nInvalid count.\nError type : %d\n",
+					so_long.error_type), 0);
+		so_long.error_type = ft_map_checker(&so_long);
+		if (so_long.error_type)
+			return (ft_printf("Error.\nInvalid map.\nError type : %d\n",
+					so_long.error_type), 0);
 		so_long.mlx = mlx_init(so_long.length * 40,
 				so_long.height * 40, "So_long", false);
 		ft_parse_map(&so_long);

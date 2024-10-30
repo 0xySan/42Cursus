@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 13:50:16 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/30 15:42:39 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/30 16:51:18 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,55 +62,52 @@ bool	**ft_initialize_visited(t_init_map *data)
 	return (data->visited);
 }
 
-void	ft_dfs_checker(t_init_map *data)
+int	ft_dfs_checker(t_init_map *data)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	while (i < data->length)
+	i = -1;
+	while (++i < data->length)
 	{
-		j = 0;
-		while (j < data->height)
+		j = -1;
+		while (++j < data->height)
 		{
 			if (data->map[i][j] == 'P')
 			{
+				data->player++;
 				data->x = i;
 				data->y = j;
 			}
-			j++;
 		}
-		i++;
 	}
+	if (data->player != 1)
+		return (1);
 	data->visited = ft_initialize_visited(data);
 	ft_dfs(data->x, data->y, data);
+	return (0);
 }
 
 int	ft_map_checker(t_init_map *data)
 {
-	bool	cancollect;
-	bool	canexit;
 	int		i;
 	int		j;
 
-	ft_dfs_checker(data);
-	cancollect = true;
-	canexit = false;
-	i = 0;
-	while (i < data->length)
+	if (ft_dfs_checker(data))
+		return (ft_free_less(data), 2);
+	i = -1;
+	while (++i < data->length)
 	{
-		j = 0;
-		while (j < data->height)
+		j = -1;
+		while (++j < data->height)
 		{
 			if (data->map[i][j] == 'C' && !data->visited[i][j])
-				cancollect = false;
+				data->cancollect = false;
 			if (data->map[i][j] == 'E' && data->visited[i][j])
-				canexit = true;
-			j++;
+				data->canexit = true;
 		}
-		i++;
 	}
-	if (cancollect && canexit)
+	if (data->cancollect && data->canexit)
 		return (0);
-	return (1);
+	return (ft_free_some(data), 1);
 }

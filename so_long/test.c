@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:09:10 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/29 19:24:09 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/30 01:45:21 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void ft_hook(void* param)
 {
 	mlx_t* mlx = param;
 	static bool key_states[4] = {false, false, false, false};
-	static int total_key_presses = 0;
 
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
@@ -62,7 +61,6 @@ void ft_hook(void* param)
 	{
 		image->instances[0].y -= (HEIGHT/4);
 		key_states[0] = true;
-		printf("Key 'Up' pressed. Total: %d\n", ++total_key_presses);
 	}
 	else if (!mlx_is_key_down(mlx, MLX_KEY_UP))
 		key_states[0] = false;
@@ -70,7 +68,6 @@ void ft_hook(void* param)
 	{
 		image->instances[0].y += (HEIGHT/4);
 		key_states[1] = true;
-		printf("Key 'Down' pressed. Total: %d\n", ++total_key_presses);
 	}
 	else if (!mlx_is_key_down(mlx, MLX_KEY_DOWN))
 		key_states[1] = false;
@@ -78,7 +75,6 @@ void ft_hook(void* param)
 	{
 		image->instances[0].x -= (HEIGHT/4);
 		key_states[2] = true;
-		printf("Key 'Left' pressed. Total: %d\n", ++total_key_presses);
 	}
 	else if (!mlx_is_key_down(mlx, MLX_KEY_LEFT))
 		key_states[2] = false;
@@ -86,7 +82,6 @@ void ft_hook(void* param)
 	{
 		image->instances[0].x += (HEIGHT/4);
 		key_states[3] = true;
-		printf("Key 'Right' pressed. Total: %d\n", ++total_key_presses);
 	}
 	else if (!mlx_is_key_down(mlx, MLX_KEY_RIGHT))
 		key_states[3] = false;

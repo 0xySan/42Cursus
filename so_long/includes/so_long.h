@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:34:41 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/29 20:22:01 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/30 02:46:43 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@
 
 typedef struct s_graph
 {
-	void	*wall;
-	void	*empty;
-	void	*collect;
-	void	*exit;
-	void	*player;
-	void	*winner;
+	mlx_image_t	*wall;
+	mlx_image_t	*empty;
+	mlx_image_t	*collect;
+	mlx_image_t	*exit;
+	mlx_image_t	*player;
+	mlx_image_t	*winner;
 }	t_graph;
 
 typedef struct s_init_map
@@ -51,7 +51,7 @@ typedef struct s_init_map
 	int		y;
 	int		player;
 	int		escape;
-	int		count;
+	int		collectable;
 	int		step;
 	char	**map;
 	void	*wall;

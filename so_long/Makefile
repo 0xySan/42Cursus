@@ -1,6 +1,5 @@
 NAME 		= so_long
 
-CC 			= cc
 CLONE 		= git clone --depth=1
 
 CFLAGS 		+= -Wall -Wextra -Werror -O3
@@ -8,8 +7,10 @@ CLINKS		= -ldl -lglfw -pthread -lm
 
 MLX			= minilibx
 LIBMLX 		= $(MLX)/libmlx42.a
+FT_PRINTF	= ft_printf/libftprintf.a
 
-SRC 		= test.c
+SRC 		= read_map.c
+GNL_SRC		= gnl/get_next_line_utils.c gnl/get_next_line.c
 OBJ 		= $(SRC:.c=.o)
 
 all: $(NAME)
@@ -17,9 +18,7 @@ all: $(NAME)
 bonus: $(NAME)
 
 $(NAME): $(LIBMLX) $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBMLX) $(CLINKS)
-	mkdir -p obj
-	mv $(OBJ) obj
+	cc $(CFLAGS) -o $(NAME) $(OBJ) $(GNL_SRC) $(LIBMLX) $(FT_PRINTF) $(CLINKS)
 
 $(LIBMLX): $(MLX)
 	$(MAKE) -C $(MLX)
@@ -34,7 +33,6 @@ $(MLX):
 clean:
 	rm -f $(OBJ)
 	$(MAKE) clean -C $(MLX)
-	rm -rf obj
 
 fclean: clean
 	rm -f $(NAME)

@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:32:23 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/30 15:42:20 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/31 14:10:51 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_read_map(t_init_map *so_long)
 	line = get_next_line(fd);
 	if (!line)
 	{
-		ft_printf("Error.\nLine not found in file.");
+		ft_printf("Error.\nLine/File not found.\n");
 		exit (EXIT_FAILURE);
 	}
 	so_long->length = spe_strlen(line);

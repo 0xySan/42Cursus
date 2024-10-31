@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_count.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 17:00:16 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/30 19:44:15 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/31 14:09:55 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_check_bordr(t_init_map *data)
 	i = 0;
 	while (j < (data->height - 1))
 	{
-		if(data->map[i][j] != '1' || data->map[data->length - 1][j] != '1')
+		if (data->map[i][j] != '1' || data->map[data->length - 1][j] != '1')
 			return (1);
 		j++;
 	}
@@ -68,12 +68,12 @@ int	ft_check_count(t_init_map *data)
 		i++;
 	}
 	if (data->collectable < 1)
-		return (3);
+		return (ft_free_less(data), 3);
 	if (data->exit != 1)
-		return (4);
+		return (ft_free_less(data), 4);
 	if (data->length < data->height)
-		return (5);
+		return (ft_free_less(data), 5);
 	if (ft_check_bordr(data))
-		return (6);
+		return (ft_free_less(data), 6);
 	return (0);
 }

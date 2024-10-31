@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_keys.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:39:09 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/30 20:18:58 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/31 14:06:36 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	ft_move_fh(t_init_map *data, mlx_t *mlx, bool *key_states)
 	{
 		data->y -= 1;
 		key_states[0] = true;
-		return (1);
+		return (ft_printf("Key pressed.\nPressed up\nTotal amount : %d\n",
+				++data->step), 1);
 	}
 	else if (!mlx_is_key_down(mlx, MLX_KEY_UP))
 		key_states[0] = false;
@@ -28,7 +29,8 @@ int	ft_move_fh(t_init_map *data, mlx_t *mlx, bool *key_states)
 	{
 		data->y += 1;
 		key_states[1] = true;
-		return (2);
+		return (ft_printf("Key pressed.\nPressed down\nTotal amount : %d\n",
+				++data->step), 2);
 	}
 	else if (!mlx_is_key_down(mlx, MLX_KEY_DOWN))
 		key_states[1] = false;
@@ -41,7 +43,8 @@ int	ft_move_sh(t_init_map *data, mlx_t *mlx, bool *key_states)
 	{
 		data->x -= 1;
 		key_states[2] = true;
-		return (3);
+		return (ft_printf("Key pressed.\nPressed left\nTotal amount : %d\n",
+				++data->step), 3);
 	}
 	else if (!mlx_is_key_down(mlx, MLX_KEY_LEFT))
 		key_states[2] = false;
@@ -49,7 +52,8 @@ int	ft_move_sh(t_init_map *data, mlx_t *mlx, bool *key_states)
 	{
 		data->x += 1;
 		key_states[3] = true;
-		return (4);
+		return (ft_printf("Key pressed.\nPressed right\nTotal amount : %d\n",
+				++data->step), 4);
 	}
 	else if (!mlx_is_key_down(mlx, MLX_KEY_RIGHT))
 		key_states[3] = false;

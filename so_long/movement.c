@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:30:50 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/30 15:30:50 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/30 20:13:31 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ void	ft_reload_map(t_init_map *data, int mvmt)
 		ft_move_right(data);
 	mlx_image_to_window(data->mlx, data->graph->player,
 		data->x * 40, data->y * 40);
+	data->step++;
 }

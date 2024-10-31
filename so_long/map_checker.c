@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 13:50:16 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/31 13:55:22 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/31 16:30:44 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_dfs(int row, int col, t_init_map *data)
 	int	newrow;
 	int	newcol;
 
-	data->visited[row][col] = true;
+	data->visited[row][col] = 1;
 	i = 0;
 	while (i < 4)
 	{
@@ -44,10 +44,10 @@ int	**ft_initialize_visited(t_init_map *data)
 	int	i;
 	int	j;
 
-	data->visited = malloc(((data->length) * sizeof(char *)));
+	data->visited = malloc(((data->length) * sizeof(int *)));
 	i = 0;
 	while (i < data->length)
-		data->visited[i++] = malloc((data->height) * sizeof(char));
+		data->visited[i++] = malloc((data->height) * sizeof(int));
 	i = 0;
 	while (i < data->length)
 	{

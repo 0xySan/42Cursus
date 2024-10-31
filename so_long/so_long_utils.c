@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:35:37 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/30 17:03:08 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/31 13:55:04 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ void	ft_map_data(t_init_map *so_long, char *name)
 	so_long->player = 0;
 	so_long->exit = 0;
 	so_long->error_type = 0;
-	so_long->canexit = false;
-	so_long->cancollect = true;
+	so_long->canexit = 0;
+	so_long->cancollect = 1;
 	so_long->fn = name;
 	so_long->d_col = malloc(sizeof(int) * 4);
 	so_long->d_col[0] = -1;

@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:34:41 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/30 17:02:59 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/31 13:54:57 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ typedef struct s_init_map
 	int		step;
 	int		exit;
 	char	**map;
-	bool	**visited;
+	int		**visited;
 	void	*mlx;
 	char	*fn;
 	t_graph	*graph;
-	bool	canexit;
-	bool	cancollect;
+	int		canexit;
+	int		cancollect;
 	int		error_type;
 
 }	t_init_map;

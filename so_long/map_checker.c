@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 13:50:16 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/30 16:51:18 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/10/31 13:55:22 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include "includes/so_long.h"
 
-bool	isvalid(int row, int col, t_init_map *data)
+int	isvalid(int row, int col, t_init_map *data)
 {
 	return (row >= 0 && row < data->length && col >= 0 && col < data->height
 		&& data->map[row][col] != '1' && !data->visited[row][col]);
@@ -39,7 +39,7 @@ void	ft_dfs(int row, int col, t_init_map *data)
 	}
 }
 
-bool	**ft_initialize_visited(t_init_map *data)
+int	**ft_initialize_visited(t_init_map *data)
 {
 	int	i;
 	int	j;
@@ -54,7 +54,7 @@ bool	**ft_initialize_visited(t_init_map *data)
 		j = 0;
 		while (j < data->height)
 		{
-			data->visited[i][j] = false;
+			data->visited[i][j] = 0;
 			j++;
 		}
 		i++;
@@ -102,9 +102,9 @@ int	ft_map_checker(t_init_map *data)
 		while (++j < data->height)
 		{
 			if (data->map[i][j] == 'C' && !data->visited[i][j])
-				data->cancollect = false;
+				data->cancollect = 0;
 			if (data->map[i][j] == 'E' && data->visited[i][j])
-				data->canexit = true;
+				data->canexit = 1;
 		}
 	}
 	if (data->cancollect && data->canexit)

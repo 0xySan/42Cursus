@@ -31,10 +31,10 @@ $(MLX):
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf minilibx
 	rm -f $(OBJ)
 
 fclean: clean
+	rm -rf minilibx
 	rm -f $(NAME)
 
 clear: fclean

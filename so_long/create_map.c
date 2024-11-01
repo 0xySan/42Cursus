@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:26:19 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/30 17:02:09 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/01 14:37:19 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,14 @@ void	ft_create_img(t_init_map *data, int i, int j)
 {
 	if (data->map[i][j] == '1')
 		mlx_image_to_window(data->mlx, data->graph->wall, i * 40, j * 40);
-	if (data->map[i][j] == '0')
-		mlx_image_to_window(data->mlx, data->graph->empty, i * 40, j * 40);
-	if (data->map[i][j] == 'C')
+	else if (data->map[i][j] == 'C')
 		mlx_image_to_window(data->mlx, data->graph->collect, i * 40, j * 40);
-	if (data->map[i][j] == 'P')
+	else if (data->map[i][j] == 'P')
 		mlx_image_to_window(data->mlx, data->graph->player, i * 40, j * 40);
-	if (data->map[i][j] == 'E')
+	else if (data->map[i][j] == 'E')
 		mlx_image_to_window(data->mlx, data->graph->exit, i * 40, j * 40);
 	else
-		return ;
+		mlx_image_to_window(data->mlx, data->graph->empty, i * 40, j * 40);
 }
 
 void	ft_create_map(t_init_map *data)
@@ -45,14 +43,14 @@ void	ft_create_map(t_init_map *data)
 
 void	ft_replace_old_texture(t_init_map *data, int x, int y)
 {
-	if (data->map[x][y] == 'E')
-		mlx_image_to_window(data->mlx, data->graph->exit, x * 40, y * 40);
-	else if (data->map[x][y] == 'C')
+	if (data->map[x][y] == 'C')
 	{
 		mlx_image_to_window(data->mlx, data->graph->empty, x * 40, y * 40);
 		data->collectable--;
 		data->map[x][y] = '0';
 	}
+	else if (data->map[x][y] == 'E')
+		mlx_image_to_window(data->mlx, data->graph->exit, x * 40, y * 40);
 	else
 		mlx_image_to_window(data->mlx, data->graph->empty, x * 40, y * 40);
 }

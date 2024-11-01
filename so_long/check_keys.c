@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:39:09 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/31 14:06:36 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/01 14:19:05 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,46 +16,50 @@ int	ft_move_fh(t_init_map *data, mlx_t *mlx, bool *key_states)
 {
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
-	if (mlx_is_key_down(mlx, MLX_KEY_UP) && !key_states[0])
+	if ((mlx_is_key_down(mlx, MLX_KEY_UP) || mlx_is_key_down(mlx, MLX_KEY_W))
+		&& !key_states[0])
 	{
 		data->y -= 1;
 		key_states[0] = true;
-		return (ft_printf("Key pressed.\nPressed up\nTotal amount : %d\n",
-				++data->step), 1);
+		return (1);
 	}
-	else if (!mlx_is_key_down(mlx, MLX_KEY_UP))
+	else if (!mlx_is_key_down(mlx, MLX_KEY_UP)
+		&& !mlx_is_key_down(mlx, MLX_KEY_W))
 		key_states[0] = false;
-	if (mlx_is_key_down(mlx, MLX_KEY_DOWN) && !key_states[1])
+	if ((mlx_is_key_down(mlx, MLX_KEY_DOWN) || mlx_is_key_down(mlx, MLX_KEY_S))
+		&& !key_states[1])
 	{
 		data->y += 1;
 		key_states[1] = true;
-		return (ft_printf("Key pressed.\nPressed down\nTotal amount : %d\n",
-				++data->step), 2);
+		return (2);
 	}
-	else if (!mlx_is_key_down(mlx, MLX_KEY_DOWN))
+	else if (!mlx_is_key_down(mlx, MLX_KEY_DOWN)
+		&& !mlx_is_key_down(mlx, MLX_KEY_S))
 		key_states[1] = false;
 	return (0);
 }
 
 int	ft_move_sh(t_init_map *data, mlx_t *mlx, bool *key_states)
 {
-	if (mlx_is_key_down(mlx, MLX_KEY_LEFT) && !key_states[2])
+	if ((mlx_is_key_down(mlx, MLX_KEY_LEFT) || mlx_is_key_down(mlx, MLX_KEY_A))
+		&& !key_states[2])
 	{
 		data->x -= 1;
 		key_states[2] = true;
-		return (ft_printf("Key pressed.\nPressed left\nTotal amount : %d\n",
-				++data->step), 3);
+		return (3);
 	}
-	else if (!mlx_is_key_down(mlx, MLX_KEY_LEFT))
+	else if (!mlx_is_key_down(mlx, MLX_KEY_LEFT)
+		&& !mlx_is_key_down(mlx, MLX_KEY_A))
 		key_states[2] = false;
-	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT) && !key_states[3])
+	if ((mlx_is_key_down(mlx, MLX_KEY_RIGHT) || mlx_is_key_down(mlx, MLX_KEY_D))
+		&& !key_states[3])
 	{
 		data->x += 1;
 		key_states[3] = true;
-		return (ft_printf("Key pressed.\nPressed right\nTotal amount : %d\n",
-				++data->step), 4);
+		return (4);
 	}
-	else if (!mlx_is_key_down(mlx, MLX_KEY_RIGHT))
+	else if (!mlx_is_key_down(mlx, MLX_KEY_RIGHT)
+		&& !mlx_is_key_down(mlx, MLX_KEY_D))
 		key_states[3] = false;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:34:41 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/31 13:54:57 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/01 15:41:29 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_init_map
 	int		canexit;
 	int		cancollect;
 	int		error_type;
-
+	int		animation_index;
 }	t_init_map;
 
 int		ft_map_checker(t_init_map *data);

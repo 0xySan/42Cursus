@@ -6,11 +6,12 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:39:09 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/01 14:19:05 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/01 15:54:31 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/so_long.h"
+#include "math.h"
 
 int	ft_move_fh(t_init_map *data, mlx_t *mlx, bool *key_states)
 {
@@ -69,7 +70,9 @@ int	ft_move(t_init_map *data)
 	mlx_t		*mlx;
 	int			result;
 	static bool	key_states[4] = {false, false, false, false};
-
+	// could be useful for enemies that move everytime / animations
+	data->animation_index = ((int)round(mlx_get_time() * 6) / 2) % 4;
+	printf("%d\n", data->animation_index);
 	mlx = data->mlx;
 	result = ft_move_fh(data, mlx, key_states);
 	if (result)

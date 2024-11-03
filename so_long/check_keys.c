@@ -13,7 +13,7 @@
 #include "includes/so_long.h"
 #include "math.h"
 
-int	ft_move_fh(t_init_map *data, mlx_t *mlx, bool *key_states)
+int	ft_move_fh(t_init_map *data, mlx_t *mlx, int *key_states)
 {
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
@@ -21,47 +21,47 @@ int	ft_move_fh(t_init_map *data, mlx_t *mlx, bool *key_states)
 		&& !key_states[0])
 	{
 		data->y -= 1;
-		key_states[0] = true;
+		key_states[0] = 1;
 		return (1);
 	}
 	else if (!mlx_is_key_down(mlx, MLX_KEY_UP)
 		&& !mlx_is_key_down(mlx, MLX_KEY_W))
-		key_states[0] = false;
+		key_states[0] = 0;
 	if ((mlx_is_key_down(mlx, MLX_KEY_DOWN) || mlx_is_key_down(mlx, MLX_KEY_S))
 		&& !key_states[1])
 	{
 		data->y += 1;
-		key_states[1] = true;
+		key_states[1] = 1;
 		return (2);
 	}
 	else if (!mlx_is_key_down(mlx, MLX_KEY_DOWN)
 		&& !mlx_is_key_down(mlx, MLX_KEY_S))
-		key_states[1] = false;
+		key_states[1] = 0;
 	return (0);
 }
 
-int	ft_move_sh(t_init_map *data, mlx_t *mlx, bool *key_states)
+int	ft_move_sh(t_init_map *data, mlx_t *mlx, int *key_states)
 {
 	if ((mlx_is_key_down(mlx, MLX_KEY_LEFT) || mlx_is_key_down(mlx, MLX_KEY_A))
 		&& !key_states[2])
 	{
 		data->x -= 1;
-		key_states[2] = true;
+		key_states[2] = 1;
 		return (3);
 	}
 	else if (!mlx_is_key_down(mlx, MLX_KEY_LEFT)
 		&& !mlx_is_key_down(mlx, MLX_KEY_A))
-		key_states[2] = false;
+		key_states[2] = 0;
 	if ((mlx_is_key_down(mlx, MLX_KEY_RIGHT) || mlx_is_key_down(mlx, MLX_KEY_D))
 		&& !key_states[3])
 	{
 		data->x += 1;
-		key_states[3] = true;
+		key_states[3] = 1;
 		return (4);
 	}
 	else if (!mlx_is_key_down(mlx, MLX_KEY_RIGHT)
 		&& !mlx_is_key_down(mlx, MLX_KEY_D))
-		key_states[3] = false;
+		key_states[3] = 0;
 	return (0);
 }
 
@@ -69,7 +69,7 @@ int	ft_move(t_init_map *data)
 {
 	mlx_t		*mlx;
 	int			result;
-	static bool	key_states[4] = {false, false, false, false};
+	static int	key_states[4] = {false, false, false, false};
 	// could be useful for enemies that move everytime / animations
 	data->animation_index = ((int)round(mlx_get_time() * 6) / 2) % 4;
 	printf("%d\n", data->animation_index);

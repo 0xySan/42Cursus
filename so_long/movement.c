@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:30:50 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/01 14:51:04 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/03 22:48:43 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/so_long.h"
+#include <math.h>
 
 void	ft_move_up(t_init_map *data)
 {
@@ -102,14 +103,28 @@ void	ft_move_left(t_init_map *data)
 
 void	ft_reload_map(t_init_map *data, int mvmt)
 {
+	xpm_t	*xpm;
+
 	if (mvmt == 1)
+	{
+		data->last_movement = 0;
 		ft_move_up(data);
+	}
 	if (mvmt == 2)
+	{
+		data->last_movement = 1;
 		ft_move_down(data);
+	}
 	if (mvmt == 3)
 		ft_move_left(data);
 	if (mvmt == 4)
+		{
+		data->last_movement = 3;
 		ft_move_right(data);
+	}
+	data->animation_index = ((int)round(mlx_get_time() * 6) / 2) % 4;
+	xpm = mlx_load_xpm42(data->animations[data->last_movement][data->animation_index]);
+	data->graph->player = mlx_texture_to_image(data->mlx, &xpm->texture);
 	mlx_image_to_window(data->mlx, data->graph->player,
 		data->x * 40, data->y * 40);
 }

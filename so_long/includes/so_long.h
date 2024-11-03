@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:34:41 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/01 15:41:29 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/03 22:48:25 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,21 @@
 # define SO_LONG_H
 # define WALL "./textures/wall.xpm42"
 # define EMPTY "./textures/empty.xpm42"
-# define PLAYER "./textures/player.xpm42"
+# define UP1 "./textures/UP1.xpm42"
+# define UP2 "./textures/UP2.xpm42"
+# define UP3 "./textures/UP3.xpm42"
+# define UP4 "./textures/UP4.xpm42"
+# define DP1 "./textures/DP1.xpm42"
+# define DP2 "./textures/DP2.xpm42"
+# define DP3 "./textures/DP3.xpm42"
+# define DP4 "./textures/DP4.xpm42"
+# define RP1 "./textures/RP1.xpm42"
+# define RP2 "./textures/RP2.xpm42"
+# define RP3 "./textures/RP3.xpm42"
+# define RP4 "./textures/RP4.xpm42"
 # define EXIT "./textures/exit.xpm42"
 # define COLLECT "./textures/collectible.xpm42"
 // # define WIN "./xpm_textures/winner.xpm42"
-# define ESC 53
-# define W 13
-# define A 0
-# define S 1
-# define D 2
 
 # include <unistd.h>
 # include <fcntl.h>
@@ -64,6 +70,8 @@ typedef struct s_init_map
 	int		cancollect;
 	int		error_type;
 	int		animation_index;
+	char	***animations;
+	int		last_movement;
 }	t_init_map;
 
 int		ft_map_checker(t_init_map *data);

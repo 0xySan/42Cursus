@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:26:19 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/01 14:37:19 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/03 20:52:56 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_parse_map(t_init_map *so_long)
 	xpm_t	*xpm;
 
 	so_long->graph = malloc(sizeof(t_graph));
-	xpm = mlx_load_xpm42(PLAYER);
+	xpm = mlx_load_xpm42(UP1);
 	so_long->graph->player = mlx_texture_to_image(so_long->mlx, &xpm->texture);
 	mlx_delete_xpm42(xpm);
 	xpm = mlx_load_xpm42(WALL);

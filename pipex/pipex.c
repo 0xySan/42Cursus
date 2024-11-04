@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 18:56:30 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/04 10:52:39 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/04 11:40:56 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,12 @@ int	main(int argc, char **argv, char **envp)
 		return (0);
 	ft_child(pipex, argv, envp);
 	ft_parent(pipex, argv, envp);
+	waitpid(pipex.pid1, NULL, 0);
+	waitpid(pipex.pid2, NULL, 0);
 	close(pipex.tube[0]);
 	close(pipex.tube[1]);
 	close(pipex.infile);
 	close(pipex.outfile);
-	waitpid(pipex.pid1, NULL, 0);
-	waitpid(pipex.pid2, NULL, 0);
+	close(pipex.pid1);
+	close(pipex.pid2);
 }

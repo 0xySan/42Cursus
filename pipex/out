@@ -1,0 +1,9 @@
+total 52
+drwxr-xr-x 2 etaquet 2024_le-havre  4096 Nov  4 11:35 ft_printf
+drwxr-xr-x 2 etaquet 2024_le-havre  4096 Nov  4 11:35 libft
+-rw-r--r-- 1 etaquet 2024_le-havre   462 Nov  4 10:38 Makefile
+-rw-r--r-- 1 etaquet 2024_le-havre     0 Nov  4 11:41 out
+-rwxr-xr-x 1 etaquet 2024_le-havre 21888 Nov  4 11:41 pipex
+-rw-r--r-- 1 etaquet 2024_le-havre  2816 Nov  4 11:40 pipex.c
+-rw-r--r-- 1 etaquet 2024_le-havre  1171 Nov  4 10:35 pipex.h
+-rw-r--r-- 1 etaquet 2024_le-havre  4280 Nov  4 11:41 pipex.o

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_count.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 17:00:16 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/01 14:26:53 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/04 01:55:30 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	ft_count_all(t_init_map *data, int i, int j)
 		return (0);
 	else if (data->map[i][j] == 'E')
 		return (data->exit++, 0);
+	else if (data->map[i][j] == 'S')
+		return (0);
 	return (1);
 }
 

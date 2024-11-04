@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:34:41 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/03 22:48:25 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/04 02:26:01 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@
 # define RP2 "./textures/RP2.xpm42"
 # define RP3 "./textures/RP3.xpm42"
 # define RP4 "./textures/RP4.xpm42"
+# define LP1 "./textures/LP1.xpm42"
+# define LP2 "./textures/LP2.xpm42"
+# define LP3 "./textures/LP3.xpm42"
+# define LP4 "./textures/LP4.xpm42"
+# define ENEMY "./textures/enemy.xpm42"
 # define EXIT "./textures/exit.xpm42"
 # define COLLECT "./textures/collectible.xpm42"
 // # define WIN "./xpm_textures/winner.xpm42"
@@ -47,6 +52,7 @@ typedef struct s_graph
 	mlx_image_t	*exit;
 	mlx_image_t	*player;
 	mlx_image_t	*winner;
+	mlx_image_t	*enemy;
 }	t_graph;
 
 typedef struct s_init_map
@@ -72,6 +78,7 @@ typedef struct s_init_map
 	int		animation_index;
 	char	***animations;
 	int		last_movement;
+	int		*key_states;
 }	t_init_map;
 
 int		ft_map_checker(t_init_map *data);

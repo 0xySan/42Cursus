@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:26:19 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/03 20:52:56 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/04 02:12:02 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	ft_create_img(t_init_map *data, int i, int j)
 		mlx_image_to_window(data->mlx, data->graph->player, i * 40, j * 40);
 	else if (data->map[i][j] == 'E')
 		mlx_image_to_window(data->mlx, data->graph->exit, i * 40, j * 40);
+	else if (data->map[i][j] == 'S')
+		mlx_image_to_window(data->mlx, data->graph->enemy, i * 40, j * 40);
 	else
 		mlx_image_to_window(data->mlx, data->graph->empty, i * 40, j * 40);
 }
@@ -52,7 +54,10 @@ void	ft_replace_old_texture(t_init_map *data, int x, int y)
 	else if (data->map[x][y] == 'E')
 		mlx_image_to_window(data->mlx, data->graph->exit, x * 40, y * 40);
 	else
+	{
 		mlx_image_to_window(data->mlx, data->graph->empty, x * 40, y * 40);
+		data->map[x][y] = '0';
+	}
 }
 
 void	ft_parse_map(t_init_map *so_long)
@@ -74,5 +79,8 @@ void	ft_parse_map(t_init_map *so_long)
 	mlx_delete_xpm42(xpm);
 	xpm = mlx_load_xpm42(COLLECT);
 	so_long->graph->collect = mlx_texture_to_image(so_long->mlx, &xpm->texture);
+	mlx_delete_xpm42(xpm);
+	xpm = mlx_load_xpm42(ENEMY);
+	so_long->graph->enemy = mlx_texture_to_image(so_long->mlx, &xpm->texture);
 	mlx_delete_xpm42(xpm);
 }

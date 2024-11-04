@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 13:50:16 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/01 14:03:17 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/04 01:57:15 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 int	isvalid(int row, int col, t_init_map *data)
 {
 	return (row >= 0 && row < data->length && col >= 0 && col < data->height
-		&& data->map[row][col] != '1' && !data->visited[row][col]);
+		&& data->map[row][col] != '1' && data->map[row][col] != 'S'
+			&& !data->visited[row][col]);
 }
 
 void	ft_dfs(int row, int col, t_init_map *data)

@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_ptoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 18:14:40 by oxysan            #+#    #+#             */
-/*   Updated: 2024/11/04 10:33:45 by etaquet          ###   ########.fr       */
+/*   Created: 2024/09/18 19:14:27 by etaquet           #+#    #+#             */
+/*   Updated: 2024/10/23 14:44:19 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-
-char	*ft_strjoin(const char *s1, const char *s2)
+int	ft_ptoa(void *ptr)
 {
-	char	*result;
-	int		len;
+	unsigned long	addr;
+	int				len;
 
-	len = ft_strlen(s1) + ft_strlen(s2);
-	result = malloc(sizeof(char) * (len + 1));
-	ft_strcpy((char *)result, (char *)s1);
-	ft_strcat((char *)result, (char *)s2);
-	return (result);
+	if (!ptr)
+		return (write(1, "(nil)", 5));
+	addr = (unsigned long)ptr;
+	len = ft_putstr("0x");
+	ft_ultoa(addr, "0123456789abcdef", &len);
+	return (len);
 }

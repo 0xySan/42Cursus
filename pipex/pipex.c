@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 18:56:30 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/20 21:12:37 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/04 10:47:57 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "test.h"
-#include <sys/types.h>
-#include <sys/uio.h>
-#include <fcntl.h>
-#include "libft/libft.h"
-#include <string.h>
-#include <sys/wait.h>
+#include "pipex.h"
 
 char	*get_cmd_path(char *arg)
 {
@@ -28,13 +19,12 @@ char	*get_cmd_path(char *arg)
 	cpath = malloc(sizeof(char) * (ft_strlen(CMD_PATH) + ft_strlen(arg) + 1));
 	if (!cpath)
 		return (0);
-	strcpy(cpath, CMD_PATH);
-	strcat(cpath, arg);
-	printf("%s", cpath);
+	ft_strcpy(cpath, CMD_PATH);
+	ft_strcat(cpath, arg);
 	if (access(cpath, X_OK) == -1)
 	{
+		ft_printf("Error command not found : %s.\n", cpath);
 		free(cpath);
-		printf("error cpath");
 		return (0);
 	}
 	return (cpath);
@@ -53,14 +43,14 @@ void	execute_cmd(char *cmd, char **envp)
 	{
 		free(cpath);
 		free(args);
-		printf("error");
+		ft_printf("Execve error.\n");
 		return ;
 	}
 	free(cpath);
 	free(args);
 }
 
-void	first_child(t_pipex pipex, char **args, char **envp)
+void	ft_child(t_pipex pipex, char **args, char **envp)
 {
 	pipex.pid1 = fork();
 	if (pipex.pid1 == 0)
@@ -74,7 +64,7 @@ void	first_child(t_pipex pipex, char **args, char **envp)
 	}
 }
 
-void	second_child(t_pipex pipex, char **args, char **envp)
+void	ft_parent(t_pipex pipex, char **args, char **envp)
 {
 	pipex.pid2 = fork();
 	if (pipex.pid2 == 0)
@@ -104,8 +94,8 @@ int	main(int argc, char **argv, char **envp)
 		return (0);
 	if (pipe(pipex.tube) == -1)
 		return (0);
-	first_child(pipex, argv, envp);
-	second_child(pipex, argv, envp);
+	ft_child(pipex, argv, envp);
+	ft_parent(pipex, argv, envp);
 	close(pipex.tube[0]);
 	close(pipex.tube[1]);
 	close(pipex.infile);

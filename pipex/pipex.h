@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 18:14:40 by oxysan            #+#    #+#             */
-/*   Updated: 2024/11/04 10:33:45 by etaquet          ###   ########.fr       */
+/*   Created: 2024/10/20 18:58:14 by etaquet           #+#    #+#             */
+/*   Updated: 2024/11/04 10:35:17 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef PIPEX_H
+# define PIPEX_H
 
+# include "ft_printf/ft_printf.h"
+# include <fcntl.h>
+# include "libft/libft.h"
+# include <sys/wait.h>
+# define CMD_PATH "/bin/" 
 
-char	*ft_strjoin(const char *s1, const char *s2)
+typedef struct s_pipex
 {
-	char	*result;
-	int		len;
+	pid_t	pid1;
+	pid_t	pid2;
+	int		tube[2];
+	int		infile;
+	int		outfile;
+}	t_pipex;
 
-	len = ft_strlen(s1) + ft_strlen(s2);
-	result = malloc(sizeof(char) * (len + 1));
-	ft_strcpy((char *)result, (char *)s1);
-	ft_strcat((char *)result, (char *)s2);
-	return (result);
-}
+#endif

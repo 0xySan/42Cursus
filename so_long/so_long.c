@@ -6,17 +6,11 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:30:45 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/04 09:05:43 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/04 09:50:55 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/so_long.h"
-
-int	ft_exit(t_init_map *data)
-{
-	(void) *data;
-	exit(EXIT_SUCCESS);
-}
 
 void	ft_reload_map(t_init_map *data, int mvmt)
 {

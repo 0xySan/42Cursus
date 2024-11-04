@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 11:45:26 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/15 17:35:46 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/04 10:31:44 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 void			ft_putstr_fd(char *s, int fd);
 char			**ft_split(char const *str, char c);
+char			*ft_strcat(char *dest, char *src);
 char			*ft_strchr(const char *s, int c);
+int				ft_strcmp(char *s1, char *s2);
+void			ft_strcpy(char *dest, char *src);
 char			*ft_strdup(const char *src);
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
 char			*ft_strjoin(const char *s1, const char *s2);

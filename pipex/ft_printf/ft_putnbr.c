@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 18:14:40 by oxysan            #+#    #+#             */
-/*   Updated: 2024/11/04 10:33:45 by etaquet          ###   ########.fr       */
+/*   Created: 2024/10/23 15:01:30 by etaquet           #+#    #+#             */
+/*   Updated: 2024/11/04 10:04:29 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-
-char	*ft_strjoin(const char *s1, const char *s2)
+static int	ft_iltoa(long n)
 {
-	char	*result;
-	int		len;
+	if (n >= 10)
+		return (ft_putnbr(n / 10) + ft_putnbr(n % 10));
+	return (ft_putchar(n + '0'));
+}
 
-	len = ft_strlen(s1) + ft_strlen(s2);
-	result = malloc(sizeof(char) * (len + 1));
-	ft_strcpy((char *)result, (char *)s1);
-	ft_strcat((char *)result, (char *)s2);
-	return (result);
+int	ft_putnbr(int n)
+{
+	long	ln;
+
+	ln = n;
+	if (n < 0)
+		return (write(1, "-", 1) + ft_iltoa(-ln));
+	return (ft_iltoa(ln));
 }

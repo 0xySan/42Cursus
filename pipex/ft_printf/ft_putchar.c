@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 18:14:40 by oxysan            #+#    #+#             */
-/*   Updated: 2024/11/04 10:33:45 by etaquet          ###   ########.fr       */
+/*   Created: 2024/09/18 18:36:30 by etaquet           #+#    #+#             */
+/*   Updated: 2024/10/23 14:44:28 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-
-char	*ft_strjoin(const char *s1, const char *s2)
+int	ft_putchar(int c)
 {
-	char	*result;
-	int		len;
-
-	len = ft_strlen(s1) + ft_strlen(s2);
-	result = malloc(sizeof(char) * (len + 1));
-	ft_strcpy((char *)result, (char *)s1);
-	ft_strcat((char *)result, (char *)s2);
-	return (result);
+	return (write(1, &c, 1));
 }

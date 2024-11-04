@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:34:41 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/04 09:03:43 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/04 19:50:11 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,5 +238,7 @@ int		ft_check_count(t_init_map *data);
 void	ft_free_less(t_init_map *so_long);
 
 void	ft_do_mvmt(t_init_map *data, int mvmt);
+
+void	ft_free(t_init_map *so_long);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:32:23 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/31 14:10:51 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/04 19:50:40 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,16 @@ void	ft_read_map(t_init_map *so_long)
 	fd = open(so_long->fn, O_RDONLY);
 	line = get_next_line(fd);
 	if (!line)
-	{
-		ft_printf("Error.\nLine/File not found.\n");
-		exit (EXIT_FAILURE);
-	}
+		return (ft_printf("Error.\nLine/File not found.\n"),
+			ft_free(so_long), exit(EXIT_FAILURE));
+		// free here idk which one
 	so_long->length = spe_strlen(line);
 	while (line)
 	{
 		if (spe_strlen(line) != so_long->length)
-		{
-			ft_printf("Error.\nMap invalid.");
-			exit(EXIT_FAILURE);
-		}
+			return (ft_printf("Error.\nMap invalid.\n"), 
+				free(line), ft_free(so_long), exit(EXIT_FAILURE));
+			// also free here idk how much too
 		so_long->height++;
 		free(line);
 		line = get_next_line(fd);

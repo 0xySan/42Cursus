@@ -7,8 +7,9 @@ CLINKS		= -ldl -lglfw -pthread -lm
 
 MLX			= minilibx
 LIBMLX 		= $(MLX)/libmlx42.a
+FT_PRINTF_P	= ft_printf
 
-FT_PRINTF	=	ft_printf/libftprintf.a
+FT_PRINTF	=	$(FT_PRINTF_P)/libftprintf.a
 
 SRC 		= 	read_map.c \
 				map_checker.c \
@@ -30,6 +31,7 @@ all: $(NAME)
 bonus: $(NAME)
 
 $(NAME): $(LIBMLX) $(OBJ)
+	$(MAKE) -C $(FT_PRINTF_P)
 	cc $(CFLAGS) -o $(NAME) $(OBJ) $(GNL_SRC) $(LIBMLX) $(FT_PRINTF) $(CLINKS)
 
 $(LIBMLX): $(MLX)
@@ -43,9 +45,11 @@ $(MLX):
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
+	make clean -C $(FT_PRINTF_P)
 	rm -f $(OBJ)
 
 fclean: clean
+	make fclean -C $(FT_PRINTF_P)
 	rm -rf minilibx
 	rm -f $(NAME)
 

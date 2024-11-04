@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:30:45 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/04 02:34:50 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/04 09:05:43 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,20 @@ int	ft_exit(t_init_map *data)
 {
 	(void) *data;
 	exit(EXIT_SUCCESS);
+}
+
+void	ft_reload_map(t_init_map *data, int mvmt)
+{
+	xpm_t	*xpm;
+
+	ft_do_mvmt(data, mvmt);
+	data->animation_index = ((size_t)round(mlx_get_time() * 6) / 2) % 4;
+	xpm = mlx_load_xpm42(data
+			->animations[data->last_movement][data->animation_index]);
+	data->graph->player = mlx_texture_to_image(data->mlx, &xpm->texture);
+	mlx_delete_xpm42(xpm);
+	mlx_image_to_window(data->mlx, data->graph->player,
+		data->x * 40, data->y * 40);
 }
 
 void	ft_reload_mvmt(void *data)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_keys.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:39:09 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/04 02:35:54 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/04 09:15:41 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 int	ft_move_fh(t_init_map *data, mlx_t *mlx, int *key_states)
 {
-	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(mlx);
 	if ((mlx_is_key_down(mlx, MLX_KEY_UP) || mlx_is_key_down(mlx, MLX_KEY_W))
 		&& !key_states[0])
 	{
@@ -69,6 +67,8 @@ int	ft_move(t_init_map *data)
 {
 	int			result;
 
+	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(data->mlx);
 	result = ft_move_fh(data, data->mlx, data->key_states);
 	if (result)
 		return (result);

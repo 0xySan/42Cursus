@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:34:41 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/04 03:09:18 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/04 09:03:43 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
+# include <math.h>
 # include "../minilibx/mlx42.h"
 # include "../gnl/get_next_line.h"
 # include "../ft_printf/ft_printf.h"
@@ -68,8 +69,10 @@ typedef struct s_graph
 
 /**
  * A structure with all of important features to init or/and move/reload the map.
- * All values are initialized with it's first point, almost all values change during the gameplay.
- * Some values can be changed, some other are better to leave at it's initialized value.
+ * All values are initialized with it's first point, 
+ * almost all values change during the gameplay.
+ * Some values can be changed, 
+ * some other are better to leave at it's initialized value.
  * 
  * @param height The height of the map.
  * @param length The length of the map.
@@ -79,19 +82,23 @@ typedef struct s_graph
  * @param d_col The movement possible in a column.
  * @param player The number of player in the map.
  * @param collectable The number of collectable in the map.
- * @param step The number of step the player has made in game, this value increment each time the player move.
+ * @param step The number of step the player has made in game, 
+ * this value increment each time the player move.
  * @param exit The number of exit in the map.
  * @param map The whole map in 2 arrays of char.
  * @param visited The whole visited map to check if the map is possible or not.
  * @param mlx The struct mlx_t at initialization of the MLX42 window.
  * @param fn The result of the open(fd).
- * @param graph The t_graph struct, it is to have all mlx textures inside of this one structure.
+ * @param graph The t_graph struct, it is to have all mlx textures 
+ * inside of this one structure.
  * @param canexit A int value to check if the player can exit the map.
- * @param cancollect A int value to check if the player can collect all the collectables.
+ * @param cancollect A int value to check if the player 
+ * can collect all the collectables.
  * @param error_type A int value to return the error type.
  * @param animation_index The index of which animations the player is.
  * @param animations All of the xpm's path for the player's animations.
  * @param last_movement The last movement of the player as an array of int.
+ * @param last_time The last time the player made a movement.
  * @param key_states An array of int to prevent fast movement.
  */
 typedef struct s_init_map
@@ -117,6 +124,7 @@ typedef struct s_init_map
 	int		animation_index;
 	char	***animations;
 	int		last_movement;
+	int		last_time;
 	int		*key_states;
 }	t_init_map;
 
@@ -177,9 +185,11 @@ void	ft_create_map(t_init_map *data);
 void	ft_create_img(t_init_map *data, int i, int j);
 
 /**
- *  A function to reload everything because it is the parent that calls the children func.
+ *  A function to reload everything because
+ * it is the parent that calls the children func.
  * 
- * @param[in] data The t_init_map struct as a void pointer because mlx_loop_hook gives a void pointer.
+ * @param[in] data The t_init_map struct as a void pointer 
+ * because loop_hook gives a void pointer.
  */
 void	ft_reload_mvmt(void *data);
 
@@ -220,10 +230,13 @@ int		ft_check_count(t_init_map *data);
 
 /**
  * Free less data to have no leaks.
- * This function is needed because if nothing is allocated I still need to free the default values.
+ * This function is needed because if nothing 
+ * is allocated I still need to free the default values.
  * 
  * @param[in] so_long The t_init_map struct as a pointer to be able to modify it.
  */
 void	ft_free_less(t_init_map *so_long);
+
+void	ft_do_mvmt(t_init_map *data, int mvmt);
 
 #endif

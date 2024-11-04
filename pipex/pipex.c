@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 18:56:30 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/04 10:47:57 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/04 10:52:39 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ void	ft_parent(t_pipex pipex, char **args, char **envp)
 		close(pipex.tube[1]);
 		close(pipex.infile);
 		close(pipex.outfile);
-		execute_cmd(args[3], envp);
+		if (!ft_strlen(args[3]))
+			execute_cmd(args[2], envp);
+		else
+			execute_cmd(args[3], envp);
 	}
 }
 

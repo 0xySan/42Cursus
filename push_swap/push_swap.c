@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:56:18 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/22 20:56:24 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/05 17:59:50 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	init_stacks(&a, &b);
 	init_stack(&a, argc, argv);
 	if (!is_sorted(&a))
-		sort_stack(&a, &b);
+		sort_small(&a, &b);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

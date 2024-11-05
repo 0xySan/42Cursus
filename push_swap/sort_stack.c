@@ -3,58 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:58:51 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/22 20:58:59 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/05 18:09:02 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
-static int	get_min(t_stack *stack)
+static void	turk_sort(t_stack *a)
 {
-	int		min;
-	t_node	*current;
+	t_node	*temp;
 
-	min = stack->top->value;
-	current = stack->top->next;
-	while (current)
+	temp = a->top;
+	while (temp->next)
 	{
-		if (current->value < min)
-			min = current->value;
-		current = current->next;
+		printf("%d", temp->value);
+		temp = temp->next;
 	}
-	return (min);
-}
-
-static void	move_min_to_top(t_stack *a)
-{
-	int	min;
-
-	min = get_min(a);
-	while (a->top->value != min)
-	{
-		if (a->top->next->value == min)
-			sa(a);
-		else if (a->size / 2 > 2 && a->top->next->next->value == min)
-		{
-			ra(a);
-			sa(a);
-		}
-		else
-			ra(a);
-	}
+	printf("%d", temp->value);
 }
 
 void	sort_stack(t_stack *a, t_stack *b)
 {
-	while (a->size > 3)
-	{
-		move_min_to_top(a);
-		pb(a, b);
-	}
-	sort_three(a);
-	while (b->size > 0)
-		pa(a, b);
+	pb(a, b);
+	pb(a, b);
+	// while (a->size > 3)
+	// {
+	// }
+	// sort_three(a);
+	// while (b->size > 0)
+	// 	pa(a, b);
+	(void)b;
+	turk_sort(a);
+	printf("\n");
+	turk_sort(b);
 }

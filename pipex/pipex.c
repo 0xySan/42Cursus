@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 18:56:30 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/04 11:40:56 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/05 17:19:16 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,12 @@ char	*get_cmd_path(char *arg)
 
 	cpath = malloc(sizeof(char) * (ft_strlen(CMD_PATH) + ft_strlen(arg) + 1));
 	if (!cpath)
-		return (0);
+		return (NULL);
 	ft_strcpy(cpath, CMD_PATH);
 	ft_strcat(cpath, arg);
 	if (access(cpath, X_OK) == -1)
-	{
-		ft_printf("Error command not found : %s.\n", cpath);
-		free(cpath);
-		return (0);
-	}
+		return (ft_printf("Error command not found : %s.\n", cpath),
+			free(cpath), NULL);
 	return (cpath);
 }
 
@@ -40,12 +37,7 @@ void	execute_cmd(char *cmd, char **envp)
 	if (!cpath)
 		return ;
 	if (execve(cpath, args, envp) == -1)
-	{
-		free(cpath);
-		free(args);
-		ft_printf("Execve error.\n");
-		return ;
-	}
+		return (ft_printf("Execve error.\n"), free(args), free(cpath));
 	free(cpath);
 	free(args);
 }

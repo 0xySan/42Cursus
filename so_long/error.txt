@@ -1,5 +1,0 @@
-- Gestion de l'extention .ber
-- Leak quand la map est vide
-- Leak quand quand le fichier n'existe pas
-- Leak quand la map n'est pas rectangle
-

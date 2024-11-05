@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:32:23 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/04 19:50:40 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/05 16:28:35 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,19 +71,21 @@ void	ft_read_map(t_init_map *so_long)
 	if (!line)
 		return (ft_printf("Error.\nLine/File not found.\n"),
 			ft_free(so_long), exit(EXIT_FAILURE));
-		// free here idk which one
 	so_long->length = spe_strlen(line);
 	while (line)
 	{
 		if (spe_strlen(line) != so_long->length)
-			return (ft_printf("Error.\nMap invalid.\n"), 
-				free(line), ft_free(so_long), exit(EXIT_FAILURE));
-			// also free here idk how much too
+			so_long->error_type = 8;
 		so_long->height++;
 		free(line);
 		line = get_next_line(fd);
 	}
 	line = NULL;
 	close(fd);
+	if (so_long->error_type)
+		return (ft_printf("Error.\n%s\nError type : %d\n",
+				"Lenght of line isn't the same everywhere.",
+				so_long->error_type),
+			ft_free(so_long), exit(EXIT_FAILURE));
 	ft_write_map(so_long);
 }

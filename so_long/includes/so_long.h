@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:34:41 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/04 19:50:11 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/05 21:17:55 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,8 +237,21 @@ int		ft_check_count(t_init_map *data);
  */
 void	ft_free_less(t_init_map *so_long);
 
+/**
+ *  Move the player one space and call another func.
+ * 
+ * @param[in] data The t_init_map struct as a pointer to be able to modify it.
+ * @param[in] mvmt The t_init_map struct as a pointer to be able to modify it.
+ */
 void	ft_do_mvmt(t_init_map *data, int mvmt);
 
+/**
+ * Free less data to have no leaks.
+ * This function is needed because if there is really NOTHING 
+ * allocated and I still need to free the default values.
+ * 
+ * @param[in] so_long The t_init_map struct as a pointer to be able to modify it.
+ */
 void	ft_free(t_init_map *so_long);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:58:51 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/05 18:09:02 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/06 00:51:44 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static void	turk_sort(t_stack *a)
 	temp = a->top;
 	while (temp->next)
 	{
-		printf("%d", temp->value);
+		printf("%d ", temp->value);
 		temp = temp->next;
 	}
-	printf("%d", temp->value);
+	printf("%d\n", temp->value);
 }
 
 void	sort_stack(t_stack *a, t_stack *b)
@@ -38,6 +38,5 @@ void	sort_stack(t_stack *a, t_stack *b)
 	// 	pa(a, b);
 	(void)b;
 	turk_sort(a);
-	printf("\n");
 	turk_sort(b);
 }

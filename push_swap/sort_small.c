@@ -6,13 +6,13 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:58:17 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/22 20:58:23 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/07 18:50:53 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	sort_two(t_stack *a)
+void	sort_two(t_stack *a)
 {
 	if (a->top->value > a->top->next->value)
 		sa(a);

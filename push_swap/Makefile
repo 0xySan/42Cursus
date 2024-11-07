@@ -12,7 +12,7 @@ SRCS = 	ft_atoi.c \
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Werror
 
 all: $(NAME)
 

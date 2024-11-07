@@ -1,4 +1,5 @@
 --keep-debuginfo=yes
 --leak-check=full
+--track-origins=yes
 --show-leak-kinds=all
 --suppressions=minilibx/mlx42.supp

@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:59:43 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/22 20:59:52 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/07 18:50:58 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void	init_stack(t_stack *stack, int argc, char **argv);
 void	sort_three(t_stack *a);
 void	sort_small(t_stack *a, t_stack *b);
 void	sort_stack(t_stack *a, t_stack *b);
+void	sort_two(t_stack *a);
 
 #endif

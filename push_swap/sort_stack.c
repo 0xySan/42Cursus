@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:58:51 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/06 00:51:44 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/07 17:02:00 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	sort_stack(t_stack *a, t_stack *b)
 	// sort_three(a);
 	// while (b->size > 0)
 	// 	pa(a, b);
-	(void)b;
 	turk_sort(a);
 	turk_sort(b);
 }

@@ -7,7 +7,8 @@ SRCS = 	ft_atoi.c \
 		sort_small.c \
 		sort_stack.c \
 		utils.c \
-		stack_ops.c
+		stack_ops.c \
+		split.c
 
 OBJS = $(SRCS:.c=.o)
 

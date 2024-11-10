@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 03:28:58 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/10 03:43:53 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/10 04:14:17 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	word_count = count_words(s, c);
 	result = malloc((word_count + 2) * sizeof(char *));
-    result[0] = malloc(9);
-    result[0] = "./a.out\0";
+    result[0] = "./a.out";
 	if (!result)
 		return (NULL);
 	split_words(s, c, result);

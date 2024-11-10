@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:57:56 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/22 20:57:57 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/10 04:36:18 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,20 @@ static int	has_duplicates(t_stack *stack, int value)
 	return (0);
 }
 
-void	init_stack(t_stack *stack, int argc, char **argv)
+void	init_stack(t_stack *a, t_stack *b, t_value val)
 {
 	int	i;
 	int	value;
 
-	i = argc - 1;
+	i = val.n - 1;
 	while (i > 0)
 	{
-		if (!is_valid_int(argv[i]))
-			error_exit();
-		value = ft_atoi(argv[i]);
-		if (has_duplicates(stack, value))
-			error_exit();
-		push(stack, value);
+		if (!is_valid_int(val.numbers[i]))
+			error_exit(a, b, val.argc, val.numbers);
+		value = ft_atoi(val.numbers[i]);
+		if (has_duplicates(a, value))
+			error_exit(a, b, val.argc, val.numbers);
+		push(a, value);
 		i--;
 	}
 }

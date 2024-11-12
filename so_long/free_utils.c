@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 23:17:58 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/04 19:51:11 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/12 11:34:06 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	ft_free_less(t_init_map *so_long)
 		free(so_long->map[i]);
 		i++;
 	}
+	free(so_long->map);
 	ft_free(so_long);
-	ft_free_graph(so_long);
 }
 
 void	ft_free_some(t_init_map *so_long)

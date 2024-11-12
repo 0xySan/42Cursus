@@ -2,7 +2,7 @@ NAME 		= so_long
 
 CLONE 		= git clone --depth=1
 
-CFLAGS 		+= -Wall -Wextra -Werror -O3
+CFLAGS 		+= -Wall -Wextra -Werror -O3 -g
 CLINKS		= -ldl -lglfw -pthread -lm
 
 MLX			= minilibx

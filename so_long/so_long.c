@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:30:45 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/12 11:27:43 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/12 16:14:19 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_reload_map(t_init_map *data, int mvmt)
 	xpm_t	*xpm;
 
 	ft_do_mvmt(data, mvmt);
-	data->animation_index = ((size_t)round(mlx_get_time() * 6) / 2) % 4;
+	data->animation_index = ((int)(mlx_get_time() * 6) / 2) % 4;
 	xpm = mlx_load_xpm42(data
 			->animations[data->last_movement][data->animation_index]);
 	data->graph->player = mlx_texture_to_image(data->mlx, &xpm->texture);
@@ -38,11 +38,11 @@ int	check_error_type(t_init_map *so_long)
 {
 	so_long->error_type = ft_check_count(so_long);
 	if (so_long->error_type)
-		return (ft_printf("Error.\nInvalid cound.\nError type : %d\n",
+		return (ft_printf("Error\nInvalid cound.\nError type : %d\n",
 				so_long->error_type), 1);
 	so_long->error_type = ft_map_checker(so_long);
 	if (so_long->error_type)
-		return (ft_printf("Error.\nInvalid map.\nError type : %d\n",
+		return (ft_printf("Error\nInvalid map.\nError type : %d\n",
 				so_long->error_type), 1);
 	return (0);
 }

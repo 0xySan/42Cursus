@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:32:23 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/12 11:33:15 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/12 15:27:05 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_read_map(t_init_map *so_long)
 	fd = open(so_long->fn, O_RDONLY);
 	line = get_next_line(fd);
 	if (!line)
-		return (ft_printf("Error.\nLine/File not found.\n"),
+		return (ft_printf("Error\nLine/File not found.\n"),
 			ft_free(so_long), exit(EXIT_FAILURE));
 	so_long->length = spe_strlen(line);
 	while (line)
@@ -83,7 +83,7 @@ void	ft_read_map(t_init_map *so_long)
 	line = NULL;
 	close(fd);
 	if (so_long->error_type)
-		return (ft_printf("Error.\n%s\nError type : %d\n",
+		return (ft_printf("Error\n%s\nError type : %d\n",
 				"Lenght of line isn't the same everywhere.",
 				so_long->error_type),
 			ft_free(so_long), exit(EXIT_FAILURE));

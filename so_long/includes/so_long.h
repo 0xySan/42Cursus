@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:34:41 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/05 21:17:55 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/12 16:13:52 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
-# include <math.h>
 # include "../minilibx/mlx42.h"
 # include "../gnl/get_next_line.h"
 # include "../ft_printf/ft_printf.h"

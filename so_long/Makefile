@@ -44,6 +44,7 @@ clean:
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
+	make fclean -C $(FT_PRINTF_P)
 	rm -rf minilibx
 	rm -f $(NAME)
 

@@ -1,38 +1,32 @@
-NAME 		= so_long
+NAME 		= 	so_long
 
-CLONE 		= git clone --depth=1
+CLONE 		= 	git clone --depth=1
 
-CFLAGS 		+= -Wall -Wextra -Werror -O3 -g
-CLINKS		= -ldl -lglfw -pthread -lm
+CFLAGS 		+= 	-Wall -Wextra -Werror
+CLINKS		= 	-ldl -lglfw -pthread -lm
 
-MLX			= minilibx
-LIBMLX 		= $(MLX)/libmlx42.a
-FT_PRINTF_P	= ft_printf
+MLX			= 	minilibx
+LIBMLX 		= 	$(MLX)/libmlx42.a
+FT_PRINTF_P	= 	ft_printf
 
 FT_PRINTF	=	$(FT_PRINTF_P)/libftprintf.a
+SRC_DIR		= 	src
+INC_DIR		= 	include
+OBJ_DIR		= 	obj
 
-SRC 		= 	read_map.c \
-				map_checker.c \
-				movement.c \
-				create_map.c \
-				so_long.c \
-				so_long_utils.c \
-				check_keys.c \
-				check_count.c \
-				free_utils.c
+include Files.mk
+
+SRCS		= $(addsuffix .c,$(addprefix $(SRC_DIR)/,$(FILES)))
+OBJS		= $(addsuffix .o,$(addprefix $(OBJ_DIR)/,$(FILES)))
 
 GNL_SRC		=	gnl/get_next_line_utils.c \
 				gnl/get_next_line.c
 
-OBJ 		= $(SRC:.c=.o)
-
 all: $(NAME)
 
-bonus: $(NAME)
-
-$(NAME): $(LIBMLX) $(OBJ)
+$(NAME): $(LIBMLX) $(OBJS)
 	$(MAKE) -C $(FT_PRINTF_P)
-	cc $(CFLAGS) -o $(NAME) $(OBJ) $(GNL_SRC) $(LIBMLX) $(FT_PRINTF) $(CLINKS)
+	cc $(CFLAGS) -o $(NAME) $(OBJS) $(GNL_SRC) $(LIBMLX) $(FT_PRINTF) $(CLINKS)
 
 $(LIBMLX): $(MLX)
 	$(MAKE) -C $(MLX)
@@ -41,20 +35,17 @@ $(MLX):
 	$(CLONE) https://github.com/kodokaii/MLX42.git $(MLX)
 	cmake $(MLX) -B $(MLX)
 
-%.o: %.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	make clean -C $(FT_PRINTF_P)
-	rm -f $(OBJ)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	make fclean -C $(FT_PRINTF_P)
 	rm -rf minilibx
 	rm -f $(NAME)
-
-clear: fclean
-	rm -rf $(MLX) 
 
 re: fclean all
 

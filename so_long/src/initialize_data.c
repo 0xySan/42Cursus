@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_utils.c                                    :+:      :+:    :+:   */
+/*   initialize_data.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 15:35:37 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/04 09:04:20 by etaquet          ###   ########.fr       */
+/*   Created: 2024/11/14 02:25:01 by etaquet           #+#    #+#             */
+/*   Updated: 2024/11/14 03:06:18 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
+#include "../includes/so_long.h"
 
 void	ft_malloc_some(t_init_map *so_long)
 {
@@ -29,6 +29,17 @@ void	ft_malloc_some(t_init_map *so_long)
 	so_long->key_states[1] = 0;
 	so_long->key_states[2] = 0;
 	so_long->key_states[3] = 0;
+}
+
+void	ft_malloc_numbers(t_init_map *so_long)
+{
+	int	i;
+
+	i = 1;
+	so_long->numbers = malloc(sizeof(int) * so_long->length);
+	so_long->numbers[0] = 0;
+	while (i < so_long->length)
+		so_long->numbers[i++] = -1;
 }
 
 void	ft_map_data_animations(t_init_map *so_long)

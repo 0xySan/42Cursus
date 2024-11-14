@@ -6,14 +6,11 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 13:50:16 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/04 01:57:15 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/14 01:48:34 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdbool.h>
-#include <stdlib.h>
-#include "includes/so_long.h"
+#include "../includes/so_long.h"
 
 int	isvalid(int row, int col, t_init_map *data)
 {
@@ -89,13 +86,13 @@ int	ft_dfs_checker(t_init_map *data)
 	return (0);
 }
 
-int	ft_map_checker(t_init_map *data)
+void	ft_map_checker(t_init_map *data)
 {
 	int		i;
 	int		j;
 
 	if (ft_dfs_checker(data))
-		return (ft_free_less(data), 2);
+		ft_handle_errors(data, 2, data->player);
 	i = -1;
 	while (++i < data->length)
 	{
@@ -109,6 +106,6 @@ int	ft_map_checker(t_init_map *data)
 		}
 	}
 	if (data->cancollect && data->canexit)
-		return (0);
-	return (ft_free_some(data), 1);
+		return ;
+	ft_handle_errors(data, 1);
 }

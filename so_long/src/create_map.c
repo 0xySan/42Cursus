@@ -6,11 +6,11 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:26:19 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/04 02:12:02 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/13 23:59:41 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
+#include "../includes/so_long.h"
 
 void	ft_create_img(t_init_map *data, int i, int j)
 {
@@ -83,4 +83,5 @@ void	ft_parse_map(t_init_map *so_long)
 	xpm = mlx_load_xpm42(ENEMY);
 	so_long->graph->enemy = mlx_texture_to_image(so_long->mlx, &xpm->texture);
 	mlx_delete_xpm42(xpm);
+	ft_parse_numbers(so_long);
 }

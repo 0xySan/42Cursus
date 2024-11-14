@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_keys.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:39:09 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/04 09:15:41 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/13 21:45:25 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
-#include "math.h"
+#include "../includes/so_long.h"
 
 int	ft_move_fh(t_init_map *data, mlx_t *mlx, int *key_states)
 {

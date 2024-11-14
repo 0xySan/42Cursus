@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 23:17:58 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/12 16:15:40 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/14 03:22:03 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
+#include "../includes/so_long.h"
 
 void	ft_free_graph(t_init_map *so_long)
 {
@@ -70,6 +70,7 @@ void	ft_free_some(t_init_map *so_long)
 		free(so_long->visited[i]);
 		i++;
 	}
+	free(so_long->numbers);
 	free(so_long->visited);
 }
 

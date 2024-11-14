@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:30:45 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/12 16:14:19 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/14 03:01:46 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
+#include "../includes/so_long.h"
 
 void	ft_reload_map(t_init_map *data, int mvmt)
 {
 	xpm_t	*xpm;
 
 	ft_do_mvmt(data, mvmt);
-	data->animation_index = ((int)(mlx_get_time() * 6) / 2) % 4;
+	data->animation_index = ((size_t)(mlx_get_time() * 8) / 2) % 4;
 	xpm = mlx_load_xpm42(data
 			->animations[data->last_movement][data->animation_index]);
 	data->graph->player = mlx_texture_to_image(data->mlx, &xpm->texture);
@@ -34,44 +34,45 @@ void	ft_reload_mvmt(void *data)
 	ft_reload_map(data, mvmt);
 }
 
-int	check_error_type(t_init_map *so_long)
+void	check_format_type(char **argv)
 {
-	so_long->error_type = ft_check_count(so_long);
-	if (so_long->error_type)
-		return (ft_printf("Error\nInvalid cound.\nError type : %d\n",
-				so_long->error_type), 1);
-	so_long->error_type = ft_map_checker(so_long);
-	if (so_long->error_type)
-		return (ft_printf("Error\nInvalid map.\nError type : %d\n",
-				so_long->error_type), 1);
-	return (0);
+	char		*file_ext;
+
+	file_ext = ft_substr(argv[1],
+			ft_strlen(argv[1]) - 4, ft_strlen(argv[1]));
+	if (ft_memcmp(file_ext, ".ber", 4))
+	{
+		free(file_ext);
+		ft_printf("Error\nFormat usage : [map_file.ber] not [%s]\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
+	free(file_ext);
 }
 
 int	main(int argc, char **argv)
 {
 	t_init_map	so_long;
-	char		*file_format;
 
 	if (argc == 2)
 	{
-		file_format = ft_substr(argv[1],
-				ft_strlen(argv[1]) - 4, ft_strlen(argv[1]));
-		if (memcmp(file_format, ".ber", 4))
-			return (free(file_format),
-				ft_printf("Error\nInvalid file format.\n"), -1);
-		free(file_format);
+		check_format_type(argv);
 		ft_map_data(&so_long, argv[1]);
 		ft_read_map(&so_long);
-		if (check_error_type(&so_long))
-			return (-1);
+		ft_check_count(&so_long);
+		ft_map_checker(&so_long);
 		so_long.mlx = mlx_init(so_long.length * 40,
-				so_long.height * 40, "So_long", false);
+				(so_long.height + 1) * 40, "So_long", false);
 		ft_parse_map(&so_long);
 		ft_create_map(&so_long);
+		ft_malloc_numbers(&so_long);
+		ft_show_numbers(&so_long);
 		mlx_loop_hook(so_long.mlx, ft_reload_mvmt, &so_long);
 		mlx_loop(so_long.mlx);
 		mlx_terminate(so_long.mlx);
 		ft_free_all(&so_long);
 		printf("Exiting the game.\n");
+		exit(EXIT_SUCCESS);
 	}
+	else
+		ft_printf("Error\nUsage : ./so_long [map_file.ber]\n");
 }

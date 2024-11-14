@@ -1,0 +1,186 @@
+!XPM42
+40 40 144 2 c
+   #172339FF
+.  #858994FF
+X  #F6F6F7FF
+o  #FFFFFFFF
+O  #C7C9CEFF
++  #424A5AFF
+@  #BA15C3FF
+#  #ECEDEFFF
+$  #59606FFF
+%  #A2A6AEFF
+&  #FFFFFDFF
+*  #FFFEFFFF
+=  #E9EAECFF
+-  #414859FF
+;  #7A7F8BFF
+:  #D3D5D9FF
+>  #7C818DFF
+,  #535A69FF
+<  #3A4253FF
+1  #474E5EFF
+2  #626876FF
+3  #A9ADB4FF
+4  #F8F8F8FF
+5  #CDCFD3FF
+6  #3E4657FF
+7  #F3F3F5FF
+8  #808099FF
+9  #808590FF
+0  #4A5161FF
+q  #DDDEE1FF
+w  #8C909AFF
+e  #A0A4ACFF
+r  #787D89FF
+t  #3D4556FF
+y  #E2E3E6FF
+u  #3C4355FF
+i  #454C5CFF
+p  #B7BAC0FF
+a  #5D6371FF
+s  #FDFDFEFF
+d  #969AA4FF
+f  #9599A2FF
+g  #FDFDFDFF
+h  #BABDC3FF
+j  #EAEBEDFF
+k  #D5D6DAFF
+l  #C5C7CCFF
+z  #696E7CFF
+x  #606674FF
+c  #464D5EFF
+v  #828792FF
+b  #343C4EFF
+n  #F0F0F2FF
+m  #A1A4ADFF
+M  #878C97FF
+N  #FEFFFFFF
+B  #505766FF
+V  #BFC2C7FF
+C  #E5E6E8FF
+Z  #B6B8BFFF
+A  #EBECEDFF
+S  #8B909AFF
+D  #434A5BFF
+F  #D4D5D9FF
+G  #FDFFFFFF
+H  #C3C5CBFF
+J  #656B78FF
+K  #616875FF
+L  #F4F5F6FF
+P  #FFFFFEFF
+I  #AAAEB5FF
+U  #4B5262FF
+Y  #7F848FFF
+T  #FFFDFFFF
+R  #90949EFF
+E  #FBFBFBFF
+W  #9CA0A9FF
+Q  #565D6CFF
+!  #777C88FF
+~  #B0B3BAFF
+^  #5F6573FF
+/  #686E7BFF
+(  #B9BBC2FF
+)  #636977FF
+_  #D1D2D7FF
+`  #C1C4C9FF
+'  #717683FF
+]  #5D6472FF
+[  #CACCD1FF
+{  #787E89FF
+}  #595F6EFF
+|  #D1D3D7FF
+ . #747986FF
+.. #5E6273FF
+X. #C9CBD0FF
+o. #CED0D4FF
+O. #6A707DFF
++. #6B717EFF
+@. #D7D9DCFF
+#. #BBBEC4FF
+$. #585E6DFF
+%. #717783FF
+&. #DEDFE2FF
+*. #B1B4BBFF
+=. #4E5565FF
+-. #818691FF
+;. #EFEFF1FF
+:. #A7AAB2FF
+>. #373F50FF
+,. #9B9FA8FF
+<. #384051FF
+1. #E1E2E5FF
+2. #B5B8BFFF
+3. #575E6CFF
+4. #6D7380FF
+5. #BEC0C6FF
+6. #D9DBDEFF
+7. #696F7CFF
+8. #DADCDFFF
+9. #353D4EFF
+0. #F4F4F5FF
+q. #ABAEB6FF
+w. #4E3465FF
+e. #B4B7BDFF
+r. #A6AAB2FF
+t. #3D4455FF
+y. #484F5FFF
+u. #03F5F5FF
+i. #CCCED2FF
+p. #FDFDFBFF
+a. #4F5665FF
+s. #616775FF
+d. #E7E8EAFF
+f. #495060FF
+g. #6C727FFF
+h. #DDDFE2FF
+j. #E1E2E4FF
+k. #9FA3ABFF
+l. #ADB0B7FF
+z. #485060FF
+x. #EEEFF0FF
+c. #91959FFF
+v. #208590FF
+b. #F1F2F3FF
+                        . X o o o o o o o o o o o o O +                         
+                      @ o o o o o o o o o o o o o o o # $                       
+                    % o o & o o o o * o o o o o o o o o = -                     
+                  ; o o o o o o : > , < 1 2 3 4 o o o o o 5                     
+                6 7 o o o o 8 9               0 q o o o o o w                   
+                e o o o o o r                   t y o o o o # u                 
+              i 4 o o o o p                       a s o o o o d                 
+              f o o o o g 0                         h o o o o j                 
+              k o o o o l                           z o o o o o x               
+            c o o o o o v                           b n o o o o m               
+            M o N o o o B                             V o o o o C               
+            Z o o o o A                               S o o o o o D             
+            F o o G o H                               J o o o o o K             
+            L o o o P I                               U o o o o o Y             
+          D o o T o o R                                 E o o o o W             
+          Q o o o o o !                                 C o o o o ~             
+          ^ o o o o o /                                 k o o o o (             
+          / o o o o o )                                 _ o o o o `             
+          ' o o o o o ]                                 [ o o o P [             
+          { o o o o o }                                 l o o o o |             
+           .o o o o o ..                                X.o o o T o.            
+          O.o o o o o J                                 _ o o o o l             
+          K o o o o o +.                                @.o o o T #.            
+          $.o o o o o %.                                &.o o o P *.            
+          =.o o o o o -.                                ;.o o o o :.            
+          >.o o o o o ,.                              <.o o o o o R             
+            1.o o o o 2.                              3.o o o o o 4.            
+            5.o o o o 6.                              > o o o o & 0             
+            ,.o o o o s t                             I o o o o X               
+            7.o o o o o O.                            8.o o o o `               
+            9.0.o o o o q.                          w.o o o o o Y               
+              e.o o o o X <                         r.o o o o 8 t.              
+              x o o o o o d                       y.u.o o o o 2.                
+                X.o o o o E $.                    i.o P o o p.a.                
+                s.o o o o o d.f.                I o o o G o h                   
+                  ` o o o P o C g.          c ~ o G o o o 4 ,                   
+                  6 h.o P o o o o j.( k.l.X.o o o o o o o  .                    
+                    z.x.o o o o o o o o o o o o o o o o c.                      
+                      f.X.o o o o o o o o o o o o o ;.>                         
+                          v.k o o o o o o o o o b.I D                           

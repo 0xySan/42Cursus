@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:43:11 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/24 11:15:58 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/14 02:17:34 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,19 +127,3 @@ char	*get_next_line(int fd)
 	}
 	return (temp2);
 }
-
-/* int	main(int argc, char **argv)
-{
-	(void)argc;
-	int fd = open("test", O_RDONLY);
-	char *temp;
-
-	temp = get_next_line(fd);
-	//{
-	dprintf(1, "%s", temp);
-	free(temp);
-	//}
-	//free(temp);
-	close(fd);
-	return 0;
-} */

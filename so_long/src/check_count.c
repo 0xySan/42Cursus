@@ -6,11 +6,11 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 17:00:16 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/04 01:55:30 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/14 01:49:11 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
+#include "../includes/so_long.h"
 
 //replace last return if anything else than **these** characters is not wanted
 int	ft_count_all(t_init_map *data, int i, int j)
@@ -54,7 +54,7 @@ int	ft_check_bordr(t_init_map *data)
 	return (0);
 }
 
-int	ft_check_count(t_init_map *data)
+void	ft_check_count(t_init_map *data)
 {
 	int	i;
 	int	j;
@@ -66,17 +66,16 @@ int	ft_check_count(t_init_map *data)
 		while (j < data->height)
 		{
 			if (ft_count_all(data, i, j++))
-				return (ft_free_less(data), 5);
+				ft_handle_errors(data, 7, data->map[i][j - 1]);
 		}
 		i++;
 	}
 	if (data->collectable < 1)
-		return (ft_free_less(data), 3);
+		ft_handle_errors(data, 3);
 	if (data->exit != 1)
-		return (ft_free_less(data), 4);
+		ft_handle_errors(data, 4, data->exit);
 	if (data->length == data->height)
-		return (ft_free_less(data), 5);
+		ft_handle_errors(data, 5, data->length, data->height);
 	if (ft_check_bordr(data))
-		return (ft_free_less(data), 6);
-	return (0);
+		ft_handle_errors(data, 6);
 }

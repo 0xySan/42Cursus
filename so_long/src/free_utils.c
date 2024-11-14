@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 23:17:58 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/14 03:22:03 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/14 04:11:56 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	ft_free(t_init_map *so_long)
 {
 	free(so_long->d_col);
 	free(so_long->d_row);
-	free(so_long->key_states);
 	ft_free_graph(so_long);
 }
 

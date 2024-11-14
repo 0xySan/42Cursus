@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 02:25:01 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/14 03:06:18 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/14 04:11:49 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,6 @@ void	ft_malloc_some(t_init_map *so_long)
 	so_long->d_row[1] = 0;
 	so_long->d_row[2] = -1;
 	so_long->d_row[3] = 1;
-	so_long->key_states = malloc(sizeof(int) * 4);
-	so_long->key_states[0] = 0;
-	so_long->key_states[1] = 0;
-	so_long->key_states[2] = 0;
-	so_long->key_states[3] = 0;
 }
 
 void	ft_malloc_numbers(t_init_map *so_long)
@@ -85,6 +80,7 @@ void	ft_map_data(t_init_map *so_long, char *name)
 	so_long->cancollect = 1;
 	so_long->fn = name;
 	so_long->last_time = 0;
+	so_long->numbr_time = 0.0;
 	ft_malloc_some(so_long);
 	ft_map_data_animations(so_long);
 }

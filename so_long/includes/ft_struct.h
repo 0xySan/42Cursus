@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 02:14:45 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/14 03:06:34 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/14 04:12:02 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ typedef struct s_init_map
 	int		collectable;
 	int		step;
 	int		exit;
+	double	numbr_time;
 	char	**map;
 	int		**visited;
 	void	*mlx;
@@ -113,7 +114,6 @@ typedef struct s_init_map
 	char	***animations;
 	int		last_movement;
 	int		last_time;
-	int		*key_states;
 	int		*numbers;
 }	t_init_map;
 

@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:30:50 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/14 03:07:07 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/14 04:24:29 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,17 +123,17 @@ void	ft_do_mvmt(t_init_map *data, int mvmt)
 			data->last_movement = 0;
 			ft_move_up(data);
 		}
-		if (mvmt == 2)
+		else if (mvmt == 2)
 		{
 			data->last_movement = 1;
 			ft_move_down(data);
 		}
-		if (mvmt == 3)
+		else if (mvmt == 3)
 		{
 			data->last_movement = 2;
 			ft_move_left(data);
 		}
-		if (mvmt == 4)
+		else if (mvmt == 4)
 		{
 			data->last_movement = 3;
 			ft_move_right(data);

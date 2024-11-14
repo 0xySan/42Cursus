@@ -6,59 +6,57 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:39:09 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/13 21:45:25 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/14 04:12:32 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	ft_move_fh(t_init_map *data, mlx_t *mlx, int *key_states)
+int	ft_move_fh(t_init_map *data, mlx_t *mlx)
 {
+	double	current_time;
+	double	move_interval;
+
+	current_time = mlx_get_time();
+	move_interval = 0.1;
 	if ((mlx_is_key_down(mlx, MLX_KEY_UP) || mlx_is_key_down(mlx, MLX_KEY_W))
-		&& !key_states[0])
+		&& (current_time - data->numbr_time >= move_interval))
 	{
 		data->y -= 1;
-		key_states[0] = 1;
+		data->numbr_time = current_time;
 		return (1);
 	}
-	else if (!mlx_is_key_down(mlx, MLX_KEY_UP)
-		&& !mlx_is_key_down(mlx, MLX_KEY_W))
-		key_states[0] = 0;
 	if ((mlx_is_key_down(mlx, MLX_KEY_DOWN) || mlx_is_key_down(mlx, MLX_KEY_S))
-		&& !key_states[1])
+		&& (current_time - data->numbr_time >= move_interval))
 	{
 		data->y += 1;
-		key_states[1] = 1;
+		data->numbr_time = current_time;
 		return (2);
 	}
-	else if (!mlx_is_key_down(mlx, MLX_KEY_DOWN)
-		&& !mlx_is_key_down(mlx, MLX_KEY_S))
-		key_states[1] = 0;
 	return (0);
 }
 
-int	ft_move_sh(t_init_map *data, mlx_t *mlx, int *key_states)
+int	ft_move_sh(t_init_map *data, mlx_t *mlx)
 {
+	double	current_time;
+	double	move_interval;
+
+	current_time = mlx_get_time();
+	move_interval = 0.1;
 	if ((mlx_is_key_down(mlx, MLX_KEY_LEFT) || mlx_is_key_down(mlx, MLX_KEY_A))
-		&& !key_states[2])
+		&& (current_time - data->numbr_time >= move_interval))
 	{
 		data->x -= 1;
-		key_states[2] = 1;
+		data->numbr_time = current_time;
 		return (3);
 	}
-	else if (!mlx_is_key_down(mlx, MLX_KEY_LEFT)
-		&& !mlx_is_key_down(mlx, MLX_KEY_A))
-		key_states[2] = 0;
 	if ((mlx_is_key_down(mlx, MLX_KEY_RIGHT) || mlx_is_key_down(mlx, MLX_KEY_D))
-		&& !key_states[3])
+		&& (current_time - data->numbr_time >= move_interval))
 	{
 		data->x += 1;
-		key_states[3] = 1;
+		data->numbr_time = current_time;
 		return (4);
 	}
-	else if (!mlx_is_key_down(mlx, MLX_KEY_RIGHT)
-		&& !mlx_is_key_down(mlx, MLX_KEY_D))
-		key_states[3] = 0;
 	return (0);
 }
 
@@ -68,9 +66,9 @@ int	ft_move(t_init_map *data)
 
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(data->mlx);
-	result = ft_move_fh(data, data->mlx, data->key_states);
+	result = ft_move_fh(data, data->mlx);
 	if (result)
 		return (result);
-	result = ft_move_sh(data, data->mlx, data->key_states);
+	result = ft_move_sh(data, data->mlx);
 	return (result);
 }

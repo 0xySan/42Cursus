@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_errors.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 00:51:58 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/14 04:12:48 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/14 16:31:52 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void	_print_errors_1(t_init_map *so_long, int error_type, va_list args)
 	{
 		ft_printf("Error\n'%d' player(s) were found in the map try putting/",
 			va_arg(args, int));
-		ft_printf("removing some.\nThey are the 'E' characters on the map.\n");
-		ft_free_some(so_long);
+		ft_printf("removing some.\nThey are the 'P' characters on the map.\n");
+		ft_free_less(so_long);
 		exit(2);
 	}
 	if (error_type == 3)

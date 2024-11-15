@@ -1,3 +1,5 @@
 *.o
 .vscode
 minilibx
+*.a
+so_long/so_long

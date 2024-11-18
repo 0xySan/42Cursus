@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 18:56:30 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/18 10:55:11 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/18 11:20:27 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,14 @@ int	main(int argc, char **argv, char **envp)
 
 	pipex.pid2 = 0;
 	pipex.pid1 = 0;
-	if (argc != 5)
-		return (0);
+	check_files(argc, argv);
 	pipex.infile = open(argv[1], O_RDONLY);
 	if (pipex.infile < 0)
 		return (ft_printf("pipex: permission denied: %s\n", argv[1]), 0);
 	pipex.outfile = open(argv[argc - 1], O_TRUNC | O_CREAT | O_RDWR, 0000644);
 	if (pipex.outfile < 0)
-		return (ft_printf("pipex: permission denied: %s\n", argv[4]), 0);
+		return (ft_printf("pipex: permission denied: %s\n", argv[4]),
+			close(pipex.infile), 0);
 	if (pipe(pipex.tube) == -1)
 		return (0);
 	ft_child(pipex, argv, envp);

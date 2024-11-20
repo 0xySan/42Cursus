@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:30:45 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/20 13:00:27 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/20 13:32:09 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	check_format_type(char **argv)
 	if (ft_memcmp(file_ext, ".ber", 4))
 	{
 		free(file_ext);
-		ft_printf("Error\nFormat usage : [map_file.ber] not [%s]\n", argv[1]);
+		ft_dprintf(2, "Error\nFormat usage : [map_file.ber] not [%s]\n",
+			argv[1]);
 		exit(11);
 	}
 	free(file_ext);
@@ -54,7 +55,7 @@ int	main(int argc, char **argv)
 	t_init_map	so_long;
 
 	if (argc != 2)
-		return (ft_printf("Error\nUsage : ./so_long [map_file.ber]\n"), 10);
+		return (ft_dprintf(2, "Error\nUsage : ./so_long [map_file.ber]\n"), 10);
 	check_format_type(argv);
 	ft_map_data(&so_long, argv[1]);
 	ft_read_map(&so_long);
@@ -70,6 +71,6 @@ int	main(int argc, char **argv)
 	mlx_loop(so_long.mlx);
 	mlx_terminate(so_long.mlx);
 	ft_free_all(&so_long);
-	ft_printf("Exiting the game.\n");
+	ft_dprintf(1, "Exiting the game.\n");
 	return (0);
 }

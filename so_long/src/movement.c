@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:30:50 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/14 04:24:29 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/20 13:28:58 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ void	ft_move_up(t_init_map *data)
 			ft_move_up(data));
 	else if (data->map[data->x][data->y] == 'S')
 		return (ft_replace_old_texture(data, data->x, data->y + 1),
-			ft_printf("Key pressed.\nMoved up\nTotal amount : %d\n",
+			ft_dprintf(1, "Key pressed.\nMoved up\nTotal amount : %d\n",
 				++data->step),
-			ft_printf("You died.\n"), mlx_close_window(data->mlx));
+			ft_dprintf(1, "You died.\n"), mlx_close_window(data->mlx));
 	else if ((data->map[data->x][data->y] == 'E') && (data->collectable == 0))
 		return (ft_replace_old_texture(data, data->x, data->y + 1),
-			ft_printf("Key pressed.\nMoved up\nTotal amount : %d\n",
+			ft_dprintf(1, "Key pressed.\nMoved up\nTotal amount : %d\n",
 				++data->step),
-			ft_printf("You won!\n"), mlx_close_window(data->mlx));
+			ft_dprintf(1, "You won!\n"), mlx_close_window(data->mlx));
 	else
 	{
-		ft_printf("Key pressed.\nMoved up\nTotal amount : %d\n",
+		ft_dprintf(1, "Key pressed.\nMoved up\nTotal amount : %d\n",
 			++data->step);
 		ft_replace_old_texture(data, data->x, data->y + 1);
 	}
@@ -46,17 +46,17 @@ void	ft_move_down(t_init_map *data)
 			ft_move_down(data));
 	else if (data->map[data->x][data->y] == 'S')
 		return (ft_replace_old_texture(data, data->x, data->y - 1),
-			ft_printf("Key pressed.\nMoved down\nTotal amount : %d\n",
+			ft_dprintf(1, "Key pressed.\nMoved down\nTotal amount : %d\n",
 				++data->step),
-			ft_printf("You died.\n"), mlx_close_window(data->mlx));
+			ft_dprintf(1, "You died.\n"), mlx_close_window(data->mlx));
 	else if ((data->map[data->x][data->y] == 'E') && (data->collectable == 0))
 		return (ft_replace_old_texture(data, data->x, data->y - 1),
-			ft_printf("Key pressed.\nMoved down\nTotal amount : %d\n",
+			ft_dprintf(1, "Key pressed.\nMoved down\nTotal amount : %d\n",
 				++data->step),
-			ft_printf("You won!\n"), mlx_close_window(data->mlx));
+			ft_dprintf(1, "You won!\n"), mlx_close_window(data->mlx));
 	else
 	{
-		ft_printf("Key pressed.\nMoved down\nTotal amount : %d\n",
+		ft_dprintf(1, "Key pressed.\nMoved down\nTotal amount : %d\n",
 			++data->step);
 		ft_replace_old_texture(data, data->x, data->y - 1);
 	}
@@ -71,17 +71,17 @@ void	ft_move_right(t_init_map *data)
 			ft_move_right(data));
 	else if (data->map[data->x][data->y] == 'S')
 		return (ft_replace_old_texture(data, data->x - 1, data->y),
-			ft_printf("Key pressed.\nMoved right\nTotal amount : %d\n",
+			ft_dprintf(1, "Key pressed.\nMoved right\nTotal amount : %d\n",
 				++data->step),
-			ft_printf("You died.\n"), mlx_close_window(data->mlx));
+			ft_dprintf(1, "You died.\n"), mlx_close_window(data->mlx));
 	else if ((data->map[data->x][data->y] == 'E') && (data->collectable == 0))
 		return (ft_replace_old_texture(data, data->x - 1, data->y),
-			ft_printf("Key pressed.\nMoved right\nTotal amount : %d\n",
+			ft_dprintf(1, "Key pressed.\nMoved right\nTotal amount : %d\n",
 				++data->step),
-			ft_printf("You won!\n"), mlx_close_window(data->mlx));
+			ft_dprintf(1, "You won!\n"), mlx_close_window(data->mlx));
 	else
 	{
-		ft_printf("Key pressed.\nMoved right\nTotal amount : %d\n",
+		ft_dprintf(1, "Key pressed.\nMoved right\nTotal amount : %d\n",
 			++data->step);
 		ft_replace_old_texture(data, data->x - 1, data->y);
 	}
@@ -96,19 +96,19 @@ void	ft_move_left(t_init_map *data)
 			ft_move_left(data));
 	else if (data->map[data->x][data->y] == 'S')
 		return (ft_replace_old_texture(data, data->x + 1, data->y),
-			ft_printf("Key pressed.\nMoved left\nTotal amount : %d\n",
+			ft_dprintf(1, "Key pressed.\nMoved left\nTotal amount : %d\n",
 				++data->step),
-			ft_printf("You died.\n"), ft_show_numbers(data),
+			ft_dprintf(1, "You died.\n"), ft_show_numbers(data),
 			mlx_close_window(data->mlx));
 	else if ((data->map[data->x][data->y] == 'E') && (data->collectable == 0))
 		return (ft_replace_old_texture(data, data->x + 1, data->y),
-			ft_printf("Key pressed.\nMoved left\nTotal amount : %d\n",
+			ft_dprintf(1, "Key pressed.\nMoved left\nTotal amount : %d\n",
 				++data->step),
-			ft_printf("You won!\n"), ft_show_numbers(data),
+			ft_dprintf(1, "You won!\n"), ft_show_numbers(data),
 			mlx_close_window(data->mlx));
 	else
 	{
-		ft_printf("Key pressed.\nMoved left\nTotal amount : %d\n",
+		ft_dprintf(1, "Key pressed.\nMoved left\nTotal amount : %d\n",
 			++data->step);
 		ft_replace_old_texture(data, data->x + 1, data->y);
 	}

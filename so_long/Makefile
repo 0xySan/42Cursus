@@ -7,9 +7,9 @@ CLINKS		= 	-ldl -lglfw -pthread -lm
 
 MLX			= 	minilibx
 LIBMLX 		= 	$(MLX)/libmlx42.a
-FT_PRINTF_P	= 	ft_printf
+FT_PRINTF_P	= 	ft_dprintf
 
-FT_PRINTF	=	$(FT_PRINTF_P)/libftprintf.a
+FT_PRINTF	=	$(FT_PRINTF_P)/dprintf.a
 SRC_DIR		= 	src
 INC_DIR		= 	include
 OBJ_DIR		= 	obj

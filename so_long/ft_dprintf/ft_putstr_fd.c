@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 15:01:30 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/23 15:11:58 by etaquet          ###   ########.fr       */
+/*   Created: 2024/09/18 18:35:05 by etaquet           #+#    #+#             */
+/*   Updated: 2024/11/20 13:06:24 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_iltoa(long n)
+int	ft_putstr_fd(char *str, int fd)
 {
-	if (n >= 10)
-		return (ft_itoa(n / 10) + ft_itoa(n % 10));
-	return (ft_putchar(n + '0'));
-}
+	int	start;
 
-int	ft_itoa(int n)
-{
-	long	ln;
-
-	ln = n;
-	if (n < 0)
-		return (write(1, "-", 1) + ft_iltoa(-ln));
-	return (ft_iltoa(ln));
+	if (!str)
+		return (write(fd, "(null)", 6));
+	start = 0;
+	while (str[start])
+		write(fd, &str[start++], 1);
+	return (start);
 }

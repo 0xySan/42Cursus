@@ -1,11 +1,10 @@
-SRCS_FILE = ft_printf.c \
+SRCS_FILE = ft_dprintf.c \
 	    ft_ltoa.c \
 	    ft_ptoa.c \
-	    ft_putstr.c \
+	    ft_putstr_fd.c \
 	    ft_utoa.c \
 	    ft_count_unsigned.c \
-	    ft_printf.c \
-	    ft_putchar.c \
+	    ft_putchar_fd.c \
 	    ft_ultoa.c \
 		ft_itoa.c
 
@@ -13,7 +12,7 @@ SRCS = $(addprefix ./,$(SRCS_FILE))
 
 OBJ = $(SRCS:.c=.o)
 
-NAME = libftprintf.a
+NAME = dprintf.a
 
 %.o: %.c ./ft_printf.h
 		@gcc -c -o $@ $< -Wall -Wextra -Werror

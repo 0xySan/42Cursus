@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultoa.c                                         :+:      :+:    :+:   */
+/*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 19:05:45 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/22 19:42:21 by etaquet          ###   ########.fr       */
+/*   Created: 2024/09/18 18:42:29 by etaquet           #+#    #+#             */
+/*   Updated: 2024/11/20 13:08:18 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_ultoa(unsigned long nbr, const char *base, int *len)
+int	ft_utoa(unsigned int nb, int fd)
 {
-	unsigned long	base_len;
+	unsigned int	nb_count;
+	unsigned int	n_tempo;
+	unsigned int	nb_tempo;
+	int				len;
 
-	base_len = -1;
-	while (base[++base_len])
-		;
-	if (nbr >= base_len)
-		ft_ultoa(nbr / base_len, base, len);
-	*len += ft_putchar(base[nbr % base_len]);
+	nb_count = ft_count_unsigned(nb) + 1;
+	len = 0;
+	while (nb_count-- > 0)
+	{
+		n_tempo = nb_count;
+		nb_tempo = nb;
+		while (n_tempo--)
+			nb_tempo /= 10;
+		ft_putchar_fd(nb_tempo % 10 + '0', fd);
+		len++;
+	}
+	return (len);
 }

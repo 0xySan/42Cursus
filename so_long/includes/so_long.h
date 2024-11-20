@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:34:41 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/14 03:14:30 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/20 13:34:39 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,10 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <string.h>
 # include "../minilibx/mlx42.h"
 # include "../gnl/get_next_line.h"
-# include "../ft_printf/ft_printf.h"
+# include "../ft_dprintf/ft_printf.h"
 # include "./ft_struct.h"
 # include "./ft_defines.h"
 

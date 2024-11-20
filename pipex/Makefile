@@ -1,18 +1,21 @@
 NAME = pipex
 
-SRCS = 	pipex.c pipex_utils.c
+SRCS = 	pipex.c pipex_utils.c pipex_cmds.c check_pipex.c
 
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
+GNL_SRC		=	gnl/get_next_line_utils.c \
+				gnl/get_next_line.c
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C libft
 	make -C ft_printf
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) libft/libft.a ft_printf/libftprintf.a
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) libft/libft.a ft_printf/libftprintf.a $(GNL_SRC)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

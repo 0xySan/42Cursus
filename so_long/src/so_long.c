@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 15:30:45 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/14 04:21:16 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/20 13:00:27 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ int	main(int argc, char **argv)
 	mlx_loop(so_long.mlx);
 	mlx_terminate(so_long.mlx);
 	ft_free_all(&so_long);
-	printf("Exiting the game.\n");
+	ft_printf("Exiting the game.\n");
 	return (0);
 }

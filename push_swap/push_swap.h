@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:59:43 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/10 04:35:20 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/21 03:47:33 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 typedef struct s_node
 {
@@ -30,9 +31,9 @@ typedef struct s_stack
 
 typedef struct s_value
 {
-	int	argc;
-	int n;
-	char **numbers;
+	int		argc;
+	int		n;
+	char	**numbers;
 }	t_value;
 
 void	push(t_stack *stack, int value);

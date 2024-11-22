@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:56:18 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/10 04:41:50 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/21 03:46:58 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	count_numbers(char **argv)
 	return (index);
 }
 
-int init_val(t_value *val, int argc, char **argv)
+int	init_val(t_value *val, int argc, char **argv)
 {
 	if (argc < 2)
 		return (write(1, "Error\n", 6), 1);
@@ -63,14 +63,16 @@ int	main(int argc, char **argv)
 {
 	t_stack	a;
 	t_stack	b;
-	t_value val;
+	t_value	val;
 
 	init_stacks(&a, &b);
 	if (init_val(&val, argc, argv))
+	{
 		if (argc == 2)
 			return (free_numbers(val.numbers), write(1, "Error\n", 6), 1);
 		else
 			return (write(1, "Error\n", 6), 1);
+	}
 	init_stack(&a, &b, val);
 	if (!is_sorted(&a))
 		sort_small(&a, &b);

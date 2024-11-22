@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:58:51 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/07 21:00:24 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/21 03:52:04 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,31 +28,35 @@ static void	turk_sort(t_stack *a)
 	printf("%d\n", temp->value);
 }
 
-static int search_pos(t_stack *b, int number)
+static int	search_pos(t_stack *b, int number)
 {
 	t_node	*temp;
-    int minDiff = INT_MAX;
-	int minDiffPos = 0;
-	int pos = 1;
+	int		mindiff;
+	int		mindiffpos;
+	int		pos;
 
+	mindiff = INT_MAX;
+	mindiffpos = 0;
+	pos = 1;
 	temp = b->top;
-
-    while (pos != b->size + 1)
+	while (pos != b->size + 1)
 	{
-		if (abs(number - temp->value <= minDiff) && temp->value >= number)
+		if (abs(number - temp->value <= mindiff) && temp->value >= number)
 		{
-			minDiff = abs(number - temp->value);
-			minDiffPos = pos;
+			mindiff = abs(number - temp->value);
+			mindiffpos = pos;
 		}
 		temp = temp->next;
 		pos++;
 	}
-	return minDiffPos;
+	return mindiffpos;
 }
 
-static void put_pos(t_stack *b, int pos)
+static void	put_pos(t_stack *b, int pos)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	if (pos == 0)
 		return ;
 	else if (pos == 1)
@@ -75,10 +79,10 @@ static void put_pos(t_stack *b, int pos)
 	}
 }
 
-static void sort_b(t_stack *a, t_stack *b)
+static void	sort_b(t_stack *a, t_stack *b)
 {
-	int pos;
-	int number;
+	int	pos;
+	int	number;
 
 	number = a->top->value;
 	pos = search_pos(b, number);
@@ -126,12 +130,8 @@ void	sort_stack(t_stack *a, t_stack *b)
 	pb(a, b);
 	sort_three_reverse(b);
 	while (a->size > 0)
-	{
 		sort_b(a, b);
-	}
 	while (b->size > 0)
-	{
-	    pa(a, b);
-	}
+		pa(a, b);
 	turk_sort(a);
 }

@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:56:46 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/10 04:30:06 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/21 03:45:29 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ void	free_stack(t_stack *stack)
 	stack->top = NULL;
 	stack->size = 0;
 }
-
-#include <stdio.h>
 
 void	error_exit(t_stack *a, t_stack *b, int argc, char **argv)
 {

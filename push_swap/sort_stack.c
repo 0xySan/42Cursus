@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:58:51 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/21 03:52:04 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/25 22:30:27 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,41 @@ static void	turk_sort(t_stack *a)
 	printf("%d\n", temp->value);
 }
 
-static int	search_pos(t_stack *b, int number)
+static int	check_if_highest(t_stack *b, int number)
+{
+	t_node	*temp;
+	int		pos;
+
+	pos = 1;
+	temp = b->top;
+	while (pos != b->size + 1)
+	{
+		if (number < temp->value)
+			return (0);
+		temp = temp->next;
+		pos++;
+	}
+	return (1);
+}
+
+static int	check_if_lowest(t_stack *b, int number)
+{
+	t_node	*temp;
+	int		pos;
+
+	pos = 1;
+	temp = b->top;
+	while (pos != b->size + 1)
+	{
+		if (number > temp->value)
+			return (0);
+		temp = temp->next;
+		pos++;
+	}
+	return (1);
+}
+
+static int	find_lowest(t_stack *b, int number)
 {
 	t_node	*temp;
 	int		mindiff;
@@ -41,7 +75,7 @@ static int	search_pos(t_stack *b, int number)
 	temp = b->top;
 	while (pos != b->size + 1)
 	{
-		if (abs(number - temp->value <= mindiff) && temp->value >= number)
+		if (abs(number - temp->value) < mindiff && temp->value < number)
 		{
 			mindiff = abs(number - temp->value);
 			mindiffpos = pos;
@@ -52,29 +86,84 @@ static int	search_pos(t_stack *b, int number)
 	return mindiffpos;
 }
 
-static void	put_pos(t_stack *b, int pos)
+static int	search_pos(t_stack *b, int number)
+{
+	t_node	*temp;
+	int		mindiff;
+	int		mindiffpos;
+	int		pos;
+
+	mindiff = INT_MAX;
+	mindiffpos = 0;
+	pos = 1;
+	temp = b->top;
+	if (check_if_highest(b, number))
+	{
+		while (pos != b->size + 1)
+		{
+			if (abs(number - temp->value) < mindiff)
+			{
+				mindiff = abs(number - temp->value);
+				mindiffpos = pos - 1;
+			}
+			temp = temp->next;
+			pos++;
+		}
+	}
+	else if (check_if_lowest(b, number))
+	{
+		while (pos != b->size + 1)
+		{
+			if (abs(number - temp->value) < mindiff)
+			{
+				mindiff = abs(number - temp->value);
+				mindiffpos = pos;
+			}
+			temp = temp->next;
+			pos++;
+		}
+	}
+	else
+		return find_lowest(b, number) - 1;
+	return mindiffpos;
+}
+
+static void	put_pos(t_stack *a, t_stack *b, int pos)
 {
 	int	i;
 
 	i = 0;
 	if (pos == 0)
-		return ;
+		pb(a, b);
 	else if (pos == 1)
+	{
+		pb(a, b);
 		sb(b);
+	}
 	else if (pos == b->size)
+	{
+		pb(a, b);
 		rb(b);
+	}
 	else
 	{
-		while (i < pos)
+		if (pos <= b->size/2)
 		{
-			sb(b);
-			rb(b);
-			i++;
+			while (i < pos)
+			{
+				rb(b);
+				i++;
+			}
+			pb(a, b);
 		}
-		while (i > 0)
+		else
 		{
-			rrb(b);
-			i--;
+			while (i < b->size - pos)
+			{
+				rrb(b);
+				i++;
+			}
+			pb(a, b);
 		}
 	}
 }
@@ -86,8 +175,7 @@ static void	sort_b(t_stack *a, t_stack *b)
 
 	number = a->top->value;
 	pos = search_pos(b, number);
-	pb(a, b);
-	put_pos(b, pos);
+	put_pos(a, b, pos);
 }
 
 void	sort_two_reverse(t_stack *a)
@@ -106,21 +194,35 @@ void	sort_three_reverse(t_stack *a)
 	middle = a->top->next->value;
 	bottom = a->top->next->next->value;
 	if (top < middle && middle > bottom && top > bottom)
-		sa(a);
+		sb(a);
 	else if (top < middle && middle < bottom)
 	{
-		sa(a);
-		rra(a);
+		sb(a);
+		rrb(a);
 	}
 	else if (top < middle && middle > bottom && top < bottom)
-		ra(a);
+		rb(a);
 	else if (top > middle && middle < bottom && top > bottom)
 	{
-		sa(a);
-		ra(a);
+		sb(a);
+		rb(a);
 	}
 	else if (top > middle && middle < bottom && top < bottom)
-		rra(a);
+		rrb(a);
+}
+
+int is_reverse_sorted(t_stack *stack)
+{
+    t_node *current;
+
+    current = stack->top;
+    while (current && current->next)
+    {
+        if (current->value < current->next->value)
+            return (0);
+        current = current->next;
+    }
+    return (1);
 }
 
 void	sort_stack(t_stack *a, t_stack *b)
@@ -131,6 +233,8 @@ void	sort_stack(t_stack *a, t_stack *b)
 	sort_three_reverse(b);
 	while (a->size > 0)
 		sort_b(a, b);
+	while (!is_reverse_sorted(b))
+		rb(b);
 	while (b->size > 0)
 		pa(a, b);
 	turk_sort(a);

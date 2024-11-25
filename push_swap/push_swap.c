@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:56:18 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/21 03:46:58 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/25 20:12:10 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	init_val(t_value *val, int argc, char **argv)
 {
 	if (argc < 2)
 		return (write(1, "Error\n", 6), 1);
-	else if (argc == 2)
+	if (argc == 2)
 	{
 		val->numbers = ft_split(argv[1], ' ');
 		val->n = count_numbers(val->numbers);
@@ -57,6 +57,7 @@ int	init_val(t_value *val, int argc, char **argv)
 	if (!val->numbers[1])
 		return (free_numbers(val->numbers), write(1, "Error\n", 6), 1);
 	val->argc = argc;
+	return (0);
 }
 
 int	main(int argc, char **argv)

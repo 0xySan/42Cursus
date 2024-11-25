@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 21:01:10 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/24 03:40:54 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/25 20:05:50 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	push(t_stack *stack, int value)
 
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
-		error_exit();
+		exit(1);
 	new_node->value = value;
 	new_node->next = stack->top;
 	stack->top = new_node;
@@ -31,7 +31,7 @@ int	pop(t_stack *stack)
 	int		value;
 
 	if (!stack->top)
-		error_exit();
+		exit(1);
 	temp = stack->top;
 	value = temp->value;
 	stack->top = stack->top->next;

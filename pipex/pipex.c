@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 18:56:30 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/25 14:45:43 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/25 15:21:19 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,7 @@ void	handle_standard_mode(int argc, char **argv, char **envp, t_pipex *pipex)
 	init_pipes(pipex, pipex->cmd_count);
 	i = -1;
 	while (++i < pipex->cmd_count)
-	{
-		if (ft_strlen(argv[2 + i]) == 0)
-			child_process(pipex, argv[1 + i], envp, i);
-		else
-			child_process(pipex, argv[2 + i], envp, i);
-	}
+		child_process(pipex, argv[2 + i], envp, i);
 	i = 0;
 	close_pipes(pipex);
 	while (i < pipex->cmd_count)

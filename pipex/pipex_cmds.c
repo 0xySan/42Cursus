@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:37:58 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/25 14:26:08 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/25 15:21:06 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	execute_cmd(char *cmd, char **envp)
 	char	**args;
 	char	*cpath;
 
-	if (check_if_only_space(cmd) == 0)
+	if (check_if_only_space(cmd) == 0 || cmd[0] == ' ')
 	{
 		ft_dprintf(2, "pipex: permission denied:%s\n", cmd);
 		return ;

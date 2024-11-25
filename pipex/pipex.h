@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 18:58:14 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/20 17:13:36 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/25 13:23:39 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
+# include "ft_dprintf/ft_printf.h"
 # include "gnl/get_next_line.h"
 
 typedef struct s_pipex

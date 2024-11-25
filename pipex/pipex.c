@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 18:56:30 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/20 17:13:22 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/25 14:45:43 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ void	handle_here_doc(t_pipex *pipex, char *limiter)
 	pipex->infile = fd[0];
 	write(STDOUT_FILENO, "here_doc> ", 10);
 	line = get_next_line(STDIN_FILENO);
-	while (line != NULL)
+	while (ft_strncmp(line, limiter, ft_strlen(limiter)) != 0)
 	{
-		if (ft_strcmp(line, limiter) == 0)
+		write(STDOUT_FILENO, "here_doc> ", 10);
+		if (ft_strncmp(line, limiter, ft_strlen(limiter)) == 0)
 		{
 			free(line);
 			break ;
@@ -32,7 +33,6 @@ void	handle_here_doc(t_pipex *pipex, char *limiter)
 		write(fd[1], line, ft_strlen(line));
 		free(line);
 		line = get_next_line(STDIN_FILENO);
-		write(STDOUT_FILENO, "here_doc> ", 10);
 	}
 	close(fd[1]);
 }
@@ -54,7 +54,6 @@ void	child_process(t_pipex *pipex, char *cmd, char **envp, int cmd_idx)
 			dup2(pipex->pipes[cmd_idx][1], STDOUT_FILENO);
 		close_pipes(pipex);
 		execute_cmd(cmd, envp);
-		error_exit("Error: Command execution failed.\n");
 	}
 }
 
@@ -72,7 +71,7 @@ void	handle_here_doc_mode(int argc, char **argv, char **envp, t_pipex *pipex)
 		error_exit("Error: Could not open output file.\n");
 	i = -1;
 	while (++i < pipex->cmd_count)
-		child_process(pipex, argv[2 + i], envp, i);
+		child_process(pipex, argv[3 + i], envp, i);
 	i = 0;
 	close_pipes(pipex);
 	while (i < pipex->cmd_count)
@@ -88,7 +87,12 @@ void	handle_standard_mode(int argc, char **argv, char **envp, t_pipex *pipex)
 	init_pipes(pipex, pipex->cmd_count);
 	i = -1;
 	while (++i < pipex->cmd_count)
-		child_process(pipex, argv[2 + i], envp, i);
+	{
+		if (ft_strlen(argv[2 + i]) == 0)
+			child_process(pipex, argv[1 + i], envp, i);
+		else
+			child_process(pipex, argv[2 + i], envp, i);
+	}
 	i = 0;
 	close_pipes(pipex);
 	while (i < pipex->cmd_count)

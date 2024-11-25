@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:42:29 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/23 14:46:03 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/20 13:08:18 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_utoa(unsigned int nb)
+int	ft_utoa(unsigned int nb, int fd)
 {
 	unsigned int	nb_count;
 	unsigned int	n_tempo;
@@ -27,7 +27,7 @@ int	ft_utoa(unsigned int nb)
 		nb_tempo = nb;
 		while (n_tempo--)
 			nb_tempo /= 10;
-		ft_putchar(nb_tempo % 10 + '0');
+		ft_putchar_fd(nb_tempo % 10 + '0', fd);
 		len++;
 	}
 	return (len);

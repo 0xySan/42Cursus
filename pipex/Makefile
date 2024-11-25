@@ -14,20 +14,20 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C libft
-	make -C ft_printf
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) libft/libft.a ft_printf/libftprintf.a $(GNL_SRC)
+	make -C ft_dprintf
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) libft/libft.a ft_dprintf/dprintf.a $(GNL_SRC)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	make clean -C libft
-	make clean -C ft_printf
+	make clean -C ft_dprintf
 	rm -f $(OBJS)
 
 fclean: clean
 	make fclean -C libft
-	make fclean -C ft_printf
+	make fclean -C ft_dprintf
 	rm -f $(NAME)
 
 re: fclean all

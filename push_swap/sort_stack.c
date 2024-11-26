@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:58:51 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/26 02:18:02 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/26 02:26:12 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,6 +224,7 @@ static void	sort_b(t_stack *a, t_stack *b)
 		temp = temp->next;
 		i++;
 	}
+	// printf("last number : %d cost : %d\n", number, cost);
 	if (cost <= a->size)
 	{
 		while (a->top->value != number)
@@ -326,5 +327,5 @@ void	sort_stack(t_stack *a, t_stack *b)
 	while (b->size > 0)
 		pa(a, b);
 	// turk_sort(b);
-	// turk_sort(a);
+	turk_sort(a);
 }

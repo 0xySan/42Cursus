@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:56:18 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/25 20:12:10 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/26 22:53:07 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	main(int argc, char **argv)
 	if (init_val(&val, argc, argv))
 	{
 		if (argc == 2)
-			return (free_numbers(val.numbers), write(1, "Error\n", 6), 1);
+			return (1);
 		else
 			return (write(1, "Error\n", 6), 1);
 	}

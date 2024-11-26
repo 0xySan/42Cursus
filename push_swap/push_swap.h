@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:59:43 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/21 03:47:33 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/26 22:48:42 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# define MAX_INT 2147483647
 
 typedef struct s_node
 {
@@ -35,6 +36,17 @@ typedef struct s_value
 	int		n;
 	char	**numbers;
 }	t_value;
+
+typedef struct s_bcost
+{
+	int	a_cost;
+	int	b_cost;
+	int	best_a_rot;
+	int	best_b_rot;
+	int	best_cost;
+	int	pos;
+	int	current_cost;
+}	t_bcost;
 
 void	push(t_stack *stack, int value);
 int		pop(t_stack *stack);
@@ -63,5 +75,18 @@ void	sort_stack(t_stack *a, t_stack *b);
 void	sort_two(t_stack *a);
 char	**ft_split(char const *s, char c);
 void	free_numbers(char **numbers);
+void	put_pos(t_stack *a, t_stack *b, int pos);
+int		find_lowest(t_stack *b, int number);
+void	sort_three_reverse(t_stack *b);
+int		is_reverse_sorted(t_stack *stack);
+int		search_min(t_stack *b);
+int		check_if_highest(t_stack *b, int number);
+int		check_if_lowest(t_stack *b, int number);
+void	calculate_costs(t_stack *a, t_stack *b, int i, t_bcost *cost);
+void	update_best_move(t_bcost *cost, int i, t_stack *a, t_stack *b);
+void	find_best_move(t_stack *a, t_stack *b, t_bcost *cost);
+int		search_pos(t_stack *b, int number);
+void	sort_five(t_stack *a, t_stack *b);
+int		ft_strlen(const char *str);
 
 #endif

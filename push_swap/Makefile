@@ -4,7 +4,15 @@ SRCS = 	ft_atoi.c \
 		input_validation.c \
 		push_swap.c \
 		push_swap_ops.c \
+		push_swap_ops_2.c \
+		push_swap_ops_3.c \
+		put_pos.c \
+		get_pos.c \
+		get_cost.c \
+		sort_utils.c \
 		sort_small.c \
+		sort_five.c \
+		ft_strlen.c \
 		sort_stack.c \
 		utils.c \
 		stack_ops.c \

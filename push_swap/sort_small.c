@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:58:17 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/07 18:50:53 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/26 22:45:02 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,27 @@ void	sort_three(t_stack *a)
 		rra(a);
 }
 
+void	sort_four(t_stack *a, t_stack *b)
+{
+	pb(a, b);
+	sort_three(a);
+	pa(a, b);
+	if (a->top->value > a->top->next->value)
+		sa(a);
+	if (a->top->value > a->top->next->next->value)
+		ra(a);
+	if (a->top->next->value > a->top->next->next->value)
+	{
+		sa(a);
+		ra(a);
+	}
+	if (a->top->value > a->top->next->value)
+		sa(a);
+	pb(a, b);
+	sort_three(a);
+	pa(a, b);
+}
+
 void	sort_small(t_stack *a, t_stack *b)
 {
 	int	size;
@@ -54,6 +75,10 @@ void	sort_small(t_stack *a, t_stack *b)
 		sort_two(a);
 	else if (size == 3)
 		sort_three(a);
-	else if (size > 3)
+	else if (size == 4)
+		sort_four(a, b);
+	else if (size == 5)
+		sort_five(a, b);
+	else
 		sort_stack(a, b);
 }

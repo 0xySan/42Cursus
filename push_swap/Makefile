@@ -22,7 +22,7 @@ NB3 = $(shell ls | find . -type f -name \*.o | wc -w)
 NB4 = $(shell awk 'BEGIN { print $(NB) - $(NB3) }')
 
 CC = gcc
-CFLAGS = -Werror -g -Og
+CFLAGS = -Werror -Wunused -Wall
 
 all: $(NAME)
 
@@ -36,7 +36,7 @@ $(NAME): $(OBJS)
 	$(eval NB4=$(shell echo $$(( $(NB4) ))))
 	$(eval PERCENT=$(shell echo $$(( $(NUMB2) * 100 / $(NB4) ))))
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo -e "$(BOLD)$(PURPLE)[ $(BOLD)$(RED)Percent $(BOLD)$(PURPLE): $(BOLD)$(UNDERLINE)$(YELLOW)"$(PERCENT).0%"$(RESET)$(BOLD)$(PURPLE) ] $(BOLD)$(GREEN)\t~Compiling $< : $@$(RESET)"
+	@echo "$(BOLD)$(PURPLE)[    $(BOLD)$(RED)Percent $(BOLD)$(PURPLE): $(BOLD)$(UNDERLINE)$(YELLOW)"$(PERCENT).0%"$(RESET)$(BOLD)$(PURPLE)\t]$(BOLD)$(GREEN)\t\t~Compiling $< : $@$(RESET)"
 
 clean:
 	@rm -f $(OBJS)

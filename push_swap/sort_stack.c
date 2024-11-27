@@ -3,30 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:58:51 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/26 23:11:46 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/27 16:05:38 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-#include <limits.h>
-#include <math.h>
-
-static void	turk_sort(t_stack *a)
-{
-	t_node	*temp;
-
-	temp = a->top;
-	while (temp->next)
-	{
-		printf("%d ", temp->value);
-		temp = temp->next;
-	}
-	printf("%d\n", temp->value);
-}
 
 static void	optimize_rotation(t_stack *a, t_stack *b, int *a_rot, int *b_rot)
 {

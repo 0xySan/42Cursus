@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 16:05:46 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/28 16:40:31 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/11/28 17:34:32 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,11 @@ int	check_valid_args(char **argv)
 		|| check_if_number(argv[1]))
 		return (handle_errors(1, argv[1]));
 	if (ft_atoi(argv[2]) < 60 || check_if_number(argv[2]))
-		return (printf("Invalid time_to_die.\n%s %s %s%s",
-				"The time to die is supposed to be higher",
-				"than 60.\nYour number :",
-				argv[1], " doesn't follow those rules.\n"));
+		return (handle_errors(2, argv[2]));
 	if (ft_atoi(argv[3]) < 60 || check_if_number(argv[3]))
-		return (printf("Invalid time_to_eat.\n"));
+		return (handle_errors(3, argv[3]));
 	if (ft_atoi(argv[4]) < 60 || check_if_number(argv[4]))
-		return (printf("Invalid time_to_sleep.\n"));
+		return (handle_errors(4, argv[4]));
 	return (0);
 }
 

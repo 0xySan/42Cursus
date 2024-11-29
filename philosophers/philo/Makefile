@@ -1,7 +1,7 @@
 NAME = philo
 EXECUTABLE = $PWD/$(NAME)
 
-SRCS = 	philo.c handle_errors.c init.c utils.c monitoring.c
+SRCS = 	handle_errors.c exit.c death.c init.c main.c output.c parsing.c philosopher.c time.c
 NUMB2 = 0
 NUMB3 = 0
 PERCENT = 0
@@ -29,10 +29,9 @@ $(NAME): $(OBJS)
 
 %.o: %.c
 	$(eval NUMB2=$(shell echo $$(($(NUMB2)+1))))
-	$(eval NB4=$(shell echo $$(( $(NB4) ))))
 	$(eval PERCENT=$(shell echo $$(( $(NUMB2) * 100 / $(NB) ))))
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo -e "$(BOLD)$(PURPLE)[Percent : "$(PERCENT).0%"] $(BOLD)$(GREEN) \t~Compiling $< : $@$(RESET)"
+	@echo "$(BOLD)$(PURPLE)[Percent : "$(PERCENT).0%"] $(BOLD)$(GREEN) \t~Compiling $< : $@$(RESET)"
 
 clean:
 	@rm -f $(OBJS)

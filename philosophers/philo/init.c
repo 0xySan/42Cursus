@@ -3,69 +3,100 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 10:55:45 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/29 12:36:11 by etaquet          ###   ########.fr       */
+/*   Created: 2024/11/28 15:12:00 by etaquet           #+#    #+#             */
+/*   Updated: 2024/11/29 15:59:49 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-size_t	ft_get_time(void)
+static pthread_mutex_t	*init_forks(t_table *table)
 {
-	struct timeval	tp;
-	size_t			time;
+	pthread_mutex_t	*forks;
+	unsigned int	i;
 
-	if (gettimeofday(&tp, NULL) == -1)
-		return (-1);
-	time = tp.tv_sec * 1000 + tp.tv_usec / 1000;
-	return (time);
+	forks = malloc(sizeof(pthread_mutex_t) * table->nb_philos);
+	if (!forks)
+		return (error_null(STR_ERR_MALLOC, NULL, 0));
+	i = 0;
+	while (i < table->nb_philos)
+	{
+		if (pthread_mutex_init(&forks[i], 0) != 0)
+			return (error_null(STR_ERR_MUTEX, NULL, 0));
+		i++;
+	}
+	return (forks);
 }
 
-void	init_philos(t_philo *philos, char **argv)
+static void	assign_forks(t_philo *philo)
 {
-	int	i;
-
-    i = 0;
-	while (i < ft_atol(argv[1]))
+	philo->fork[0] = philo->id;
+	philo->fork[1] = (philo->id + 1) % philo->table->nb_philos;
+	if (philo->id % 2)
 	{
-		philos->id = i + 1;
-		if (argv[5])
-			philos->must_eat = ft_atol(argv[5]);
-		else
-		    philos->must_eat = -1;
-		philos->number_of_philo = ft_atol(argv[1]);
-		philos->total_eaten = 0;
-		philos->check_dead = 0;
-		philos->time_to_die = ft_atol(argv[2]);
-		philos->time_to_eat = ft_atol(argv[3]);
-		philos->time_to_sleep = ft_atol(argv[4]);
-		philos->start_time = ft_get_time();
-		philos->last_meal = ft_get_time();
-		i++;
+		philo->fork[0] = (philo->id + 1) % philo->table->nb_philos;
+		philo->fork[1] = philo->id;
 	}
 }
 
-void	ft_mutex_init(t_philo *philos, pthread_mutex_t *forks,
-		pthread_mutex_t *death)
+static t_philo	**init_philosophers(t_table *table)
 {
-	int	i;
+	t_philo			**philos;
+	unsigned int	i;
 
+	philos = malloc(sizeof(t_philo) * table->nb_philos);
+	if (!philos)
+		return (error_null(STR_ERR_MALLOC, NULL, 0));
 	i = 0;
-	while (i < philos->number_of_philo)
+	while (i < table->nb_philos)
 	{
-		philos[i].left_fork = &forks[i];
-		philos[i].right_fork = &forks[(i + 1) % philos->number_of_philo];
+		philos[i] = malloc(sizeof(t_philo) * 1);
+		if (!philos[i])
+			return (error_null(STR_ERR_MALLOC, NULL, 0));
+		if (pthread_mutex_init(&philos[i]->meal_time_lock, 0) != 0)
+			return (error_null(STR_ERR_MUTEX, NULL, 0));
+		philos[i]->table = table;
+		philos[i]->id = i;
+		philos[i]->times_ate = 0;
+		assign_forks(philos[i]);
 		i++;
 	}
-	i = 0;
-	while (i < philos->number_of_philo)
-	{
-		pthread_mutex_init(philos[i].left_fork, NULL);
-		pthread_mutex_init(philos[i].right_fork, NULL);
-		philos[i].death = death;
-		i++;
-	}
-	pthread_mutex_init(philos->death, NULL);
+	return (philos);
+}
+
+static int	init_global_mutexes(t_table *table)
+{
+	table->fork_locks = init_forks(table);
+	if (!table->fork_locks)
+		return (0);
+	if (pthread_mutex_init(&table->sim_stop_lock, 0) != 0)
+		return (error_failure(STR_ERR_MUTEX, NULL, table));
+	if (pthread_mutex_init(&table->write_lock, 0) != 0)
+		return (error_failure(STR_ERR_MUTEX, NULL, table));
+	return (1);
+}
+
+t_table	*init_table(int ac, char **av, int i)
+{
+	t_table	*table;
+
+	table = malloc(sizeof(t_table) * 1);
+	if (!table)
+		return (error_null(STR_ERR_MALLOC, NULL, 0));
+	table->nb_philos = ft_atoi(av[i++]);
+	table->time_to_die = ft_atoi(av[i++]);
+	table->time_to_eat = ft_atoi(av[i++]);
+	table->time_to_sleep = ft_atoi(av[i++]);
+	table->must_eat_count = -1;
+	if (ac - 1 == 5)
+		table->must_eat_count = ft_atoi(av[i]);
+	table->philos = init_philosophers(table);
+	if (!table->philos)
+		return (NULL);
+	if (!init_global_mutexes(table))
+		return (NULL);
+	table->sim_stop = 0;
+	return (table);
 }

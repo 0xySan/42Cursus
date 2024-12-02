@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 15:12:00 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/29 16:46:42 by etaquet          ###   ########.fr       */
+/*   Created: 2024/11/28 15:12:42 by etaquet           #+#    #+#             */
+/*   Updated: 2024/12/02 09:58:38 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,15 @@ int	is_valid_input(char **argv)
 {
 	if (!contains_only_digits(argv[1]) || ft_atoi(argv[1]) > 200
 		|| ft_atoi(argv[1]) < 0)
-		return (handle_errors(1, argv[1]));
+		return (handle_ierrors(0, 1, argv[1]));
 	if (!contains_only_digits(argv[2]) || ft_atoi(argv[2]) < 60)
-		return (handle_errors(2, argv[2]));
+		return (handle_ierrors(0, 2, argv[2]));
 	if (!contains_only_digits(argv[3]) || ft_atoi(argv[3]) < 60)
-		return (handle_errors(3, argv[3]));
+		return (handle_ierrors(0, 3, argv[3]));
 	if (!contains_only_digits(argv[4]) || ft_atoi(argv[4]) < 60)
-		return (handle_errors(4, argv[4]));
+		return (handle_ierrors(0, 4, argv[4]));
 	if (argv[5])
 		if (!contains_only_digits(argv[5]))
-			return (handle_errors(5, argv[5]));
+			return (handle_ierrors(0, 5, argv[5]));
 	return (0);
 }

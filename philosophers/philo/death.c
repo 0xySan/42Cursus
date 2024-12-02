@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   death.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 15:12:00 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/29 16:09:00 by etaquet          ###   ########.fr       */
+/*   Created: 2024/11/28 15:12:09 by etaquet           #+#    #+#             */
+/*   Updated: 2024/12/02 09:51:55 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ static int	all_philos_ate_enough(t_table *table)
 		if (philo_ate_enough(table->philos[i]))
 			return (1);
 		if (table->must_eat_count != -1)
-			if (table->philos[i]->times_ate < (unsigned)table->must_eat_count)
+			if (table->philos[i]->last_meal_time
+				< (unsigned)table->must_eat_count)
 				all_ate_enough = 0;
 		pthread_mutex_unlock(&table->philos[i]->meal_time_lock);
 		i++;

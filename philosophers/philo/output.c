@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   output.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 15:12:00 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/29 16:09:34 by etaquet          ###   ########.fr       */
+/*   Created: 2024/11/30 16:34:12 by etaquet           #+#    #+#             */
+/*   Updated: 2024/12/02 09:21:42 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ void	write_status(t_philo *philo, int death_report, int status)
 		pthread_mutex_unlock(&philo->table->write_lock);
 		return ;
 	}
-	if (status == 0)
+	if (status == IS_DEAD)
 		print_status(philo, "died");
-	else if (status == 1)
+	else if (status == IS_EATING)
 		print_status(philo, "is eating");
-	else if (status == 2)
+	else if (status == IS_SLEEPING)
 		print_status(philo, "is sleeping");
-	else if (status == 3)
+	else if (status == IS_THINKING)
 		print_status(philo, "is thinking");
-	else if (status == 4 || status == 5)
+	else if (status == TOOK_L_FORK || status == TOOK_R_FORK)
 		print_status(philo, "has taken a fork");
 	pthread_mutex_unlock(&philo->table->write_lock);
 }

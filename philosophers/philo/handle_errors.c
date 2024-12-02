@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_errors.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 15:51:47 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/29 16:50:53 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/12/02 10:09:30 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,44 @@ void	_handle_errors_2(int error, va_list args)
 		printf("digits.\nYour arg : %s, doesn't follow this rule.\n",
 			va_arg(args, char *));
 	}
+	if (error == 6)
+	{
+		printf("usage: ./philo <number_of_philosophers> ");
+		printf("<time_to_die> <time_to_eat> <time_to_sleep> ");
+		printf("[number_of_times_each_philosopher_must_eat]\n");
+	}
+	if (error == MALLOC_ERR)
+		printf(" error: Could not allocate memory.\n");
+	if (error == THREAD_ERR)
+		printf(" error: Could not create thread.\n");
 }
 
-int	handle_errors(int error, ...)
+int	handle_ierrors(t_table *table, int error, ...)
 {
 	va_list	args;
 
 	va_start(args, error);
+	printf("philo: ");
 	_handle_errors_1(error, args);
 	_handle_errors_2(error, args);
 	va_end(args);
+	if (table != NULL)
+		free_table(table);
 	return (1);
+}
+
+void	*handle_verrors(t_table *table, int error, ...)
+{
+	va_list	args;
+
+	va_start(args, error);
+	printf("philo: ");
+	_handle_errors_1(error, args);
+	_handle_errors_2(error, args);
+	if (error == MUTEX_ERR)
+		printf(" error: Could not create mutex.\n");
+	va_end(args);
+	if (table != NULL)
+		free_table(table);
+	return (NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosopher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 15:12:00 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/29 16:53:36 by etaquet          ###   ########.fr       */
+/*   Created: 2024/11/28 18:20:28 by etaquet           #+#    #+#             */
+/*   Updated: 2024/12/02 10:11:12 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static void	sleep_routine(t_table *table, time_t sleep_time)
 
 static void	eat_sleep_routine(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->table->fork_locks[philo->fork[0]]);
+	pthread_mutex_lock(&philo->table->forks[philo->fork[0]]);
 	write_status(philo, 0, TOOK_L_FORK);
-	pthread_mutex_lock(&philo->table->fork_locks[philo->fork[1]]);
+	pthread_mutex_lock(&philo->table->forks[philo->fork[1]]);
 	write_status(philo, 0, TOOK_R_FORK);
 	write_status(philo, 0, IS_EATING);
 	pthread_mutex_lock(&philo->meal_time_lock);
@@ -39,16 +39,16 @@ static void	eat_sleep_routine(t_philo *philo)
 	if (has_simulation_stopped(philo->table) == 0)
 	{
 		pthread_mutex_lock(&philo->meal_time_lock);
-		philo->times_ate += 1;
+		philo->last_meal_time += 1;
 		pthread_mutex_unlock(&philo->meal_time_lock);
 	}
 	write_status(philo, 0, IS_SLEEPING);
-	pthread_mutex_unlock(&philo->table->fork_locks[philo->fork[1]]);
-	pthread_mutex_unlock(&philo->table->fork_locks[philo->fork[0]]);
+	pthread_mutex_unlock(&philo->table->forks[philo->fork[1]]);
+	pthread_mutex_unlock(&philo->table->forks[philo->fork[0]]);
 	sleep_routine(philo->table, philo->table->time_to_sleep);
 }
 
-static void	think_routine(t_philo *philo, bool silent)
+static void	think_routine(t_philo *philo, int silent)
 {
 	time_t	time_to_think;
 
@@ -68,13 +68,13 @@ static void	think_routine(t_philo *philo, bool silent)
 	sleep_routine(philo->table, time_to_think);
 }
 
-static void	*lone_philo_routine(t_philo *philo)
+static void	*lone_philo_route(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->table->fork_locks[philo->fork[0]]);
+	pthread_mutex_lock(&philo->table->forks[philo->fork[0]]);
 	write_status(philo, 0, TOOK_L_FORK);
 	sleep_routine(philo->table, philo->table->time_to_die);
 	write_status(philo, 0, IS_DEAD);
-	pthread_mutex_unlock(&philo->table->fork_locks[philo->fork[0]]);
+	pthread_mutex_unlock(&philo->table->forks[philo->fork[0]]);
 	return (NULL);
 }
 
@@ -89,10 +89,8 @@ void	*philosopher(void *data)
 	philo->last_meal = philo->table->start_time;
 	pthread_mutex_unlock(&philo->meal_time_lock);
 	sim_start_delay(philo->table->start_time);
-	if (philo->table->time_to_die == 0)
-		return (NULL);
 	if (philo->table->nb_philos == 1)
-		return (lone_philo_routine(philo));
+		return (lone_philo_route(philo));
 	else if (philo->id % 2)
 		think_routine(philo, 1);
 	while (has_simulation_stopped(philo->table) == 0)

@@ -4,5 +4,7 @@ minilibx
 *.a
 so_long/so_long
 pipex/pipex
+pipex/pipex-tester
+pipex/pipex-tester/*
 push_swap/push_swap
 philosophers/philo/philo

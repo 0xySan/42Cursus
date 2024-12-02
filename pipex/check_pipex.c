@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_pipex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 17:12:41 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/25 15:34:05 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/12/02 12:41:26 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	check_init_sm(int argc, char **argv, t_pipex *pipex)
 		else
 			return (ft_dprintf(2, "pipex: permission denied: %s\n",
 					argv[argc - 1]), close(pipex->infile), exit(EXIT_FAILURE));
+		error = 2;
 	}
-	if (error)
+	if (error == 2)
 		return (close(pipex->outfile), exit(EXIT_FAILURE));
 }

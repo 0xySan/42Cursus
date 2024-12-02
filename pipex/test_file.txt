@@ -1,5 +1,0 @@
-This is a test file.
-This test file is to test if your pipex is functionnal or not.
-It will be helpful when using the tester.
-If you have finished using the tester you can delete this file.
-Do not rely only on these test, try your own too to see if you really understand the subject.

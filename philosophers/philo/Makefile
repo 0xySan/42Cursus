@@ -35,13 +35,13 @@ $(NAME): $(OBJS)
 	
 
 clean:
+	@if [ $(shell ls | find -name "*.o" | wc -l) -gt 0 ]; then echo "$(BOLD)$(RED)Removed all objs$(RESET)"; else echo "$(BOLD)$(PURPLE)All objs were already removed.$(RESET)"; fi
 	@rm -f $(OBJS)
-	@echo "$(BOLD)$(RED)Removed all objs$(RESET)"
 	@echo "$(BOLD)$(BLUE)Finished cleaning all$(RESET)"
 
 fclean: clean
+	@if [ -f ./$(NAME) ]; then echo "$(BOLD)$(RED)Removed the executable : $(NAME).$(RESET)"; else echo "$(BOLD)$(PURPLE)The executable $(NAME) was already removed.$(RESET)"; fi
 	@rm -f $(NAME)
-	@echo "$(BOLD)$(RED)Removed the executable : $(NAME)$(RESET)"
 	@echo "$(BOLD)$(LIGHTBLUE)Finished fcleaning all$(RESET)"
 
 re: fclean all

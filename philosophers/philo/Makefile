@@ -31,7 +31,7 @@ $(NAME): $(OBJS)
 	$(eval NUMB2=$(shell echo $$(($(NUMB2)+1))))
 	$(eval PERCENT=$(shell echo $$(( $(NUMB2) * 100 / $(NB) ))))
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@if [ $(shell uname -a | grep arch | wc -l) -gt 0 ]; then echo -e "$(BOLD)$(PURPLE)[Percent : "$(PERCENT).0%"] $(BOLD)$(GREEN) \t~Compiling $< : $@$(RESET)"; else "$(BOLD)$(PURPLE)[Percent : "$(PERCENT).0%"] $(BOLD)$(GREEN) \t~Compiling $< : $@$(RESET)"; fi
+	@if [ $(shell uname -a | grep arch | wc -l) -gt 0 ]; then echo -e "$(BOLD)$(PURPLE)[Percent : "$(PERCENT).0%"] $(BOLD)$(GREEN) \t~Compiling $< : $@$(RESET)"; else echo "$(BOLD)$(PURPLE)[Percent : "$(PERCENT).0%"] $(BOLD)$(GREEN) \t~Compiling $< : $@$(RESET)"; fi
 	
 
 clean:

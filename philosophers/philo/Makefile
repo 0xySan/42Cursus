@@ -1,7 +1,7 @@
 NAME = philo
 EXECUTABLE = $PWD/$(NAME)
 
-SRCS = 	handle_errors.c free_func.c death.c init.c main.c output.c parsing.c philosopher.c time.c
+SRCS = 	handle_errors.c philo_utils.c death.c init.c main.c status.c validation.c philo.c
 NUMB2 = 0
 NUMB3 = 0
 PERCENT = 0

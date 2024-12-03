@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 11:46:01 by etaquet           #+#    #+#             */
-/*   Updated: 2024/12/02 10:10:26 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/12/03 12:56:59 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/time.h>
-# include <stdbool.h>
 # include <stdarg.h>
 
 # define IS_DEAD		0
@@ -35,7 +34,7 @@
 
 typedef struct s_philo	t_philo;
 
-typedef struct s_table
+typedef struct s_buffet
 {
 	time_t			start_time;
 	unsigned int	nb_philos;
@@ -49,7 +48,7 @@ typedef struct s_table
 	pthread_mutex_t	write_lock;
 	pthread_mutex_t	*forks;
 	t_philo			**philos;
-}	t_table;
+}	t_buffet;
 
 typedef struct s_philo
 {
@@ -59,21 +58,21 @@ typedef struct s_philo
 	unsigned int		fork[2];
 	pthread_mutex_t		meal_time_lock;
 	time_t				last_meal;
-	t_table				*table;
+	t_buffet			*buffet;
 }	t_philo;
 
 int				is_valid_input(char **argv);
 int				ft_atoi(char *str);
-t_table			*init_table(int argc, char **argv);
+t_buffet		*init_buffet(int argc, char **argv);
 void			*philosopher(void *data);
 time_t			get_time_in_ms(void);
 void			sim_start_delay(time_t start_time);
 void			write_status(t_philo *philo, int death_report, int status);
 void			*death(void *data);
-int				has_simulation_stopped(t_table *table);
-void			*free_table(t_table *table);
-void			destroy_mutexes(t_table *table);
-int				handle_ierrors(t_table *table, int error, ...);
-void			*handle_verrors(t_table *table, int error, ...);
+int				has_simulation_stopped(t_buffet *buffet);
+void			*free_buffet(t_buffet *buffet);
+void			destroy_mutexes(t_buffet *buffet);
+int				handle_ierrors(t_buffet *buffet, int error, ...);
+void			*handle_verrors(t_buffet *buffet, int error, ...);
 
 #endif

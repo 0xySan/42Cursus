@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_errors.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 15:51:47 by etaquet           #+#    #+#             */
-/*   Updated: 2024/12/02 10:09:30 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/12/03 12:56:55 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	_handle_errors_2(int error, va_list args)
 		printf(" error: Could not create thread.\n");
 }
 
-int	handle_ierrors(t_table *table, int error, ...)
+int	handle_ierrors(t_buffet *buffet, int error, ...)
 {
 	va_list	args;
 
@@ -74,12 +74,12 @@ int	handle_ierrors(t_table *table, int error, ...)
 	_handle_errors_1(error, args);
 	_handle_errors_2(error, args);
 	va_end(args);
-	if (table != NULL)
-		free_table(table);
+	if (buffet != NULL)
+		free_buffet(buffet);
 	return (1);
 }
 
-void	*handle_verrors(t_table *table, int error, ...)
+void	*handle_verrors(t_buffet *buffet, int error, ...)
 {
 	va_list	args;
 
@@ -90,7 +90,7 @@ void	*handle_verrors(t_table *table, int error, ...)
 	if (error == MUTEX_ERR)
 		printf(" error: Could not create mutex.\n");
 	va_end(args);
-	if (table != NULL)
-		free_table(table);
+	if (buffet != NULL)
+		free_buffet(buffet);
 	return (NULL);
 }

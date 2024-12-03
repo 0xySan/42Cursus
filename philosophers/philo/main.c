@@ -3,62 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 15:12:01 by etaquet           #+#    #+#             */
-/*   Updated: 2024/12/02 10:07:43 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/12/03 12:57:30 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int	start_simulation(t_table *table)
+static int	start_simulation(t_buffet *buffet)
 {
 	unsigned int	i;
 
-	table->start_time = get_time_in_ms() + (table->nb_philos * 20);
+	buffet->start_time = get_time_in_ms() + (buffet->nb_philos * 20);
 	i = 0;
-	while (i < table->nb_philos)
+	while (i < buffet->nb_philos)
 	{
-		if (pthread_create(&table->philos[i]->thread, NULL,
-				&philosopher, table->philos[i]) != 0)
-			return (handle_ierrors(table, THREAD_ERR));
+		if (pthread_create(&buffet->philos[i]->thread, NULL,
+				&philosopher, buffet->philos[i]) != 0)
+			return (handle_ierrors(buffet, THREAD_ERR));
 		i++;
 	}
-	if (table->nb_philos > 1)
-		if (pthread_create(&table->death, NULL,
-				&death, table) != 0)
-			return (handle_ierrors(table, THREAD_ERR));
+	if (buffet->nb_philos > 1)
+		if (pthread_create(&buffet->death, NULL,
+				&death, buffet) != 0)
+			return (handle_ierrors(buffet, THREAD_ERR));
 	return (1);
 }
 
-static void	stop_simulation(t_table	*table)
+static void	stop_simulation(t_buffet *buffet)
 {
 	unsigned int	i;
 
 	i = 0;
-	while (i < table->nb_philos)
-		pthread_join(table->philos[i++]->thread, NULL);
-	if (table->nb_philos > 1)
-		pthread_join(table->death, NULL);
-	destroy_mutexes(table);
-	free_table(table);
+	while (i < buffet->nb_philos)
+		pthread_join(buffet->philos[i++]->thread, NULL);
+	if (buffet->nb_philos > 1)
+		pthread_join(buffet->death, NULL);
+	destroy_mutexes(buffet);
+	free_buffet(buffet);
 }
 
 int	main(int argc, char **argv)
 {
-	t_table	*table;
+	t_buffet	*buffet;
 
-	table = NULL;
+	buffet = NULL;
 	if (argc < 5 || argc > 6)
-		return (handle_ierrors(table, 6));
+		return (handle_ierrors(buffet, 6));
 	if (is_valid_input(argv))
 		return (EXIT_FAILURE);
-	table = init_table(argc, argv);
-	if (!table)
+	buffet = init_buffet(argc, argv);
+	if (!buffet)
 		return (EXIT_FAILURE);
-	if (!start_simulation(table))
+	if (!start_simulation(buffet))
 		return (EXIT_FAILURE);
-	stop_simulation(table);
+	stop_simulation(buffet);
 	return (EXIT_SUCCESS);
 }

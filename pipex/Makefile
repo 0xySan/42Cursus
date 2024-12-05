@@ -13,8 +13,6 @@ BOLD = $(shell tput bold)
 RESET = $(shell tput -Txterm sgr0)
 OBJS = $(SRCS:.c=.o)
 NB = $(shell echo $(SRCS) | wc -w)
-NB3 = $(shell ls | grep .o | wc -w)
-NB4 = $(shell awk 'BEGIN { print $(NB) - $(NB3) }')
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -30,13 +28,12 @@ $(NAME): $(OBJS)
 	@make --no-print-directory -s -C ft_dprintf
 	@echo "$(BOLD)$(RED)dprintf compiled$(RESET)"
 	@if [ -f ./$(NAME) ]; then echo "$(BOLD)$(BLUE)Executable already exists.$(RESET)"; else echo "$(BOLD)$(BLUE)Created the executable : $(NAME)$(RESET)"; fi
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) libft/libft.a ft_dprintf/dprintf.a $(GNL_SRC)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) libft/libft.a ft_dprintf/dprintf.a $(GNL_SRC) libft/libft.a
 	@echo "$(BOLD)$(PURPLE)Finished the compilation of the Makefile$(RESET)"
 
 %.o: %.c
 	$(eval NUMB2=$(shell echo $$(($(NUMB2)+1))))
-	$(eval NB4=$(shell echo $$(( $(NB4) ))))
-	$(eval PERCENT=$(shell echo $$(( $(NUMB2) * 100 / $(NB4) ))))
+	$(eval PERCENT=$(shell echo $$(( $(NUMB2) * 100 / $(NB) ))))
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$(BOLD)$(PURPLE)[Percent : "$(PERCENT).0%"] $(BOLD)$(GREEN)    ~Compiling $< : $@$(RESET)"
 

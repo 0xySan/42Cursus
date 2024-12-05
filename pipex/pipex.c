@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 18:56:30 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/25 15:05:35 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/12/05 12:17:19 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,13 @@ void	handle_standard_mode(int argc, char **argv, char **envp, t_pipex *pipex)
 	check_init_sm(argc, argv, pipex);
 	init_pipes(pipex, pipex->cmd_count);
 	i = -1;
+	if (pipex->error)
+		i++;
 	while (++i < pipex->cmd_count)
 		child_process(pipex, argv[2 + i], envp, i);
 	i = 0;
+	if (pipex->error)
+		i++;
 	close_pipes(pipex);
 	while (i < pipex->cmd_count)
 		waitpid(pipex->pid[i++], NULL, 0);
@@ -101,6 +105,7 @@ int	main(int argc, char **argv, char **envp)
 
 	if (argc < 5)
 		error_exit("Invalid arguments.\nUsage: ./pipex file cmd cmd .. file\n");
+	pipex.error = 0;
 	if (ft_strcmp(argv[1], "here_doc") == 0)
 		handle_here_doc_mode(argc, argv, envp, &pipex);
 	else

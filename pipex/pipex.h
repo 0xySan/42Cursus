@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 18:58:14 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/25 13:23:39 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/12/05 12:15:41 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_pipex
 	pid_t	*pid;
 	int		cmd_count;
 	int		here_doc;
+	int		error;
 }	t_pipex;
 
 void	execute_cmd(char *cmd, char **envp);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:43:11 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/20 16:14:59 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/12/05 12:08:17 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,30 +29,6 @@ char	*ft_strdup(const char *src)
 		dest[start] = src[start];
 	dest[start] = '\0';
 	return (dest);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char			*r_value;
-	unsigned int	v;
-	size_t			s_len;
-
-	if (!s)
-		return (NULL);
-	s_len = ft_strlen(s);
-	if (len > s_len - start)
-		len = s_len - start;
-	r_value = malloc(sizeof(char) * (len + 1));
-	if (r_value == NULL)
-		return (NULL);
-	v = 0;
-	while (v < len && s[v + start])
-	{
-		r_value[v] = s[v + start];
-		v++;
-	}
-	r_value[v] = '\0';
-	return (r_value);
 }
 
 char	*ft_strchr(const char *s, int c)

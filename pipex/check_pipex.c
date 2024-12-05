@@ -6,7 +6,7 @@
 /*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 17:12:41 by etaquet           #+#    #+#             */
-/*   Updated: 2024/11/25 15:34:05 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/12/05 12:15:56 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,20 @@ void	check_init_sm(int argc, char **argv, t_pipex *pipex)
 	if (pipex->outfile < 0)
 	{
 		if (error)
-			return (ft_dprintf(2, "pipex: permission denied: %s\n",
-					argv[argc - 1]), exit(EXIT_FAILURE));
+		{
+			ft_dprintf(2, "pipex: permission denied: %s\n", argv[argc - 1]);
+			return (exit(EXIT_FAILURE));
+		}
 		else
-			return (ft_dprintf(2, "pipex: permission denied: %s\n",
-					argv[argc - 1]), close(pipex->infile), exit(EXIT_FAILURE));
+		{
+			ft_dprintf(2, "pipex: permission denied: %s\n", argv[argc - 1]);
+			close(pipex->infile);
+			return (exit(EXIT_FAILURE));
+		}
 	}
 	if (error)
-		return (close(pipex->outfile), exit(EXIT_FAILURE));
+	{
+		pipex->infile = open("/dev/null", O_RDONLY);
+		pipex->error = 1;
+	}
 }

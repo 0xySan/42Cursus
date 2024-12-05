@@ -1,9 +1,7 @@
 SRCS_FILE = ft_printf.c \
-	    ft_ltoa.c \
 	    ft_ptoa.c \
 	    ft_putstr.c \
 	    ft_utoa.c \
-	    ft_count_unsigned.c \
 	    ft_printf.c \
 	    ft_putchar.c \
 	    ft_ultoa.c \

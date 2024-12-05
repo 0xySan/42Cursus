@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ptoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etaquet <etaquet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: etaquet <etaquet@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 19:14:27 by etaquet           #+#    #+#             */
-/*   Updated: 2024/10/23 14:44:19 by etaquet          ###   ########.fr       */
+/*   Updated: 2024/12/05 10:23:16 by etaquet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int	ft_ptoa(void *ptr)
 		return (write(1, "(nil)", 5));
 	addr = (unsigned long)ptr;
 	len = ft_putstr("0x");
-	ft_ultoa(addr, "0123456789abcdef", &len);
+	len += ft_ultoa(addr, "0123456789abcdef");
 	return (len);
 }
